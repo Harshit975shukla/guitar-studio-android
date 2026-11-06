@@ -1,0 +1,4 @@
+hands-g.webp (640 x 400, WebP)
+Rendered on 2026-10-12 from this app's own 3D scene (Chords > See the hands, G open shape, "Chord hand" camera).
+The guitar and hand models come from the owner's own Play Store app "Guitar 3D - Basic Chords"
+(see public/models/apk/SOURCE.txt). Made with headless Chrome (DevTools screenshot, WebP quality 80).

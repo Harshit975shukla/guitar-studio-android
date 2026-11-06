@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forgot password — Guitar Studio</title>
+  <meta name="theme-color" content="#171918">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/icon-192.png">
+  <link rel="stylesheet" href="/auth/auth.css">
+  <script type="module" src="/auth/forgot.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the form</a>
+  <header class="brand">
+    <img class="brand-logo" src="/auth/leading-note-logo.png" alt="Leading Note" width="250" height="50">
+    <span class="brand-text"><strong>Guitar Studio</strong></span>
+  </header>
+  <main class="card" id="main" tabindex="-1">
+    <h1>Forgot your password?</h1>
+    <p class="lead">Enter your email. We will send you a link to choose a new password.</p>
+    <form id="forgot-form" novalidate>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" required>
+      </div>
+      <p class="message error" data-error role="alert"></p>
+      <p class="message ok" data-status role="status"></p>
+      <button type="submit" class="btn btn-primary">Send the link</button>
+    </form>
+    <p class="links"><a href="/login">Back to log in</a></p>
+  </main>
+  <footer><a href="/privacy">Privacy</a><a data-contact-link hidden>Contact</a><span data-copyright>© 2026 Guitar Studio</span></footer>
+</body>
+</html>

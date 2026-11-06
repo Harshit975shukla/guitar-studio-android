@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create an account — Guitar Studio</title>
+  <meta name="theme-color" content="#171918">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/icon-192.png">
+  <link rel="stylesheet" href="/auth/auth.css">
+  <script type="module" src="/auth/signup.js"></script>
+</head>
+<body class="split">
+  <a class="skip-link" href="#main">Skip to the form</a>
+  <div class="shell">
+    <aside class="intro" aria-label="About Guitar Studio">
+      <header class="brand">
+        <img class="brand-logo" src="/auth/leading-note-logo.png" alt="Leading Note" width="250" height="50">
+        <span class="brand-text"><strong>Guitar Studio</strong></span>
+      </header>
+      <div class="intro-text">
+        <p class="intro-title">Practice guitar with live help on every chord</p>
+        <ul class="intro-points">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z M5 11a7 7 0 0 0 14 0 M12 18v3 M9 21h6"/></svg>Hears your chords and notes as you play</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13 M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0z M20 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></svg>Play along with songs and backing tracks</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8H3z M1 17h12 M17 9h4a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1z"/></svg>Your progress on phone and computer</li>
+        </ul>
+        <p class="intro-note" data-trial="{days} free for new students" hidden></p>
+      </div>
+    </aside>
+    <main class="card" id="main" tabindex="-1">
+      <h1>Create your account</h1>
+      <p class="lead" data-trial="After you sign up, please confirm your email. Then you can use Guitar Studio free for {days}.">After you sign up, please confirm your email. Then the academy checks and approves your account.</p>
+      <div class="google" id="google" data-google hidden>
+        <button type="button" class="btn btn-google" data-google-start><img src="/auth/google-g.svg" alt="" width="18" height="18"><span>Continue with Google</span></button>
+        <p class="hint">No password and no confirmation email needed. By continuing with Google, you agree to the <a href="/privacy" target="_blank" rel="noopener">privacy note</a> (opens in a new tab).</p>
+        <p class="message error" data-error role="alert"></p>
+        <p class="message ok" data-status role="status"></p>
+        <p class="or"><span>or sign up with your email</span></p>
+      </div>
+      <form id="signup-form" novalidate>
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" autocomplete="name" maxlength="80" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" maxlength="254" required>
+        </div>
+        <div class="field">
+          <label for="password">Password <span class="hint" id="password-hint">(at least 8 characters)</span></label>
+          <div class="password-field">
+            <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="128" required aria-describedby="password-hint" data-password>
+            <button type="button" class="eye" data-eye aria-label="Show password" aria-pressed="false"><svg class="eye-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><svg class="eye-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18 M10.6 5.1A9.6 9.6 0 0 1 12 5c6.4 0 10 7 10 7a17.6 17.6 0 0 1-3.2 4.1 M6.6 6.6C3.9 8.4 2 12 2 12s3.6 7 10 7a9.4 9.4 0 0 0 5.4-1.6 M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="confirm">Password again</label>
+          <div class="password-field">
+            <input id="confirm" name="confirm" type="password" autocomplete="new-password" minlength="8" maxlength="128" required data-password>
+            <button type="button" class="eye" data-eye aria-label="Show password" aria-pressed="false"><svg class="eye-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><svg class="eye-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18 M10.6 5.1A9.6 9.6 0 0 1 12 5c6.4 0 10 7 10 7a17.6 17.6 0 0 1-3.2 4.1 M6.6 6.6C3.9 8.4 2 12 2 12s3.6 7 10 7a9.4 9.4 0 0 0 5.4-1.6 M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></button>
+          </div>
+        </div>
+        <label class="check"><input type="checkbox" id="consent" name="consent" required> <span>I have read the <a href="/privacy" target="_blank" rel="noopener">privacy note</a> (opens in a new tab) and I agree.</span></label>
+        <p class="message error" data-error role="alert"></p>
+        <p class="message ok" data-status role="status"></p>
+        <button type="submit" class="btn btn-primary">Create account</button>
+      </form>
+      <div class="done" id="signup-done" hidden tabindex="-1">
+        <p id="signup-done-text"></p>
+        <p>No email after a few minutes? Please check your spam folder.</p>
+      </div>
+      <p class="switch">Already have an account? <a href="/login">Log in</a></p>
+    </main>
+  </div>
+  <footer><a href="/privacy">Privacy</a><a data-contact-link hidden>Contact</a><span data-copyright>© 2026 Guitar Studio</span></footer>
+</body>
+</html>

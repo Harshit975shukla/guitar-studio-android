@@ -1,0 +1,90 @@
+{
+  "source": "Versilian Community Sample Library (VCSL)",
+  "referencePage": "https://github.com/sgossner/VCSL",
+  "commit": "c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e",
+  "license": "CC0-1.0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "note": "Hohner Special 20 harmonicas in C and F, Normal sustains. VCSL names these files an octave below the sounding pitch (measured with a pitch detector); here each file is named by its sounding pitch. Changed: mixed to 16-bit mono, scaled so the peak is -3 dBFS, and cut to the first 2 s with a 0.25 s fade-out.",
+  "files": [
+    {
+      "path": "harmonica/F4.wav",
+      "midi": 65,
+      "source": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Free%20Aerophones/Harmonica-Hohner-Special20-F/Sustains/Normal/Hohner-Special20-F_Normal_F3.wav",
+      "bytes": 176444,
+      "sha256": "57ec167223a81b893b439360dec399736ca1b301b4107467386caccffa0c6452",
+      "sourceSha256": "330c0c0b74047d42dbeb1d65bfc7a677d754ceee21cbd0eed040aeb78affde49"
+    },
+    {
+      "path": "harmonica/A4.wav",
+      "midi": 69,
+      "source": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Free%20Aerophones/Harmonica-Hohner-Special20-F/Sustains/Normal/Hohner-Special20-F_Normal_A3.wav",
+      "bytes": 176444,
+      "sha256": "426b2fd52895326a7e3713656f8ecdd5b726595e602b3dbc21ec0aea31b5db68",
+      "sourceSha256": "82c4db89971b355575968ab98aa3218a618e3572a07c2da483e048d47fedc8c1"
+    },
+    {
+      "path": "harmonica/C5.wav",
+      "midi": 72,
+      "source": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Free%20Aerophones/Harmonica-Hohner-Special20-C/Sustains/Normal/Hohner-Special20_Normal_C4.wav",
+      "bytes": 176444,
+      "sha256": "d97bfb8870cc7bbab549e0e9d9ebed71e2606daf603b4a8ad4f78be3383d6616",
+      "sourceSha256": "ffb181bf9db1e30eb1b4824a9e923c6c81bd0c411143996639fe829131a47744"
+    },
+    {
+      "path": "harmonica/E5.wav",
+      "midi": 76,
+      "source": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Free%20Aerophones/Harmonica-Hohner-Special20-C/Sustains/Normal/Hohner-Special20_Normal_E4.wav",
+      "bytes": 176444,
+      "sha256": "8389f2006d85661d5f6d11d77b33cb763930e560b37affffa8d2ffcb3c155139",
+      "sourceSha256": "48675fa7d387f25b6f32e797521746bb88f319858a04b56a250c759cb895adb6"
+    },
+    {
+      "path": "harmonica/F5.wav",
+      "midi": 77,
+      "source": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Free%20Aerophones/Harmonica-Hohner-Special20-F/Sustains/Normal/Hohner-Special20-F_Normal_F4.wav",
+      "bytes": 176444,
+      "sha256": "b501f8feb1ffc01e2ca2bedaef812846a994c19477d517e65e165bf9c71d2cb5",
+      "sourceSha256": "ac69e25df35ceb284e0fbbd2b34ab9ac0d9d0809b14f0edfb26cc986838010f7"
+    },
+    {
+      "path": "harmonica/G5.wav",
+      "midi": 79,
+      "source": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Free%20Aerophones/Harmonica-Hohner-Special20-C/Sustains/Normal/Hohner-Special20_Normal_G4.wav",
+      "bytes": 176444,
+      "sha256": "c13625f70d2949d4b482058cf7eacfdcf137d1363513f2e4b3896ffa9894705d",
+      "sourceSha256": "dccdd63466082c9a9ed6ec6cc6990b10cf36865a9cc59eb294edd1476fff409b"
+    },
+    {
+      "path": "harmonica/A5.wav",
+      "midi": 81,
+      "source": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Free%20Aerophones/Harmonica-Hohner-Special20-F/Sustains/Normal/Hohner-Special20-F_Normal_A4.wav",
+      "bytes": 176444,
+      "sha256": "4b05ecd57499205123feee4d1ea81c6002be6544377ce44ad1ce681154c216d6",
+      "sourceSha256": "83ca0ea7c577e0448f8e1788931bc9138bac03887eb3acff4d718fd340792961"
+    },
+    {
+      "path": "harmonica/C6.wav",
+      "midi": 84,
+      "source": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Free%20Aerophones/Harmonica-Hohner-Special20-C/Sustains/Normal/Hohner-Special20_Normal_C5.wav",
+      "bytes": 176444,
+      "sha256": "255162858b9d056a18fa72717ee0e27bc6188189a174df904983ebec00aac644",
+      "sourceSha256": "d06043d7728e9d0a3c5adb05aed635d9fc96dbc6de2107249927a1783d0bd6e2"
+    },
+    {
+      "path": "harmonica/E6.wav",
+      "midi": 88,
+      "source": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Free%20Aerophones/Harmonica-Hohner-Special20-C/Sustains/Normal/Hohner-Special20_Normal_E5.wav",
+      "bytes": 176444,
+      "sha256": "8507731d81f159391683a0d27326801d55d9c503f0ec42281b766ce75eeea58e",
+      "sourceSha256": "ddd259e24c519086823e8608ad7f64e102a95cbf0f57bb5aacdba9f487f31f98"
+    },
+    {
+      "path": "harmonica/F6.wav",
+      "midi": 89,
+      "source": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Free%20Aerophones/Harmonica-Hohner-Special20-F/Sustains/Normal/Hohner-Special20-F_Normal_F5.wav",
+      "bytes": 176444,
+      "sha256": "9780c573257fcab5be6fa1b28dac59dde5c6e11e3edafc37d815c0e54399c156",
+      "sourceSha256": "945f942b9c7c4ed76bcbf026fd85ebf07ccd8655b082c31c4bc91b6263b7876c"
+    }
+  ]
+}

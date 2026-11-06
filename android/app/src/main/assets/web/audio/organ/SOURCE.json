@@ -1,0 +1,55 @@
+{
+  "source": "FreePats",
+  "referencePage": "https://freepats.zenvoid.org/Organ/electric-organ.html#DrawbarOrganEmulation",
+  "archive": "https://freepats.zenvoid.org/Organ/DrawbarOrganEmulation/DrawbarOrganEmulation-SFZ-20190712.tar.xz",
+  "archiveSha256": "e2da18b0a4d13be7020037e18e4a719387433357e7603d0773990e794dcf5d0f",
+  "license": "CC0-1.0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "note": "Drawbar organ emulation by Roberto for the FreePats project, recorded from the setBfree software organ: an emulation, not a recording of a real Hammond organ. WAV files copied unchanged; loop points (seconds = frames / 44100) from DrawbarOrganEmulation-20190712.sfz.",
+  "files": [
+    {
+      "path": "organ/C4.wav",
+      "midi": 60,
+      "source": "https://freepats.zenvoid.org/Organ/DrawbarOrganEmulation/DrawbarOrganEmulation-SFZ-20190712.tar.xz#samples/C4.wav",
+      "bytes": 372420,
+      "sha256": "8f543f1816c320e3742f1616e33932d13b2aa3a540ba313a91506ce545564156",
+      "loopFrames": [
+        38804,
+        186172
+      ]
+    },
+    {
+      "path": "organ/E4.wav",
+      "midi": 64,
+      "source": "https://freepats.zenvoid.org/Organ/DrawbarOrganEmulation/DrawbarOrganEmulation-SFZ-20190712.tar.xz#samples/E4.wav",
+      "bytes": 363594,
+      "sha256": "d5f7636fc1bac58d4adc008ae943f5f8b2a2801893d0e901dd930b661dfddbde",
+      "loopFrames": [
+        48435,
+        181759
+      ]
+    },
+    {
+      "path": "organ/Gs4.wav",
+      "midi": 68,
+      "source": "https://freepats.zenvoid.org/Organ/DrawbarOrganEmulation/DrawbarOrganEmulation-SFZ-20190712.tar.xz#samples/G#4.wav",
+      "bytes": 408338,
+      "sha256": "ea827c88f1e89fcd68f181662304c3d3e72f3244c01996e3c64df2a47f9b3d0a",
+      "loopFrames": [
+        54553,
+        204131
+      ]
+    },
+    {
+      "path": "organ/C5.wav",
+      "midi": 72,
+      "source": "https://freepats.zenvoid.org/Organ/DrawbarOrganEmulation/DrawbarOrganEmulation-SFZ-20190712.tar.xz#samples/C5.wav",
+      "bytes": 395338,
+      "sha256": "949807f20bb329fc79e032c537c69bf833f03ebdb2f072d5bb28d997097df1b1",
+      "loopFrames": [
+        50253,
+        197631
+      ]
+    }
+  ]
+}

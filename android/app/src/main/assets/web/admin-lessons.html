@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video lessons — Admin — Guitar Studio</title>
+  <meta name="theme-color" content="#171918">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/icon-192.png">
+  <link rel="stylesheet" href="/auth/auth.css">
+  <link rel="stylesheet" href="/auth/admin-lessons.css">
+  <script type="module" src="/auth/admin-lessons.js"></script>
+</head>
+<body class="wide">
+  <a class="skip-link" href="#main">Skip to video lessons</a>
+  <header class="brand">
+    <img class="brand-logo" src="/auth/leading-note-logo.png" alt="Leading Note" width="250" height="50">
+    <span class="brand-text"><strong>Guitar Studio</strong></span>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="card" id="lessons-card" aria-labelledby="lessons-title">
+      <p class="eyebrow">Admin</p>
+      <h1 id="lessons-title">Video lessons</h1>
+      <nav class="top-links" aria-label="Admin links">
+        <a class="btn btn-small" href="/admin">Students and accounts</a>
+        <a class="btn btn-small" href="/admin/plans">Practice plans</a>
+        <a class="btn btn-small" href="/">Open Guitar Studio</a>
+        <button type="button" class="btn btn-small" id="logout">Log out</button>
+      </nav>
+      <p class="lead">Add YouTube lessons for every signed-in app user. New lessons appear in Practice → Lessons as soon as you save them.</p>
+      <p class="hint lesson-privacy">Videos are embedded from YouTube when a learner chooses to play one. YouTube may receive their IP address and browser information.</p>
+      <form id="lesson-form" novalidate>
+        <h2 id="form-title">Add a lesson</h2>
+        <div class="field">
+          <label for="lesson-title">Title</label>
+          <input id="lesson-title" name="title" type="text" maxlength="120" required>
+        </div>
+        <div class="field">
+          <label for="lesson-youtube">YouTube video link</label>
+          <input id="lesson-youtube" name="youtubeUrl" type="url" inputmode="url" autocomplete="url" placeholder="https://youtu.be/…" maxlength="500" required>
+          <span class="hint">Use a YouTube watch, share, Shorts or embed link.</span>
+        </div>
+        <div class="field">
+          <label for="lesson-description">Description <span class="hint">(optional, at most 1,000 characters)</span></label>
+          <textarea id="lesson-description" name="description" maxlength="1000" rows="3"></textarea>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary" id="save-lesson">Add lesson</button>
+          <button type="button" class="btn" id="cancel-edit" hidden>Cancel edit</button>
+        </div>
+      </form>
+      <p class="message error" data-error role="alert"></p>
+      <p class="message ok" data-status role="status"></p>
+    </section>
+    <section class="card" aria-labelledby="catalog-title">
+      <h2 id="catalog-title">Lesson list</h2>
+      <p id="catalog-summary" class="hint" role="status"></p>
+      <ul id="lesson-list" class="admin-lesson-list" aria-busy="false"></ul>
+    </section>
+  </main>
+  <footer><a href="/privacy">Privacy</a><a data-contact-link hidden>Contact</a><span data-copyright>© 2026 Guitar Studio</span></footer>
+</body>
+</html>

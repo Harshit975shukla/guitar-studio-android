@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Confirm your email — Guitar Studio</title>
+  <meta name="theme-color" content="#171918">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/icon-192.png">
+  <link rel="stylesheet" href="/auth/auth.css">
+  <script type="module" src="/auth/verify.js"></script>
+</head>
+<body>
+  <header class="brand">
+    <img class="brand-logo" src="/auth/leading-note-logo.png" alt="Leading Note" width="250" height="50">
+    <span class="brand-text"><strong>Guitar Studio</strong></span>
+  </header>
+  <main class="card" id="main" tabindex="-1">
+    <h1>Confirm your email</h1>
+    <form id="verify-form" novalidate>
+      <p class="lead" id="verify-lead">Press the button to confirm that this email address is yours.</p>
+      <p class="message error" data-error role="alert"></p>
+      <p class="message ok" data-status role="status"></p>
+      <button type="submit" class="btn btn-primary">Confirm my email</button>
+    </form>
+    <p class="links"><a href="/login">Log in</a><a href="/signup">Sign up</a></p>
+  </main>
+  <footer><a href="/privacy">Privacy</a><a data-contact-link hidden>Contact</a><span data-copyright>© 2026 Guitar Studio</span></footer>
+</body>
+</html>

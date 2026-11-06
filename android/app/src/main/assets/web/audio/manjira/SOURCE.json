@@ -1,0 +1,18 @@
+{
+  "source": "Freesound",
+  "referencePage": "https://freesound.org/people/matiasromero/sounds/65489/",
+  "author": "matiasromero",
+  "title": "kartala-hit.wav",
+  "license": "CC0-1.0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "note": "The public high-quality MP3 preview, not the original WAV. A closed (damped) manjira stroke is the same recording cut short at playback.",
+  "files": [
+    {
+      "path": "manjira/kartala-hit.mp3",
+      "midi": 60,
+      "source": "https://cdn.freesound.org/previews/65/65489_117392-hq.mp3",
+      "bytes": 43573,
+      "sha256": "98e0678822710489464ea1971741825dd0dbabbac8ddd290d20d88e15d5c967f"
+    }
+  ]
+}

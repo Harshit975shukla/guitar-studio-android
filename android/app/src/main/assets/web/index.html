@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guitar Studio — Find your next good chord</title>
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#171918">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="GuitarStudio">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="icon" type="image/png" href="./icon-192.png">
+  <script>
+    // Accounts build only: progress saved in the student's account is put into localStorage here, before the
+    // app's modules read it (src/ui/progressSync.ts writes it and reloads). Without the key it does nothing.
+    (function () {
+      try {
+        var raw = sessionStorage.getItem('gcs-sync-pending');
+        if (!raw) return;
+        sessionStorage.removeItem('gcs-sync-pending');
+        var p = JSON.parse(raw), key, i;
+        localStorage.removeItem('gcs-sync-meta'); // a half-done apply must never look like "this device's own changes"
+        for (key in p.set) localStorage.setItem(key, p.set[key]);
+        for (i = 0; i < p.remove.length; i++) localStorage.removeItem(p.remove[i]);
+        if (p.meta) localStorage.setItem('gcs-sync-meta', JSON.stringify(p.meta));
+      } catch (e) { /* storage blocked or full: the app starts with what this device has */ }
+    })();
+  </script>
+  <script>
+    // Lightweight global error logger: keeps the last 20 runtime errors in
+    // localStorage so real user crashes can be inspected (window.__appErrors()).
+    (function () {
+      var KEY = 'gcs_error_log';
+      function record(entry) {
+        try {
+          var log = JSON.parse(localStorage.getItem(KEY) || '[]');
+          log.push(Object.assign({ t: new Date().toISOString() }, entry));
+          while (log.length > 20) log.shift();
+          localStorage.setItem(KEY, JSON.stringify(log));
+        } catch (e) { /* storage full/unavailable — ignore */ }
+      }
+      window.addEventListener('error', function (e) {
+        record({ type: 'error', message: String(e.message), source: e.filename, line: e.lineno });
+      });
+      window.addEventListener('unhandledrejection', function (e) {
+        record({ type: 'unhandledrejection', message: String(e.reason && e.reason.message || e.reason) });
+      });
+      window.__appErrors = function () { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; } };
+    })();
+  </script>
+  <style>:root{--bg-dark:#07090e;--panel-bg:#0e121ef0;--card-bg:#141a2ce0;--accent-gold:#ffb300;--accent-amber:#ff8f00;--accent-cyan:#38bdf8;--accent-emerald:#10b981;--accent-rose:#f43f5e;--accent-purple:#a855f7;--text-main:#f8fafc;--text-muted:#94a3b8;--border-subtle:#ffb30040;--border-light:#ffffff14;--space-xs:4px;--space-sm:8px;--space-md:16px;--space-lg:24px;--space-xl:32px;--radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-xl:20px;--radius-full:9999px;--shadow-sm:0 2px 8px #0000004d;--shadow-md:0 8px 24px #0006;--shadow-lg:0 16px 48px #00000080;--shadow-glow:0 0 20px #ffb3004d}@media (prefers-color-scheme:light){:root{--bg-dark:#f8fafc;--panel-bg:#fffffff2;--card-bg:#f8fafce6;--text-main:#0f172a;--text-muted:#64748b;--border-light:#00000014;--border-subtle:#ff8f004d}}*,:before,:after{box-sizing:border-box}*{margin:0;padding:0}html{-webkit-text-size-adjust:100%;font-size:16px}body{background:var(--bg-dark);color:var(--text-main);flex-direction:column;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5;display:flex;overflow-x:hidden}:focus-visible{outline:2px solid var(--accent-gold);outline-offset:2px}::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-track{background:var(--bg-dark)}::-webkit-scrollbar-thumb{background:var(--border-subtle);border-radius:4px}::-webkit-scrollbar-thumb:hover{background:var(--accent-gold)}#top-bar{padding:var(--space-md) var(--space-lg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--border-subtle);z-index:30;justify-content:space-between;align-items:center;gap:var(--space-sm);background:linear-gradient(#101422fa 0%,#090c14eb 100%);flex-wrap:wrap;display:flex}.brand{align-items:center;gap:var(--space-sm);display:flex}.brand-icon{filter:drop-shadow(0 0 8px #ffb30099);font-size:1.8rem}.brand-text h1{background:linear-gradient(90deg,#ffd54f,#ff9100,#ff6d00);-webkit-text-fill-color:transparent;letter-spacing:.5px;-webkit-background-clip:text;font-size:1.25rem;font-weight:800}.brand-text p{color:var(--text-muted);font-size:.75rem}.top-actions{align-items:center;gap:var(--space-sm);flex-wrap:wrap;display:flex}.badge{border:1px solid var(--border-light);border-radius:var(--radius-full);color:var(--text-muted);background:#ffffff0f;align-items:center;gap:6px;padding:6px 12px;font-size:.75rem;display:flex}.badge.active{color:#6ee7b7;background:#10b98126;border-color:#10b98166}.badge.calibrated{color:#7dd3fc;background:#38bdf826;border-color:#38bdf866}.studio-nav-container{border-bottom:1px solid var(--border-light);z-index:1000;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);background:#0a0e18f2;position:sticky;top:0;box-shadow:0 4px 20px #0006}.studio-nav-bar{scrollbar-width:thin;gap:8px;max-width:1400px;margin:0 auto;padding:10px 20px;display:flex;overflow-x:auto}.studio-tab-btn{border-radius:var(--radius-md);color:var(--text-muted);cursor:pointer;white-space:nowrap;-webkit-user-select:none;user-select:none;background:#ffffff08;border:1px solid #ffffff14;align-items:center;gap:8px;padding:9px 18px;font-size:.86rem;font-weight:700;transition:all .2s cubic-bezier(.4,0,.2,1);display:inline-flex}.studio-tab-btn:hover{color:#fff;background:#ffffff14;border-color:#fff3;transform:translateY(-1px)}.studio-tab-btn.active{color:var(--accent-gold);border-color:var(--accent-gold);background:linear-gradient(135deg,#ffb30040,#ff8f001f);box-shadow:0 0 20px #ffb30059}.studio-tab-btn .tab-badge{color:var(--text-muted);background:#ffffff1a;border-radius:6px;padding:2px 6px;font-size:.68rem}.studio-tab-btn.active .tab-badge{background:var(--accent-gold);color:#000}.studio-tab-pane{animation:.22s ease-out tabFadeIn;display:none}.studio-tab-pane.active{display:block}@keyframes tabFadeIn{0%{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}#main-container{padding:var(--space-lg);gap:var(--space-lg);flex:1;grid-template-columns:1fr 400px;width:100%;max-width:1440px;margin:0 auto;display:grid}@media (max-width:1100px){#main-container{grid-template-columns:1fr}}.card{background:var(--card-bg);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:var(--space-lg);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:var(--shadow-md);margin-bottom:var(--space-lg);position:relative;overflow:hidden}.card:before{content:"";background:linear-gradient(90deg, transparent, var(--border-subtle), transparent);height:3px;position:absolute;top:0;left:0;right:0}.card-header{margin-bottom:var(--space-md);justify-content:space-between;align-items:center;display:flex}.card-title{color:var(--text-main);align-items:center;gap:8px;font-size:1rem;font-weight:700;display:flex}.chord-hero-box{border:2px solid var(--accent-gold);border-radius:var(--radius-xl);padding:var(--space-lg);text-align:center;margin-bottom:var(--space-lg);box-sizing:border-box;background:linear-gradient(145deg,#141a2ef2,#0a0e1afa);flex-direction:column;justify-content:space-between;min-height:310px;transition:border-color .25s,box-shadow .25s;display:flex;position:relative;box-shadow:0 0 35px #ffb3002e,inset 0 0 20px #ffb3000d}.status-badge-row{flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;min-height:36px;display:flex}.chord-status-badge{text-transform:uppercase;letter-spacing:1px;border-radius:var(--radius-full);color:var(--text-muted);background:#ffffff14;align-items:center;gap:6px;padding:4px 12px;font-size:.75rem;display:inline-flex}.status-dot{background:#71717a;border-radius:50%;width:8px;height:8px}.status-dot.listening{background:var(--accent-emerald);box-shadow:0 0 10px var(--accent-emerald);animation:1.5s infinite pulse}.status-dot.calibrating{background:var(--accent-cyan);box-shadow:0 0 10px var(--accent-cyan);animation:.8s infinite pulse}@keyframes pulse{0%,to{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.3)}}.detected-chord-name{letter-spacing:1px;background:linear-gradient(135deg,#fff 20%,#ffd54f 75%,#ff9100 100%);-webkit-text-fill-color:transparent;text-shadow:0 4px 24px #ffb3004d;text-align:center;-webkit-background-clip:text;justify-content:center;align-items:center;height:78px;min-height:78px;margin:4px 0;font-size:3.6rem;font-weight:900;line-height:1.1;display:flex;overflow:hidden}.top-candidates-row{height:34px;min-height:34px;color:var(--text-muted);justify-content:center;align-items:center;gap:8px;margin:4px 0;font-size:.8rem;display:flex}.candidate-pill{border:1px solid var(--border-light);background:#ffffff0d;border-radius:12px;padding:3px 10px}.candidate-pill strong{color:var(--accent-gold)}.chord-sub-info{flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;min-height:44px;margin-top:8px;display:flex}.info-pill{border:1px solid var(--border-light);background:#ffffff0d;border-radius:12px;align-items:center;gap:6px;padding:6px 14px;font-size:.85rem;display:flex}.info-pill strong{color:var(--accent-cyan)}.seventh-inspector-box{box-sizing:border-box;text-align:left;background:#00000073;border:1px solid #ffb30047;border-radius:14px;height:94px;min-height:94px;margin-top:12px;padding:10px 16px;font-size:.78rem;transition:border-color .25s,background .25s;overflow:hidden}.inspector-header{justify-content:space-between;align-items:center;margin-bottom:6px;display:flex}.verdict-pill{text-transform:uppercase;letter-spacing:.5px;border-radius:12px;padding:3px 10px;font-size:.72rem;font-weight:800}.verdict-triad{color:#34d399;background:#10b98133;border:1px solid #10b98166}.verdict-seventh{color:#fbbf24;background:#f59e0b33;border:1px solid #f59e0b66}.inspector-meter-row{align-items:center;gap:10px;margin:6px 0;display:flex}.seventh-meter-track{background:#ffffff1a;border-radius:4px;flex:1;height:8px;position:relative;overflow:hidden}.seventh-meter-fill{background:linear-gradient(90deg, var(--accent-cyan), var(--accent-gold));width:0%;height:100%;transition:width 80ms}.seventh-meter-marker{z-index:5;background:#f43f5e;width:2px;position:absolute;top:0;bottom:0}.inspector-desc{color:var(--text-muted);font-size:.73rem;line-height:1.4}.meter-box{flex-direction:column;gap:4px;margin-top:14px;display:flex}.meter-labels{color:var(--text-muted);justify-content:space-between;font-size:.7rem;display:flex}.meter-container{background:#ffffff14;border-radius:5px;width:100%;height:10px;position:relative;overflow:hidden}.meter-bar{background:linear-gradient(90deg,#10b981 40%,#ffb300 75%,#f43f5e 95%);width:0%;height:100%;transition:width 50ms}.meter-threshold-marker{z-index:5;background:#f43f5e;width:2px;position:absolute;top:0;bottom:0}.noise-floor-marker{z-index:4;background:#38bdf8;width:2px;position:absolute;top:0;bottom:0}.visualizer-grid{gap:var(--space-md);margin-bottom:var(--space-md);grid-template-columns:1fr 1fr;display:grid}@media (max-width:768px){.visualizer-grid{grid-template-columns:1fr}}.vis-box{border:1px solid var(--border-light);border-radius:var(--radius-md);padding:var(--space-sm);background:#0a0e18d9;flex-direction:column;align-items:center;display:flex}.vis-label{color:var(--text-muted);justify-content:space-between;align-self:flex-start;align-items:center;gap:6px;width:100%;margin-bottom:8px;font-size:.75rem;font-weight:600;display:flex}canvas{border-radius:8px;width:100%;height:140px;display:block}.chroma-bars{justify-content:space-between;align-items:flex-end;gap:4px;width:100%;height:110px;padding:0 4px 4px;display:flex}.chroma-col{flex-direction:column;flex:1;justify-content:flex-end;align-items:center;height:100%;display:flex}.chroma-fill{background:linear-gradient(180deg, var(--accent-gold), #ffb30033);border-radius:4px 4px 0 0;width:100%;height:4%;min-height:3px;transition:height 80ms}.chroma-col.highlight .chroma-fill{background:linear-gradient(#ff4081,#f50057);box-shadow:0 0 10px #f50057b3}.chroma-note-name{color:var(--text-muted);margin-top:6px;font-size:.72rem;font-weight:700}.chroma-col.highlight .chroma-note-name{color:#ff80ab;font-weight:800}.btn-group{gap:var(--space-sm);margin-top:var(--space-md);flex-wrap:wrap;display:flex}.btn{border-radius:var(--radius-md);cursor:pointer;border:none;align-items:center;gap:8px;padding:10px 18px;font-size:.88rem;font-weight:700;transition:all .2s;display:inline-flex}.btn-primary{background:linear-gradient(135deg, var(--accent-gold), var(--accent-amber));color:#07090e;box-shadow:0 4px 15px #ffb3004d}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px #ffb30073}.btn-calibrate{color:#fff;background:linear-gradient(135deg,#0284c7,#0369a1);box-shadow:0 4px 15px #0284c74d}.btn-calibrate:hover{background:linear-gradient(135deg,#0369a1,#075985);transform:translateY(-2px)}.btn-secondary{color:var(--text-main);border:1px solid var(--border-light);background:#ffffff14}.btn-secondary:hover{background:#ffffff24;border-color:#fff3}.btn-test-speaker{color:#fff;background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 4px 12px #10b9814d}.btn-test-speaker:hover{transform:translateY(-2px)}.btn-listen-active{animation:1.5s infinite micPulse;color:#fff!important;background:linear-gradient(135deg,#ef4444,#dc2626)!important;box-shadow:0 0 20px #ef444480!important}@keyframes micPulse{0%,to{box-shadow:0 0 15px #ef444466}50%{box-shadow:0 0 28px #ef4444cc}}.controls-grid{gap:var(--space-md);margin-top:var(--space-md);padding:var(--space-md) var(--space-lg);border-radius:var(--radius-md);background:#00000040;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));display:grid}.slider-item{color:var(--text-muted);flex-direction:column;gap:6px;font-size:.8rem;display:flex}.slider-row{align-items:center;gap:10px;display:flex}.slider-row input[type=range]{accent-color:var(--accent-gold);cursor:pointer;flex:1}.mode-toggle-group{background:#ffffff0d;border-radius:8px;gap:6px;padding:3px;display:flex}.mode-pill{color:var(--text-muted);cursor:pointer;background:0 0;border:none;border-radius:6px;flex:1;padding:5px 8px;font-size:.75rem;font-weight:600;transition:all .2s}.mode-pill.active{background:var(--accent-gold);color:#000;font-weight:700}.fretboard-container{padding:16px 12px 12px;overflow-x:auto;background:linear-gradient(#170f0a 0%,#2a1910 20%,#1f130b 50%,#2a1910 80%,#170f0a 100%)!important;border:2px solid #5a3825!important;border-radius:16px!important;box-shadow:inset 0 3px 12px #000000f2,inset 0 -3px 12px #000000f2,0 12px 35px #0009!important}.fretboard-board{flex-direction:column;min-width:740px;display:flex;position:relative}.fret-numbers{margin-bottom:6px;padding-left:54px;display:flex}#song-neck-2d>.fret-numbers{min-width:740px}.fret-num{text-align:center;color:#8d6e63;flex:1;font-size:.7rem;font-weight:700}.fret-num.marker{text-shadow:0 0 8px #ffb30099;color:var(--accent-gold)!important}.guitar-string-row{align-items:center;height:32px;display:flex;position:relative}.string-header{width:54px;color:var(--text-muted);align-items:center;gap:6px;font-size:.78rem;font-weight:700;display:flex}.string-header .mute-btn{border:1px solid var(--border-light);color:#f43f5e;cursor:pointer;background:#ffffff1a;border-radius:4px;justify-content:center;align-items:center;width:20px;height:20px;font-size:.7rem;font-weight:800;display:flex}.string-header .mute-btn.muted{color:#fff;background:#f43f5e}.fret-cells-container{flex:1;display:flex;position:relative}.string-wire{pointer-events:none;z-index:1;background:linear-gradient(#d4af37,#8c6d32,#3b2f15);position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);box-shadow:0 1px 3px #000c}.str-6{height:4.2px}.str-5{height:3.4px}.str-4{height:2.6px}.str-3{height:2px}.str-2{height:1.5px}.str-1{height:1.1px}.fret-cell{cursor:pointer;z-index:2;border-right:2px solid #bcaaa4;flex:1;justify-content:center;align-items:center;height:32px;transition:background .15s;display:flex;position:relative}.fret-cell:first-child{border-left:6px solid #efebe9}.fret-cell:hover{background:#ffb30026}.fret-cell .finger-dot{background:var(--accent-gold);color:#000;border-radius:50%;justify-content:center;align-items:center;width:22px;height:22px;font-size:.7rem;font-weight:800;animation:.15s cubic-bezier(.175,.885,.32,1.275) popIn;display:flex;box-shadow:0 0 10px #ffb300e6}@keyframes popIn{0%{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}.sidebar{gap:var(--space-lg);flex-direction:column;display:flex}.sound-style-box{border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-sm) var(--space-md);margin-bottom:var(--space-md);background:#ffb30014;flex-direction:column;gap:8px;display:flex}.sound-style-box .label{color:var(--accent-gold);text-transform:uppercase;letter-spacing:.5px;font-size:.75rem;font-weight:700}.sound-buttons{gap:8px;display:flex}.sound-btn{border:1px solid var(--border-light);color:var(--text-main);cursor:pointer;background:#ffffff0d;border-radius:8px;flex:1;justify-content:center;align-items:center;gap:6px;padding:7px 10px;font-size:.78rem;font-weight:600;transition:all .2s;display:flex}.sound-btn.active{background:var(--accent-gold);color:#000;border-color:var(--accent-gold);font-weight:800}.history-log-box{border:1px solid var(--border-light);background:#0000004d;border-radius:10px;flex-direction:column;gap:6px;max-height:160px;padding:8px;font-size:.78rem;display:flex;overflow-y:auto}.history-item{background:#ffffff0a;border-radius:6px;justify-content:space-between;align-items:center;padding:4px 8px;display:flex}.history-item .hist-name{color:var(--accent-gold);font-weight:700}.history-item .hist-time{color:var(--text-muted);font-size:.7rem}.theory-table{border-collapse:collapse;width:100%;font-size:.82rem}.theory-table th,.theory-table td{text-align:left;border-bottom:1px solid var(--border-light);padding:7px 8px}.theory-table th{color:var(--text-muted);font-weight:600}.theory-table td strong{color:var(--accent-cyan)}.diag-box{border-radius:var(--radius-md);padding:var(--space-sm) var(--space-md);color:#bae6fd;background:#38bdf814;border:1px solid #38bdf840;font-size:.8rem;line-height:1.5}.diag-box strong{color:#38bdf8}.rhythm-dock-container{border-top:1px solid var(--border-subtle);justify-content:space-between;align-items:center;gap:var(--space-sm);z-index:100;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);background:linear-gradient(#101626fa,#090d18f5);flex-wrap:wrap;padding:10px 20px;display:flex;position:sticky;bottom:0;box-shadow:0 -4px 25px #00000080}.rhythm-dock-left{align-items:center;gap:var(--space-sm);flex-wrap:wrap;display:flex}.rhythm-select-pill{border:1px solid var(--border-light);color:var(--text-main);cursor:pointer;background:#ffffff0f;border-radius:12px;outline:none;padding:6px 12px;font-size:.8rem;font-weight:700}.rhythm-select-pill option{color:#fff;background:#0d1222}.rhythm-beat-indicators{align-items:center;gap:6px;display:flex}.rhythm-beat-dot{background:#ffffff26;border-radius:50%;width:10px;height:10px;transition:all .1s}.rhythm-beat-dot.sam-beat{border:1.5px solid var(--accent-gold)}.rhythm-beat-dot.active-beat{background:var(--accent-gold);box-shadow:0 0 10px var(--accent-gold);transform:scale(1.3)}.user-profile-btn{border:1px solid var(--border-subtle);color:var(--text-main);cursor:pointer;background:linear-gradient(135deg,#ffb30024,#ff8f0014);border-radius:24px;align-items:center;gap:10px;padding:6px 14px;transition:all .2s;display:inline-flex}.user-profile-btn:hover{border-color:var(--accent-gold);background:linear-gradient(135deg,#ffb30047,#ff8f002e);transform:translateY(-1px);box-shadow:0 4px 15px #ffb30040}.user-avatar-badge{background:#ffffff1a;border:1px solid #ffb30066;border-radius:50%;justify-content:center;align-items:center;width:32px;height:32px;font-size:1.15rem;display:flex;box-shadow:0 0 10px #ffb30059}.user-info-text{text-align:left;flex-direction:column;line-height:1.15;display:flex}.user-name{color:#fff;font-size:.82rem;font-weight:700}.user-level-badge{color:var(--accent-gold);text-transform:uppercase;letter-spacing:.5px;font-size:.65rem;font-weight:600}.modal-backdrop{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);z-index:9999;background:#03060fd9;justify-content:center;align-items:center;padding:20px;display:none;position:fixed;inset:0}.modal-backdrop.active{display:flex}.modal-card{border:1px solid var(--border-subtle);background:linear-gradient(160deg,#0e1424,#080b14);border-radius:24px;flex-direction:column;width:100%;max-width:650px;max-height:90vh;animation:.22s cubic-bezier(.16,1,.3,1) modalPopIn;display:flex;overflow-y:auto;box-shadow:0 20px 60px #000000d9,0 0 30px #ffb3001f}@keyframes modalPopIn{0%{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}.modal-header{border-bottom:1px solid var(--border-light);justify-content:space-between;align-items:center;padding:18px 24px;display:flex}.modal-body{padding:24px}.modal-tab-row{border-bottom:1px solid var(--border-light);gap:10px;margin-bottom:20px;display:flex}.modal-tab-btn{color:var(--text-muted);cursor:pointer;background:0 0;border:none;border-bottom:2px solid #0000;padding:8px 16px;font-size:.85rem;font-weight:700;transition:all .2s}.modal-tab-btn.active{color:var(--accent-gold);border-bottom-color:var(--accent-gold)}.stats-grid-4{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:16px 0;display:grid}.stat-card-mini{border:1px solid var(--border-light);text-align:center;background:#ffffff08;border-radius:14px;padding:14px 10px}.stat-num-mini{color:var(--accent-gold);font-size:1.4rem;font-weight:800}.stat-label-mini{color:var(--text-muted);margin-top:4px;font-size:.72rem}.profile-list-item{border:1px solid var(--border-light);background:#ffffff08;border-radius:14px;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;padding:12px 16px;transition:all .2s;display:flex}.profile-list-item.active-profile{border-color:var(--accent-gold);background:#ffb30014}.modal-pane{display:none}.modal-pane.active{display:block}.badge{border-radius:var(--radius-full);align-items:center;gap:6px;padding:4px 10px;font-size:.75rem;font-weight:600;display:inline-flex}.badge.active{border:1px solid var(--accent-emerald);color:var(--accent-emerald);background:#10b98126}.modal-backdrop{-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);z-index:2000;background:#000000bf;justify-content:center;align-items:center;display:none;position:fixed;inset:0}.modal-card{border:1.5px solid var(--accent-purple);border-radius:var(--radius-xl);padding:var(--space-xl);gap:var(--space-md);background:#0f1424;flex-direction:column;width:90%;max-width:540px;display:flex;box-shadow:0 15px 50px #000000b3}.sr-only{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}.hidden{display:none!important}.flex-center{justify-content:center;align-items:center;display:flex}.text-gold{color:var(--accent-gold)}.text-cyan{color:var(--accent-cyan)}.text-emerald{color:var(--accent-emerald)}.songs-container{flex-direction:column;gap:20px;max-width:1300px;margin:20px auto;padding:0 20px;display:flex}.song-hero-card{border:1px solid var(--border-subtle);background:linear-gradient(145deg,#141a30eb,#0c101ef2);border-radius:20px;flex-direction:column;gap:18px;padding:24px;display:flex;box-shadow:0 10px 40px #0006}.song-header-row{flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:16px;display:flex}.song-title-group h2{background:linear-gradient(90deg,#ffd54f,#ff9100,#ff6d00);-webkit-text-fill-color:transparent;-webkit-background-clip:text;align-items:center;gap:10px;margin-bottom:4px;font-size:1.6rem;font-weight:800;display:flex}.song-meta-pills{flex-wrap:wrap;gap:8px;margin-top:6px;display:flex}.song-meta-pill{border:1px solid var(--border-light);color:var(--text-muted);background:#ffffff0d;border-radius:14px;align-items:center;gap:6px;padding:4px 12px;font-size:.76rem;display:inline-flex}.song-meta-pill strong{color:var(--accent-gold)}.song-select-dropdown{border:1.5px solid var(--accent-gold);color:var(--text-main);cursor:pointer;background:#0e121ee6;border-radius:12px;outline:none;min-width:260px;padding:10px 16px;font-size:.92rem;font-weight:700}.song-select-dropdown option{color:#fff;background:#0d111e}.song-playback-bar{border:1px solid var(--border-light);background:#0006;border-radius:16px;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:12px 18px;display:flex}.playback-main-btns{flex-wrap:wrap;align-items:center;gap:8px;display:flex}.btn-song-play{color:#fff;cursor:pointer;background:linear-gradient(135deg,#10b981,#059669);border:none;border-radius:12px;align-items:center;gap:8px;padding:10px 22px;font-size:.95rem;font-weight:800;transition:transform .15s,box-shadow .15s;display:flex;box-shadow:0 4px 15px #10b98166}.btn-song-play:hover{transform:translateY(-2px);box-shadow:0 6px 20px #10b98199}.btn-song-play.playing{background:linear-gradient(135deg,#f43f5e,#be123c);box-shadow:0 4px 15px #f43f5e66}.song-mode-btn{color:var(--text-muted);cursor:pointer;background:0 0;border:none;border-radius:8px;padding:6px 14px;font-size:.8rem;font-weight:700;transition:all .2s}.song-mode-btn.active{background:var(--accent-gold);color:#000;font-weight:800;box-shadow:0 0 12px #ffb30066}.tempo-speed-control{color:var(--text-muted);border:1px solid var(--border-light);background:#ffffff0d;border-radius:10px;align-items:center;gap:8px;padding:6px 12px;font-size:.82rem;font-weight:700;display:flex}.practice-mic-toggle{border:1px solid var(--border-light);color:var(--text-main);cursor:pointer;background:#ffffff0f;border-radius:10px;align-items:center;gap:6px;padding:8px 14px;font-size:.8rem;font-weight:700;display:flex}.practice-mic-toggle.active{border-color:var(--accent-emerald);color:var(--accent-emerald);background:#10b98126}.song-guitar-card{border:1px solid var(--border-light);background:#0006;border-radius:16px;padding:16px}.song-guitar-hud-row{flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;display:flex}.hud-stat-badge{border:1px solid var(--border-light);background:#ffffff0a;border-radius:10px;flex-direction:column;gap:2px;padding:6px 12px;display:flex}.hud-stat-lbl{color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;font-size:.65rem;font-weight:700}.hud-stat-val{color:#fff;font-size:.92rem;font-weight:800}.eval-match-indicator{border:1px solid var(--border-light);color:var(--text-muted);background:#ffffff0f;border-radius:20px;padding:6px 14px;font-size:.82rem;font-weight:700}.eval-match-indicator.match-success{border-color:var(--accent-emerald);color:var(--accent-emerald);background:#10b98133;animation:.4s pulseMatch}@keyframes pulseMatch{0%{transform:scale(1)}50%{transform:scale(1.08)}to{transform:scale(1)}}.lyrics-scroll-container{border:1px solid var(--border-light);background:#0000004d;border-radius:12px;flex-direction:column;gap:10px;max-height:280px;padding:14px;display:flex;overflow-y:auto}.lyric-line-item{cursor:pointer;border-left:3px solid #0000;border-radius:8px;padding:8px 12px;transition:background .15s}.lyric-line-item:hover{background:#ffffff0a}.lyric-line-item.active-line{border-left-color:var(--accent-gold);background:#ffb3001f}.chord-word-pair{flex-direction:column;align-items:flex-start;margin-right:12px;display:inline-flex}.chord-label-over{color:var(--accent-gold);min-height:18px;font-size:.8rem;font-weight:800}.lyric-word-under{color:#fff;font-size:.95rem}.chord-tag-badge{color:var(--accent-gold);cursor:pointer;background:#ffb30026;border:1px solid #ffb3004d;border-radius:6px;align-items:center;gap:4px;padding:4px 10px;font-family:monospace;font-size:.85rem;font-weight:800;transition:all .2s;display:inline-flex}.chord-tag-badge:hover{border-color:var(--accent-gold);background:#ffb3004d}.chord-tag-badge.playing-now{background:var(--accent-gold);color:#000;transform:scale(1.08);box-shadow:0 0 14px #ffb300cc}.chord-tag-badge.user-matched{background:var(--accent-emerald)!important;color:#000!important;box-shadow:0 0 18px var(--accent-emerald)!important;border-color:#fff!important}.trainer-container{flex-direction:column;gap:18px;max-width:900px;margin:20px auto;padding:0 16px;display:flex}.trainer-stats-row{grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;display:grid}.trainer-stat-card{border:1px solid var(--border-light);text-align:center;background:#141a2ce0;border-radius:14px;padding:14px}.trainer-stat-val{color:var(--accent-gold);font-size:1.6rem;font-weight:900}.trainer-stat-label{color:var(--text-muted);text-transform:uppercase;margin-top:4px;font-size:.72rem;font-weight:700}.trainer-card-hero{border:1.5px solid var(--accent-gold);text-align:center;background:linear-gradient(145deg,#141a30f0,#0e1220f5);border-radius:20px;padding:30px 20px;box-shadow:0 10px 40px #00000080}.trainer-instruction{color:var(--text-muted);margin-bottom:8px;font-size:1rem}.trainer-target-chord{color:var(--accent-gold);margin:6px 0;font-size:2.6rem;font-weight:900}.quiz-choice-btn{border:1.5px solid var(--border-light);color:#fff;cursor:pointer;background:#ffffff0d;border-radius:12px;padding:14px;font-size:1.2rem;font-weight:800;transition:all .15s}.quiz-choice-btn:hover{border-color:var(--accent-gold);background:#ffb30033;transform:translateY(-2px)}.quiz-choice-btn.correct{box-shadow:0 0 16px #10b98199;border-color:var(--accent-emerald)!important;color:#34d399!important;background:#10b9814d!important}.quiz-choice-btn.incorrect{border-color:var(--accent-rose)!important;color:#f87171!important;background:#f43f5e4d!important}.scales-container{flex-direction:column;gap:20px;max-width:1300px;margin:20px auto;padding:0 16px;display:flex}.scales-header-card{border:1px solid var(--border-subtle);background:linear-gradient(145deg,#141a30f0,#0e1220f5);border-radius:20px;padding:24px;box-shadow:0 10px 40px #0006}.scale-select-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:14px;display:grid}.scale-control-group{flex-direction:column;gap:6px;display:flex}.scale-control-label{text-transform:uppercase;color:var(--accent-gold);letter-spacing:.5px;align-items:center;gap:6px;font-size:.75rem;font-weight:800;display:flex}.scale-root-selector{flex-wrap:wrap;gap:4px;display:flex}.scale-root-btn{border:1px solid var(--border-light);color:var(--text-main);cursor:pointer;background:#ffffff0d;border-radius:6px;padding:4px 8px;font-size:.78rem;font-weight:700}.scale-root-btn:hover{background:var(--accent-gold);color:#000}.scale-root-btn.active{background:var(--accent-gold);color:#000;border-color:var(--accent-gold);font-weight:800}.scale-preset-dropdown{border:1px solid var(--border-light);color:var(--text-main);background:#0e121ee6;border-radius:10px;padding:8px 12px;font-size:.85rem;font-weight:700}.scale-toggle-btn-group{border:1px solid var(--border-light);background:#0000004d;border-radius:10px;padding:3px;display:flex}.scale-toggle-btn{color:var(--text-muted);cursor:pointer;background:0 0;border:none;border-radius:8px;flex:1;padding:6px 10px;font-size:.75rem;font-weight:700}.scale-toggle-btn.active{background:var(--accent-gold);color:#000}.scale-note-marker{z-index:5;border-radius:50%;justify-content:center;align-items:center;width:22px;height:22px;font-size:.68rem;font-weight:800;display:flex;box-shadow:0 0 8px #000c}.scale-note-marker.root{background:var(--accent-gold);color:#000;border:2px solid #fff;box-shadow:0 0 12px #ffb300e6}.scale-note-marker.tone{color:#000;background:#38bdf8}.scale-note-marker.blue-note{color:#fff;background:#a855f7;box-shadow:0 0 10px #a855f7cc}.scale-note-marker.active-playing{box-shadow:0 0 18px #fff, 0 0 25px var(--accent-gold);z-index:10;transform:scale(1.3)}.scale-dot{color:#fff;z-index:5;cursor:pointer;background:#3a3a3a;border-radius:50%;justify-content:center;align-items:center;width:22px;height:22px;font-size:.68rem;font-weight:800;transition:transform .1s,box-shadow .1s,background .1s;display:flex}.scale-dot.root{background:var(--accent-gold);color:#000;border:2px solid #fff}.scale-dot.tone{color:#000;background:#38bdf8}.scale-dot.blue{color:#fff;background:#a855f7}.scale-dot.active-pluck{color:#000;box-shadow:0 0 16px 4px var(--accent-gold), 0 0 26px var(--accent-gold);z-index:10;background:#fff;transform:scale(1.45)}.string-wire.vibrating{filter:brightness(1.7);box-shadow:0 0 8px var(--accent-gold)}</style>
+  <script type="module" crossorigin src="./assets/main-C9UUorEE.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/guitarSamples-clOiYstL.js">
+  <link rel="modulepreload" crossorigin href="./assets/types-l-8U9Ucd.js">
+  <link rel="stylesheet" crossorigin href="./assets/main-C2wOtUvv.css">
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <header id="top-bar">
+    <div class="brand">
+      <span class="brand-icon">🎸</span>
+      <div class="brand-text">
+        <h1>Guitar Chord Detective Studio</h1>
+        <p>Noise Rejection • Spectral Subtraction • Physical Modeling Synthesis</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button class="user-profile-btn" id="btn-user-profile" onclick="openUserProfileModal()" title="Guitarist Profile & Accounts" aria-label="Open Guitarist Profile">
+        <span class="user-avatar-badge" id="top-user-avatar">🎸</span>
+        <div class="user-info-text">
+          <span class="user-name" id="top-user-name">Guest Guitarist</span>
+          <span class="user-level-badge" id="top-user-level">Beginner</span>
+        </div>
+        <span style="font-size:0.65rem; opacity:0.6; margin-left:2px;">▼</span>
+      </button>
+      <button class="midi-badge-btn" id="btn-open-midi-modal" aria-label="Open MIDI Settings">
+        <span>🎹</span> Web MIDI: <span id="top-midi-status">Initializing…</span>
+      </button>
+      <div class="badge" id="noise-reduction-badge">
+        <span>🔇</span> Noise Subtraction: <strong id="noise-status-text" style="color:#ffd54f;">Off (Click Calibrate)</strong>
+      </div>
+      <div class="badge active" id="trigger-mode-badge">
+        <span>⚡</span> Mode: Continuous Real-Time Detection
+      </div>
+    </div>
+  </header>
+
+  <!-- Studio Mode Navigation -->
+  <nav class="studio-nav-container" aria-label="Studio Modes">
+    <div class="studio-nav-bar" role="tablist">
+      <button class="studio-tab-btn active" role="tab" aria-selected="true" data-tab="detector" aria-controls="pane-detector">
+        <span>🎯</span> Live Detector <span class="tab-badge">Real-Time</span>
+      </button>
+      <button class="studio-tab-btn" role="tab" aria-selected="false" data-tab="songs" aria-controls="pane-songs">
+        <span>🎸</span> Songs & Play-Along <span class="tab-badge" style="background:#f59e0b; color:#000;">Notes & Chords</span>
+      </button>
+      <button class="studio-tab-btn" role="tab" aria-selected="false" data-tab="drill" aria-controls="pane-drill">
+        <span>🎯</span> Chord Change Drill <span class="tab-badge" style="background:#10b981; color:#000;">Practice</span>
+      </button>
+      <button class="studio-tab-btn" role="tab" aria-selected="false" data-tab="trainer" aria-controls="pane-trainer">
+        <span>👂</span> Ear Training Quiz <span class="tab-badge" style="background:#8b5cf6; color:#fff;">Cadence & Quiz</span>
+      </button>
+      <button class="studio-tab-btn" role="tab" aria-selected="false" data-tab="scales" aria-controls="pane-scales">
+        <span>🎼</span> Scales & 3D Neck <span class="tab-badge" style="background:#06b6d4; color:#000;">BPM Control</span>
+      </button>
+      <button class="studio-tab-btn" role="tab" aria-selected="false" data-tab="theory" aria-controls="pane-theory">
+        <span>◯</span> Theory Lessons
+      </button>
+      <button class="studio-tab-btn" role="tab" aria-selected="false" data-tab="tuner" aria-controls="pane-tuner">
+        <span>🪕</span> Headstock Tuner <span class="tab-badge">6 Presets</span>
+      </button>
+      <button class="studio-tab-btn" role="tab" aria-selected="false" data-tab="chords" aria-controls="pane-chords">
+        <span>📚</span> Chord Library <span class="tab-badge">432+ Voicings</span>
+      </button>
+      <button class="studio-tab-btn" role="tab" aria-selected="false" data-tab="player" aria-controls="pane-player">
+        <span>▶️</span> Chord Player
+      </button>
+      <button class="studio-tab-btn" role="tab" aria-selected="false" data-tab="game" aria-controls="pane-game">
+        <span>🎮</span> Chord Game
+      </button>
+      <button class="studio-tab-btn" role="tab" aria-selected="false" data-tab="metronome" aria-controls="pane-metronome">
+        <span>⏱️</span> Metronome <span class="tab-badge">Visual Strum</span>
+      </button>
+      <button class="studio-tab-btn" role="tab" aria-selected="false" data-tab="backing" aria-controls="pane-backing">
+        <span>🎶</span> Backing tracks
+      </button>
+      <button class="studio-tab-btn" role="tab" aria-selected="false" data-tab="songpractice" aria-controls="pane-songpractice">
+        <span>🎧</span> Song practice
+      </button>
+      <button class="studio-tab-btn" role="tab" aria-selected="false" data-tab="plan" aria-controls="pane-plan">
+        <span>🎯</span> Practice plan
+      </button>
+      <button id="tab-lessons" class="studio-tab-btn" role="tab" aria-selected="false" data-tab="lessons" aria-controls="pane-lessons" hidden>
+        <span>▶</span> Lessons
+      </button>
+      <button class="studio-tab-btn" role="tab" aria-selected="false" data-tab="quiz" aria-controls="pane-quiz">
+        <span>🧩</span> Quizzes
+      </button>
+      <button class="studio-tab-btn" role="tab" aria-selected="false" data-tab="lab" aria-controls="pane-lab">
+        <span>🔧</span> Guitar Lab
+      </button>
+      <button class="studio-tab-btn" role="tab" aria-selected="false" data-tab="rhythm" aria-controls="pane-rhythm">
+        <span>🥁</span> Acoustic Percussion <span class="tab-badge">Western Grooves</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       TAB: LIVE DETECTOR
+       ========================================================================== -->
+  <div class="studio-tab-pane active" id="pane-detector" role="tabpanel" aria-labelledby="tab-detector">
+    <main id="main-container">
+      <!-- LEFT COLUMN -->
+      <div class="primary-col">
+        <!-- BIG HERO RESULT CARD -->
+        <section class="chord-hero-box" aria-live="polite" aria-label="Detected chord or note">
+          <div class="status-badge-row">
+            <div class="chord-status-badge">
+              <span class="status-dot" id="status-indicator" aria-hidden="true"></span>
+              <span id="status-text">Your microphone is off</span>
+            </div>
+            <div class="chord-status-badge" id="strum-hold-badge" style="display:none; background:rgba(255, 179, 0, 0.2); color:#ffd54f;">
+              <span>🎸</span> Strum Captured & Locked
+            </div>
+            <div class="chord-status-badge" id="target-mode-badge" style="background:rgba(56, 189, 248, 0.15); color:#7dd3fc; border: 1px solid rgba(56, 189, 248, 0.35);">
+              <span>🎯</span> Target: <strong id="target-mode-badge-label" style="margin-left:4px; color:#38bdf8;">Chords Only</strong>
+            </div>
+          </div>
+
+          <div class="detected-chord-name" id="display-chord-name" aria-live="assertive">Ready</div>
+
+          <div class="top-candidates-row" id="candidates-row" aria-label="Top chord matches">
+            <span>Top Matches:</span>
+            <span class="candidate-pill" id="cand-1">—</span>
+            <span class="candidate-pill" id="cand-2">—</span>
+            <span class="candidate-pill" id="cand-3">—</span>
+          </div>
+
+          <div class="chord-sub-info">
+            <div class="info-pill"><span>Root:</span> <strong id="info-root">-</strong></div>
+            <div class="info-pill"><span>Quality:</span> <strong id="info-quality">-</strong></div>
+            <div class="info-pill"><span>Notes:</span> <strong id="info-notes">-</strong></div>
+            <div class="info-pill"><span>Intervals:</span> <strong id="info-intervals">-</strong></div>
+            <div class="info-pill" style="display:none;"><strong id="info-sargam">-</strong></div>
+            <div class="info-pill"><span>Match:</span> <strong id="info-confidence" style="color:var(--accent-emerald);">-</strong></div>
+          </div>
+
+          <!-- INLINE TUNING GAUGE FOR NOTES MODE -->
+          <div id="live-note-tuning-gauge" style="display:none; margin-top:12px; background:rgba(0,0,0,0.4); border:1px solid rgba(56,189,248,0.3); border-radius:12px; padding:10px 16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.75rem; margin-bottom:6px;">
+              <span style="color:#38bdf8; font-weight:600;">♭ Flat (-50¢)</span>
+              <span id="live-tuner-verdict" style="font-weight:800; font-size:0.85rem; color:#10b981;">In Tune</span>
+              <span style="color:#f43f5e; font-weight:600;">Sharp (+50¢) ♯</span>
+            </div>
+            <div style="position:relative; height:12px; background:rgba(255,255,255,0.08); border-radius:6px; overflow:hidden; border:1px solid var(--border-light);">
+              <div style="position:absolute; left:50%; top:0; bottom:0; width:4px; background:#10b981; transform:translateX(-50%); z-index:2;"></div>
+              <div id="live-note-needle" style="position:absolute; left:50%; top:0; bottom:0; width:8px; background:var(--accent-gold); border-radius:4px; transform:translateX(-50%); transition:left 0.08s ease-out; box-shadow:0 0 8px rgba(255,179,0,0.8); z-index:3;"></div>
+            </div>
+          </div>
+
+          <!-- REAL-TIME RINGING NOTES & CONTINUOUS STATUS BAR -->
+          <div style="background:rgba(0,0,0,0.4); border:1px solid var(--border-light); border-radius:12px; padding:10px 14px; margin-top:14px;">
+            <div id="live-detector-substatus" style="font-size:0.85rem; color:var(--accent-gold); font-weight:700; text-align:center;">
+              👂 Continuous Listening Active • Strum any chord or pluck any string
+            </div>
+            <div style="margin-top:8px; display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap;">
+              <span style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; font-weight:700;">Ringing Notes:</span>
+              <div id="live-ringing-notes-chips" style="display:inline-flex; gap:6px; flex-wrap:wrap;">
+                <span class="badge" style="background:rgba(255,255,255,0.04); color:var(--text-muted); font-size:0.75rem;">Silence • Ready for sound</span>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Audio Volume / Peak Level Meter -->
+          <div class="meter-box">
+            <div class="meter-labels">
+              <span>Signal Level: <strong id="db-readout">-∞ dB</strong></span>
+              <span>Room Noise: <span id="noise-floor-label" style="color:#38bdf8;">Uncalibrated</span></span>
+              <span id="signal-quality-label" style="color:var(--text-muted);">Idle</span>
+            </div>
+            <div class="meter-container">
+              <div class="meter-bar" id="audio-meter"></div>
+              <div class="noise-floor-marker" id="noise-floor-marker" style="left: 20%;" title="Ambient Room Noise Floor"></div>
+              <div class="meter-threshold-marker" id="gate-marker" style="left: 32%;" title="Strum Trigger Threshold"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISUALIZERS -->
+        <section class="card">
+          <div class="card-header">
+            <div class="card-title"><span>📊</span> Clean Spectrum (Post-Noise Subtraction) & 12-Tone Chromagram</div>
+            <span style="font-size:0.75rem; color:var(--text-muted);" id="detected-peaks-readout">Peaks: None</span>
+          </div>
+          <div class="visualizer-grid">
+            <div class="vis-box">
+              <div class="vis-label"><span>🌊</span> Guitar Band Spectrum (75 Hz – 1250 Hz) <span style="font-size:0.7rem; color:var(--accent-gold);">• Amber = Fundamental Strings</span></div>
+              <canvas id="canvas-spectrum" aria-label="Frequency spectrum"></canvas>
+            </div>
+            <div class="vis-box">
+              <div class="vis-label" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                <div><span>🎯</span> 12 Semitone Energy (C to B) <span style="font-size:0.7rem; color:#ff4081;">• Pink = Active Energy</span></div>
+                <span id="chroma-active-note-indicator" style="display:none; font-size:0.78rem; font-weight:800; color:var(--accent-gold); padding:2px 8px; border-radius:6px; background:rgba(255,179,0,0.12); border:1px solid rgba(255,179,0,0.35);"></span>
+              </div>
+              <div class="chroma-bars" id="chroma-bars-container" aria-label="12-tone chromagram"></div>
+            </div>
+          </div>
+
+          <!-- Buttons & Actions -->
+          <div class="btn-group">
+            <button class="btn btn-primary" id="btn-toggle-mic" aria-label="Start microphone listening">
+              <span>🎙️</span> <span id="mic-btn-text">Start Listening (Microphone)</span>
+            </button>
+            <button class="btn btn-secondary" id="btn-strum-down" aria-label="Strum chord down">
+              <span>⬇️</span> Strum down
+            </button>
+            <button class="btn btn-secondary" id="btn-strum-up" aria-label="Strum chord up">
+              <span>⬆️</span> Strum up
+            </button>
+            <button class="btn btn-secondary" id="btn-strum-arpeggio" aria-label="Play arpeggio">
+              <span>🎶</span> Arpeggio
+            </button>
+            <button class="btn btn-secondary" id="btn-strum-roll" aria-label="Flamenco roll">
+              <span>🌊</span> Roll
+            </button>
+            <button class="btn btn-test-speaker" id="btn-test-speaker">
+              <span>📢</span> Try the sound
+            </button>
+            <button class="btn btn-secondary" id="btn-clear-fretboard" aria-label="Clear fretboard">
+              <span>🔄</span> Clear
+            </button>
+          </div>
+
+          <!-- Sensitivity, Noise Gate & Controls -->
+          <div class="controls-grid">
+            <!-- Listening Target Mode Selector (Chords Only vs Notes vs Auto) -->
+            <div class="slider-item" style="grid-column: 1 / -1; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 179, 0, 0.28); border-radius: 14px; padding: 14px 18px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px; flex-wrap:wrap; gap:6px;">
+                <span style="font-weight:700; color:var(--accent-gold); display:flex; align-items:center; gap:8px; font-size:0.95rem;">
+                  <span>🎯</span> Listening Target:
+                </span>
+                <span style="font-size:0.75rem; color:var(--text-muted);" id="target-mode-explainer">Checks chord identity. Incomplete or noisy strums may stay unconfirmed.</span>
+              </div>
+              <div class="mode-toggle-group" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap:8px; padding:4px;">
+                <button class="mode-pill active" id="btn-target-chords" aria-pressed="true" style="padding: 10px 14px; font-weight:700; font-size:0.82rem;">🎸 Chords Only</button>
+                <button class="mode-pill" id="btn-target-notes" aria-pressed="false" style="padding: 10px 14px; font-weight:700; font-size:0.82rem;">🎵 Notes & Tuner</button>
+                <button class="mode-pill" id="btn-target-auto" aria-pressed="false" style="padding: 10px 14px; font-weight:700; font-size:0.82rem;">🔀 Auto (Smart)</button>
+              </div>
+            </div>
+
+            <div class="slider-item">
+              <div style="display:flex; justify-content:space-between;">
+                <span>Mic Sensitivity:</span>
+                <strong id="gain-val" style="color:var(--accent-gold);">4.0x</strong>
+              </div>
+              <div class="slider-row">
+                <input type="range" id="mic-gain-slider" min="1" max="15" step="0.5" value="4.0" aria-label="Microphone gain">
+              </div>
+              <span style="font-size:0.7rem;">Increase if your guitar strum is quiet.</span>
+            </div>
+            <div class="slider-item">
+              <div style="display:flex; justify-content:space-between;">
+                <span>Noise Gate Threshold:</span>
+                <strong id="gate-val" style="color:var(--accent-rose);">14 dB</strong>
+              </div>
+              <div class="slider-row">
+                <input type="range" id="noise-gate-slider" min="5" max="50" step="1" value="14" aria-label="Noise gate threshold in dB">
+              </div>
+              <span style="font-size:0.7rem;">Only guitar strums above this level are processed.</span>
+            </div>
+            <div class="slider-item">
+              <div style="display:flex; justify-content:space-between;">
+                <span>Detection Mode:</span>
+              </div>
+              <div class="mode-toggle-group">
+                <button class="mode-pill active" id="btn-trigger-guitartuna" aria-pressed="true">Strum capture</button>
+                <button class="mode-pill" id="btn-trigger-continuous" aria-pressed="false">⏱️ Continuous</button>
+              </div>
+              <span style="font-size:0.7rem;">Waits for a clear attack. Background sounds can still trigger it.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- INTERACTIVE FRETBOARD -->
+        <section class="card">
+          <div class="card-header">
+            <div class="card-title"><span>🎸</span> 6-String Guitar Neck & Fingerings (E A D G B E)</div>
+            <span style="font-size:0.75rem; color:var(--text-muted);">Click any fret to change fingers | Click "X" to mute</span>
+          </div>
+          <div class="fretboard-container">
+            <div class="fretboard-board" id="fretboard-board">
+              <div class="fret-numbers">
+                <div class="fret-num">0 (Open)</div>
+                <div class="fret-num">1</div>
+                <div class="fret-num">2</div>
+                <div class="fret-num marker">3 •</div>
+                <div class="fret-num">4</div>
+                <div class="fret-num marker">5 •</div>
+                <div class="fret-num">6</div>
+                <div class="fret-num marker">7 •</div>
+                <div class="fret-num">8</div>
+                <div class="fret-num marker">9 •</div>
+                <div class="fret-num">10</div>
+                <div class="fret-num">11</div>
+                <div class="fret-num marker">12 ••</div>
+              </div>
+              <div id="fretboard-strings-rows" aria-label="Guitar fretboard"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- DETECTOR EXPLAINER -->
+        <section class="diag-box" aria-label="How noise cancellation works">
+          <strong>Make room for a clean take.</strong>
+          <p>A quiet room check estimates steady noise. Frequency-specific gates, harmonic note fitting and strum capture help reject unsupported chord guesses. They do not guarantee recognition through speech or other music. This is our detector, not a GuitarTuna integration.</p>
+        </section>
+      </div>
+
+      <!-- RIGHT SIDEBAR -->
+      <aside class="sidebar" aria-label="Tools and reference">
+        <!-- RECORDED GUITAR -->
+        <div class="card">
+          <div class="card-header"><div class="card-title"><span>🔊</span> Guitar recordings</div></div>
+          <div class="sound-style-box">
+            <div class="guitar-sound-selectors">
+              <label id="guitar-sample-options" for="guitar-sample-bank">Recorded instrument
+                <select id="guitar-sample-bank"><option value="steel">Steel-string guitar</option><option value="classical">Classical guitar</option><option value="electric">Electric guitar</option></select>
+              </label>
+            </div>
+            <p id="guitar-audio-status" class="song-data-status">Recorded guitar selected. Play a note or chord to load it.</p>
+            <p class="guitar-sound-note">Notes share recordings where needed; pitches outside E2–F5 are shifted. These banks use one selected attack per pitch, not soft/hard layers.</p>
+            <button id="guitar-stop-audio" class="btn btn-secondary">Stop guitar audio</button>
+            <button id="guitar-retry-audio" class="btn btn-secondary">Load / retry recordings</button>
+            <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+              <span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">Strum Style:</span>
+              <button class="btn btn-secondary" style="padding:4px 8px; font-size:0.75rem;" id="btn-strum-style-down">⬇️ Down</button>
+              <button class="btn btn-secondary" style="padding:4px 8px; font-size:0.75rem;" id="btn-strum-style-up">⬆️ Up</button>
+              <button class="btn btn-secondary" style="padding:4px 8px; font-size:0.75rem;" id="btn-strum-style-arpeggio">🎶 Pick</button>
+              <button class="btn btn-secondary" style="padding:4px 8px; font-size:0.75rem;" id="btn-strum-style-roll">🌊 Roll</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHORD RECOGNITION LOG -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span>📜</span> Chord Recognition Log</div>
+            <button style="background:none; border:none; color:var(--accent-gold); font-size:0.75rem; cursor:pointer;" id="btn-clear-history">Clear</button>
+          </div>
+          <div class="history-log-box" id="history-log" aria-live="polite">
+            <div class="history-item">
+              <span class="hist-name">Ready to detect</span>
+              <span style="color:var(--text-muted);">Play a chord</span>
+              <span class="hist-time">--:--:--</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- MUSIC THEORY CARD -->
+        <div class="card">
+          <div class="card-header"><div class="card-title"><span>📖</span> Theory & Scale Formula</div></div>
+          <table class="theory-table" id="theory-table">
+            <tr><th>Formula</th><td id="theory-formula">1 - b3 - 5 (Root, Minor 3rd, 5th)</td></tr>
+            <tr><th>Intervals</th><td id="theory-intervals">Root, Minor 3rd, Perfect 5th</td></tr>
+            <tr><th>Degrees</th><td id="theory-degrees">1 - b3 - 5</td></tr>
+            <tr style="display:none;"><td id="theory-sargam">-</td></tr>
+            <tr><th>Mood</th><td id="theory-emotion">Melancholic, Poetic, Nostalgic</td></tr>
+            <tr><th>Musical Style</th><td id="theory-context">Acoustic, Folk, Classic Ballads</td></tr>
+          </table>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+       TAB: SONGS & 3D GUITAR FRETBOARD STUDIO
+       ========================================================================== -->
+  <div class="studio-tab-pane" id="pane-songs" role="tabpanel" aria-labelledby="tab-songs">
+    <div class="songs-container">
+      <div class="song-hero-card">
+        <div class="song-header-row">
+          <div class="song-title-group">
+            <h2 id="song-display-title">Two steps and a pause</h2>
+            <p id="song-display-meta" style="font-size:0.85rem; color:var(--text-muted);">
+              Artist: Guitar Studio original exercise
+            </p>
+            <div class="song-meta-pills" id="song-meta-pills">
+              <span class="song-meta-pill">Key: <strong id="song-pill-key">C Major</strong></span>
+              <span class="song-meta-pill">Chords: <strong id="song-pill-chords">C, G</strong></span>
+              <span class="song-meta-pill">Strum: <strong id="song-pill-strum">Down</strong></span>
+              <span class="song-meta-pill">Tempo: <strong id="song-pill-bpm">80 BPM</strong></span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- One row: which song, which key, add your own -->
+        <div class="song-top-row">
+          <label class="song-top-field">
+            <span>Song</span>
+            <!-- Filled from the song catalog when Play Along opens (public/song_catalog_data.js + own songs). -->
+            <select class="song-select-dropdown" id="song-selector-select">
+              <option value="original-timing-study" selected>Two steps and a pause</option>
+            </select>
+          </label>
+          <label class="song-top-field">
+            <span>Key</span>
+            <select class="song-select-dropdown" id="song-transpose-select" aria-label="Transpose song to a different key"></select>
+          </label>
+          <button class="btn btn-secondary song-add-btn" type="button" data-open-song-import>＋ Add a song</button>
+        </div>
+
+        <!-- How to practice: one choice instead of several switches -->
+        <div class="song-practice-style" role="group" aria-labelledby="song-style-label">
+          <span id="song-style-label" class="song-practice-style-label">How do you want to practice?</span>
+          <div class="song-practice-style-options">
+            <button type="button" id="song-style-listen" class="song-style-btn" aria-pressed="true">
+              <strong>Listen</strong><small>The app plays the song</small>
+            </button>
+            <button type="button" id="song-style-along" class="song-style-btn" aria-pressed="false">
+              <strong>Play along</strong><small>Moves in time · the mic gives points</small>
+            </button>
+            <button type="button" id="song-style-wait" class="song-style-btn" aria-pressed="false">
+              <strong>Wait for me</strong><small>Waits until you play it right</small>
+            </button>
+          </div>
+        </div>
+
+        <div class="song-playback-bar">
+          <!-- Phones and tablets: these four stay fixed at the bottom of the screen (src/ui/studio.css) -->
+          <div class="playback-main-btns song-transport-btns">
+            <button class="btn-song-play" id="btn-song-play">
+              <span id="song-play-icon">▶</span> <span id="song-play-text">Play</span>
+            </button>
+            <button class="btn btn-secondary" id="btn-song-restart">
+              <span>⏮️</span> Restart
+            </button>
+            <button class="btn btn-secondary" id="btn-step-prev">
+              <span>◀</span> Back
+            </button>
+            <button class="btn btn-secondary" id="btn-step-next">
+              Next <span>▶</span>
+            </button>
+          </div>
+
+          <div class="tempo-speed-control">
+            <label for="song-tempo-slider">Speed</label>
+            <input type="range" id="song-tempo-slider" min="45" max="140" value="75">
+            <strong id="song-tempo-readout" style="color:var(--accent-gold); width:54px;">75 BPM</strong>
+          </div>
+
+          <div class="playback-main-btns">
+            <label class="song-repeat"><input type="checkbox" id="song-loop"> Repeat</label>
+            <button class="btn btn-secondary" id="btn-song-audition"><span>🔊</span> Hear it</button>
+            <!-- Strum Buttons for Chords Mode -->
+            <div id="song-strum-actions" style="display:none; align-items:center; gap:6px;">
+              <button class="btn btn-secondary" id="btn-song-strum-down"><span>⬇️</span> Down</button>
+              <button class="btn btn-secondary" id="btn-song-strum-up"><span>⬆️</span> Up</button>
+              <button class="btn btn-secondary" id="btn-song-strum-pick"><span>🎶</span> Pick</button>
+            </div>
+            <button class="practice-mic-toggle" id="btn-toggle-song-mic">
+              <span class="mic-toggle-icon">🎙️</span> <strong id="song-mic-status-label">Mic off</strong>
+            </button>
+          </div>
+        </div>
+        <p id="song-transport-status" class="song-data-status" role="status">Ready</p>
+        <p id="song-current-target" class="song-current-target" aria-live="polite">Choose an event</p>
+
+        <!-- 3D INTERACTIVE GUITAR FRETBOARD DISPLAY FOR SONGS -->
+        <div class="song-guitar-card">
+          <div class="song-guitar-hud-row">
+            <!-- Notes Mode HUD details -->
+            <div id="hud-notes-info" style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+              <div class="hud-stat-badge">
+                <span class="hud-stat-lbl">Melody note</span>
+                <strong class="hud-stat-val" id="lead-active-western" style="color:var(--accent-gold);">B4</strong>
+              </div>
+              <div class="hud-stat-badge">
+                <span class="hud-stat-lbl">String</span>
+                <strong class="hud-stat-val" id="lead-active-string">1st (High E)</strong>
+              </div>
+              <div class="hud-stat-badge">
+                <span class="hud-stat-lbl">Fret</span>
+                <strong class="hud-stat-val" id="lead-active-fret">7th Fret</strong>
+              </div>
+              <div class="hud-stat-badge">
+                <span class="hud-stat-lbl">Frequency</span>
+                <strong class="hud-stat-val" id="lead-active-hz" style="color:var(--accent-cyan);">493.9 Hz</strong>
+              </div>
+              <div class="hud-stat-badge">
+                <span class="hud-stat-lbl">Tab</span>
+                <strong class="hud-stat-val" id="lead-active-tab" style="font-family:monospace; color:#34d399;">e|--7--</strong>
+              </div>
+              <div class="hud-stat-badge">
+                <span class="hud-stat-lbl">Progress</span>
+                <strong class="hud-stat-val" id="song-note-counter" style="color:var(--text-muted);">1 / 8</strong>
+              </div>
+            </div>
+
+            <!-- Chords Mode HUD details -->
+            <div id="hud-chords-info" style="display:none; align-items:center; gap:14px; flex-wrap:wrap;">
+              <div class="hud-stat-badge">
+                <span class="hud-stat-lbl">Chord now</span>
+                <strong class="hud-stat-val" id="hud-chord-name" style="color:var(--accent-gold); font-size:1.4rem;">Am</strong>
+              </div>
+              <div class="hud-stat-badge">
+                <span class="hud-stat-lbl">Fingering (E A D G B E)</span>
+                <strong class="hud-stat-val" id="hud-chord-frets" style="font-family:monospace;">x 0 2 2 1 0</strong>
+              </div>
+              <div class="hud-stat-badge">
+                <span class="hud-stat-lbl">Strumming</span>
+                <strong class="hud-stat-val" id="song-strum-pattern-visual" style="color:var(--accent-cyan);">↓ - ↓ ↑ - ↑ ↓ ↑</strong>
+              </div>
+            </div>
+
+            <!-- Live Mic Match Indicator -->
+            <div class="eval-match-indicator" id="eval-feedback-badge">
+              Play along on your real guitar!
+            </div>
+            <div class="song-score" style="font-size:0.85rem; color:var(--text-muted);">
+              Score: <strong id="song-practice-score" style="color:var(--accent-gold); font-size:1.1rem;">0</strong> pts
+            </div>
+          </div>
+
+          <div class="pane-neck-toolbar">
+            <h3>Play-along fretboard</h3>
+            <div class="neck-view-switch" role="group" aria-label="Play-along fretboard view">
+              <button id="song-neck-view-3d" aria-pressed="false">3D</button>
+              <button id="song-neck-view-2d" aria-pressed="true">2D</button>
+            </div>
+          </div>
+          <div class="neck-stage">
+            <div class="neck-stage-top"><span id="song-neck-caption" class="neck-caption">Play along</span><span id="song-neck-tuning" class="neck-tuning"></span></div>
+            <div id="song-neck-3d" class="neck-3d" hidden></div>
+
+          <!-- Visual Guitar Fretboard (2D) -->
+          <div id="song-neck-2d" class="fretboard-container pane-neck-flat">
+            <div class="fret-numbers">
+              <div class="fret-num">0 (Open)</div>
+              <div class="fret-num">1</div>
+              <div class="fret-num">2</div>
+              <div class="fret-num marker">3 •</div>
+              <div class="fret-num">4</div>
+              <div class="fret-num marker">5 •</div>
+              <div class="fret-num">6</div>
+              <div class="fret-num marker">7 •</div>
+              <div class="fret-num">8</div>
+              <div class="fret-num marker">9 •</div>
+              <div class="fret-num">10</div>
+              <div class="fret-num">11</div>
+              <div class="fret-num marker">12 ••</div>
+            </div>
+            <div class="fretboard-board" id="song-fretboard-strings-rows">
+              <!-- Rendered by buildSongFretboardUI() -->
+            </div>
+          </div>
+            <div id="song-neck-camera" class="neck-camera" hidden role="group" aria-label="Play-along 3D camera">
+              <button id="song-neck-zoom-in" aria-label="Zoom in">+</button>
+              <button id="song-neck-zoom-out" aria-label="Zoom out">−</button>
+              <button id="song-neck-reset" aria-label="Reset camera">⟲</button>
+            </div>
+            <p id="song-neck-help" class="neck-help">Drag to rotate · Click a string to play · + / − to zoom · R to reset</p>
+          </div>
+
+          <!-- Scrolling tab with a fixed playhead: now, next and later events -->
+          <section class="tab-lane-block" aria-labelledby="song-tab-heading">
+            <div class="tab-lane-head">
+              <div class="tab-lane-title">
+                <h3 id="song-tab-heading">Tab · what comes next</h3>
+                <p id="song-next-summary" class="tab-lane-next">Choose a song to see its tab.</p>
+              </div>
+              <div class="tab-lane-loop" role="group" aria-label="Loop a section">
+                <button class="btn btn-secondary" id="song-loop-start" type="button">Loop from here</button>
+                <button class="btn btn-secondary" id="song-loop-end" type="button">…to here</button>
+                <button class="btn btn-secondary" id="song-loop-clear" type="button" disabled>Clear loop</button>
+              </div>
+            </div>
+            <div id="song-tab-lane" class="tab-lane"></div>
+            <p id="song-loop-status" class="song-data-status"></p>
+            <div class="tab-lane-foot">
+              <div class="tab-lane-legend" aria-hidden="true"><span><i class="now"></i>Now</span><span><i class="next"></i>Next</span><span><i class="later"></i>Later</span></div>
+              <label><input type="checkbox" id="song-show-next" checked> Show the next note on the fretboard</label>
+            </div>
+          </section>
+        </div>
+
+        <!-- Song Chords Palette Row -->
+        <div class="song-chords-block">
+          <h3 class="song-block-title">Chords in this song <small>tap one to see and hear it</small></h3>
+          <div class="song-chords-palette" id="song-chords-palette" style="display:flex; flex-wrap:wrap; gap:8px;">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Interactive Lyrics & Chords Scroll View (hidden when the song has no lyrics) -->
+        <div class="song-lyrics-block" id="song-lyrics-block">
+          <h3 class="song-block-title">Words and chords <small>tap a line to go there</small></h3>
+          <div class="lyrics-scroll-container" id="lyrics-scroll-box">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Less common settings, closed by default -->
+        <details class="song-more" id="song-more">
+          <summary>More settings</summary>
+          <div class="song-more-body">
+            <div id="song-part-selector" class="song-timing-controls">
+              <span class="song-more-label">Guitar part</span>
+              <button id="btn-mode-notes" class="song-mode-btn active">🎼 Melody (notes)</button>
+              <button id="btn-mode-chords" class="song-mode-btn">🎸 Chords (strumming)</button>
+            </div>
+            <p id="song-mode-description" class="song-data-status"></p>
+            <div class="song-timing-controls">
+              <label for="song-position-filter">Where on the neck</label>
+              <select id="song-position-filter" aria-describedby="song-position-status">
+                <option value="all">Anywhere (frets 0–12)</option>
+                <option value="open">Open position (frets 0–4)</option>
+                <option value="middle">Middle (frets 5–8)</option>
+                <option value="upper">High (frets 9–12)</option>
+              </select>
+              <button class="btn btn-secondary" id="song-fit-melody" aria-describedby="song-melody-fit-status" hidden>Fit the melody automatically</button>
+              <button class="btn btn-secondary" id="song-original-octave" hidden>Use the original octave</button>
+            </div>
+            <p id="song-position-status" class="song-data-status" role="status"></p>
+            <p id="song-melody-fit-status" class="song-data-status" role="status" hidden></p>
+            <div class="song-timing-controls">
+              <label class="song-check"><input type="checkbox" id="song-steady-tempo"> Keep one steady tempo (ignore the song's tempo changes)</label>
+              <button class="btn btn-secondary" id="song-edit-timing">Edit or export timing</button>
+            </div>
+            <h4 class="song-more-label">About this song</h4>
+            <p id="song-timing-status" class="song-data-status"></p>
+            <details class="song-source"><summary>Original source text and limits</summary><pre id="song-source-text"></pre></details>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       TAB: EAR TRAINING QUIZ & CADENCE WARM-UP
+       ========================================================================== -->
+  <div class="studio-tab-pane" id="pane-trainer" role="tabpanel" aria-labelledby="tab-trainer">
+    <div class="trainer-container">
+      <!-- Mode & Key Selector Ribbon -->
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+        <div style="display:inline-flex; background:rgba(0,0,0,0.4); padding:4px; border-radius:12px; border:1px solid var(--border-light);">
+          <button id="btn-trainer-mode-ear" class="song-mode-btn active">
+            👂 Ear Training (Listen & Guess)
+          </button>
+          <button id="btn-trainer-mode-strum" class="song-mode-btn">
+            🎸 Strum Training (See & Play on Mic)
+          </button>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="font-size:0.75rem; text-transform:uppercase; color:var(--text-muted); font-weight:700;">Key Context:</span>
+          <select id="quiz-key-context" style="background:rgba(0,0,0,0.6); color:var(--accent-gold); border:1px solid var(--accent-gold); padding:6px 12px; border-radius:8px; font-size:0.85rem; font-weight:700;">
+            <option value="C" selected>C Major (C - Dm - Em - F - G - Am)</option>
+            <option value="G">G Major (G - Am - Bm - C - D - Em)</option>
+            <option value="D">D Major (D - Em - G - A - Bm)</option>
+            <option value="Am">A Minor (Am - C - Dm - Em - F - G)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="trainer-stats-row">
+        <div class="trainer-stat-card">
+          <div class="trainer-stat-val" id="quiz-score">0</div>
+          <div class="trainer-stat-label">Total Score</div>
+        </div>
+        <div class="trainer-stat-card">
+          <div class="trainer-stat-val" id="quiz-streak">🔥 0</div>
+          <div class="trainer-stat-label">Current Streak</div>
+        </div>
+        <div class="trainer-stat-card">
+          <div class="trainer-stat-val" id="quiz-best-streak">🏆 0</div>
+          <div class="trainer-stat-label">Best Streak</div>
+        </div>
+        <div class="trainer-stat-card">
+          <select id="quiz-difficulty" style="background:rgba(0,0,0,0.5); color:var(--text-main); border:1px solid var(--accent-gold); padding:6px 10px; border-radius:8px; font-size:0.8rem; font-weight:700; width:100%;">
+            <option value="beginner">🟢 Beginner (Open Chords)</option>
+            <option value="intermediate">🟡 Intermediate (7th & Sus)</option>
+            <option value="master">🔴 Master (Barre Chords)</option>
+          </select>
+          <div class="trainer-stat-label">Difficulty Level</div>
+        </div>
+      </div>
+
+      <!-- Ear Training Cadence Warm-Up Card -->
+      <div id="quiz-cadence-banner" style="background:rgba(255,179,0,0.08); border:1px solid rgba(255,179,0,0.25); border-radius:12px; padding:12px 16px; margin-bottom:18px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+        <div>
+          <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; color:var(--accent-gold); font-weight:800;">
+            🎵 Step 1: Reference Warm-Up (Ear Calibration)
+          </div>
+          <div id="quiz-cadence-text" style="font-size:0.9rem; color:var(--text-main); margin-top:2px;">
+            First play 3-4 chords in key to calibrate your ear before starting the quiz:
+          </div>
+        </div>
+        <button class="btn btn-secondary" id="btn-play-cadence" style="background:rgba(255,179,0,0.15); border-color:var(--accent-gold); color:var(--accent-gold); font-weight:700;">
+          ▶️ Play 3-4 Reference Chords
+        </button>
+      </div>
+
+      <div class="trainer-card-hero" id="quiz-hero-card">
+        <p id="quiz-audio-status" class="song-data-status" role="status"></p>
+        <div style="display:inline-block; font-size:0.8rem; font-weight:800; color:var(--accent-gold); text-transform:uppercase; letter-spacing:2px; background:rgba(255,179,0,0.1); padding:4px 14px; border-radius:30px; margin-bottom:12px;" id="quiz-challenge-badge">
+          🎯 Ear Training Challenge
+        </div>
+        <div class="trainer-instruction" id="quiz-prompt-text">Listen to the mystery chord played below:</div>
+        <div class="trainer-target-chord" id="quiz-target-chord-name" style="font-size:2.4rem;">❓ Mystery Chord</div>
+        <div style="font-size:0.95rem; color:var(--accent-cyan); font-weight:700; margin-bottom:16px; min-height:22px;" id="quiz-target-notes">Which chord did you hear?</div>
+
+        <!-- Multiple Choice Options Grid for Ear Training -->
+        <div id="quiz-choices-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:12px; max-width:600px; margin:0 auto 20px auto;">
+          <!-- Dynamically populated 4 options -->
+        </div>
+
+        <div class="trainer-diagram-preview" id="quiz-diagram-preview" style="display:none;">
+          <div id="quiz-mini-fretboard" style="font-family:monospace; font-size:0.9rem; color:#fff;">
+            x 3 2 0 1 0
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:center; gap:12px; margin-bottom:20px; flex-wrap:wrap;">
+          <button class="btn btn-secondary" id="btn-quiz-replay">
+            🔊 Replay Mystery Chord
+          </button>
+          <button class="btn btn-secondary" id="btn-quiz-skip">
+            ⏭️ Skip Chord
+          </button>
+          <button class="btn btn-primary" id="btn-quiz-mic">
+            🎙️ Live Guitar Mic (Optional)
+          </button>
+        </div>
+
+        <div class="status-pill" id="quiz-feedback-pill" style="display:inline-flex; align-items:center; gap:8px; font-size:0.95rem; padding:8px 20px; border-radius:30px; background:rgba(255,255,255,0.06); border:1px solid var(--border-light);">
+          <span>👂</span> Click the correct chord above or strum it on your guitar!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       TAB: WESTERN SCALES & 3D FRETBOARD STUDIO
+       ========================================================================== -->
+  <div class="studio-tab-pane" id="pane-scales" role="tabpanel" aria-labelledby="tab-scales">
+    <div class="scales-container">
+      <div class="scales-header-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+          <div>
+            <h2 class="page-title">Scales</h2>
+            <p class="page-lead">Pick a key and a scale, see it on the neck from fret 0 to 12, then play it up and down. Check my playing listens with the mic.</p>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span class="page-pill">Tuning <span id="scale-tuning-label">E · A · D · G · B · E</span></span>
+            <span class="page-pill" id="scale-mic-badge">
+              <span id="scale-mic-dot" class="mic-dot" aria-hidden="true"></span> <span id="scale-mic-status">Mic off</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Scale Selection Grid -->
+        <div class="scale-select-grid">
+          <!-- Root Note Selector -->
+          <div class="scale-control-group">
+            <label class="scale-control-label">
+              Key
+            </label>
+            <div class="scale-root-selector" id="scale-root-buttons" role="group" aria-label="Scale root">
+              <!-- Dynamically populated by JS -->
+            </div>
+            <span class="neck-caveat">Choose the written key: sharp and flat roots keep their own scale spelling.</span>
+          </div>
+
+          <!-- Scale Preset Selector -->
+          <div class="scale-control-group">
+            <label class="scale-control-label" for="scale-preset-select">
+              Scale
+            </label>
+            <select class="scale-preset-dropdown" id="scale-preset-select">
+              <option value="pentatonic_minor" selected>Pentatonic Minor (Rock / Blues Lead)</option>
+              <option value="blues">Blues Scale (with ♭5 'Blue Note')</option>
+              <option value="pentatonic_major">Pentatonic Major (Country / Southern Rock)</option>
+              <option value="natural_minor">Natural Minor / Aeolian (Melodic Ballad & Metal)</option>
+              <option value="major">Major Scale / Ionian (Western Diatonic Root)</option>
+              <option value="dorian">Dorian Mode (Santana / Funk & Fusion)</option>
+              <option value="mixolydian">Mixolydian Mode (Classic Rock Dominant 7th)</option>
+              <option value="harmonic_minor">Harmonic Minor (Neo-Classical & Spanish)</option>
+            </select>
+          </div>
+
+          <!-- Display Mode (Note Names vs Scale Degrees) -->
+          <div class="scale-control-group">
+            <label class="scale-control-label">
+              Show on the neck
+            </label>
+            <div class="scale-toggle-btn-group" role="group" aria-label="Scale labels">
+              <button class="scale-toggle-btn active" id="scale-mode-note" aria-pressed="true">Note Names (C, E, G)</button>
+              <button class="scale-toggle-btn" id="scale-mode-degree" aria-pressed="false">Degrees (1, ♭3, 5)</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Scale Info Ribbon -->
+        <div style="margin-top:20px; padding:12px 16px; background:rgba(0,0,0,0.3); border:1px solid var(--border-light); border-radius:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+          <div>
+            <span style="font-size:12px; color:var(--text-muted);">Formula and notes</span>
+            <div class="scale-formula-row" style="display:flex; align-items:center; gap:8px; margin-top:2px;">
+              <span id="scale-ribbon-title" style="font-size:1.05rem; font-weight:600; color:var(--accent-gold);">A Pentatonic Minor</span>
+              <span id="scale-ribbon-formula" style="font-size:0.85rem; color:var(--text-muted); font-weight:500;">(1 - ♭3 - 4 - 5 - ♭7)</span>
+            </div>
+            <div id="scale-ribbon-notes" style="font-size:0.85rem; color:var(--text-main); margin-top:3px; font-weight:600;">A • C • D • E • G</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <!-- Scale Tempo BPM Control -->
+            <div class="scale-tempo-control" style="display:flex; align-items:center; gap:8px; background:rgba(0,0,0,0.3); padding:6px 14px; border-radius:10px; border:1px solid var(--border-light);">
+              <span style="font-size:12px; color:var(--text-muted);">Speed</span>
+              <input type="range" id="scale-tempo-slider" aria-label="Scale tempo in beats per minute" min="40" max="240" value="120" step="5" style="width:100px; accent-color:var(--accent-gold); cursor:pointer;">
+              <span id="scale-tempo-readout" style="font-size:0.85rem; font-weight:600; color:var(--accent-gold); min-width:65px;">120 BPM</span>
+            </div>
+            <span id="scale-run-help" class="neck-caveat">Root → highest reachable root → starting root. Repeats until Stop.</span>
+          </div>
+        </div>
+
+        <!-- Rhythm for scale practice: beat, notes per beat, count-in, speed trainer -->
+        <div class="scale-rhythm" id="scale-rhythm" role="group" aria-labelledby="scale-rhythm-title">
+          <span class="scale-rhythm-title" id="scale-rhythm-title">Rhythm</span>
+          <label>Beat
+            <select id="scale-beat">
+              <option value="off" selected>Off</option>
+              <option value="click">Click</option>
+              <option value="drums">Drums</option>
+              <option value="tabla">Tabla</option>
+            </select>
+          </label>
+          <label>Notes per beat
+            <select id="scale-notes-per-beat">
+              <option value="1" selected>1 · quarter notes</option>
+              <option value="2">2 · eighth notes</option>
+              <option value="3">3 · triplets</option>
+              <option value="4">4 · sixteenth notes</option>
+            </select>
+          </label>
+          <label class="scale-rhythm-check"><input type="checkbox" id="scale-count-in" checked disabled> Count-in (1 bar)</label>
+          <label class="scale-rhythm-check"><input type="checkbox" id="scale-guitar-notes" checked> Guitar notes</label>
+          <span class="scale-rhythm-trainer">
+            <label class="scale-rhythm-check"><input type="checkbox" id="scale-speed-trainer"> Speed trainer: +5 BPM each round, up to</label>
+            <input type="number" id="scale-speed-target" min="45" max="240" step="5" value="160" disabled aria-label="Speed trainer target, BPM"> BPM
+          </span>
+          <p id="scale-rhythm-status" class="neck-caveat" role="status">No beat. Choose Click, Drums or Tabla to practise with a beat.</p>
+        </div>
+      </div>
+
+      <section id="scale-neck" class="card neck-card" aria-label="Selected scale fretboard">
+        <div class="card-header">
+          <h3>Scale positions</h3>
+          <div class="neck-view-switch" role="group" aria-label="Scale fretboard view">
+            <button id="scale-neck-view-3d" aria-pressed="false">3D</button>
+            <button id="scale-neck-view-2d" aria-pressed="true">2D</button>
+          </div>
+        </div>
+        <!-- Play and Check my playing sit with the fretboard (phones and tablets: fixed at the bottom of the screen) -->
+        <div class="scale-practice-controls">
+          <button class="btn btn-primary" id="btn-scale-run">
+            <span id="btn-scale-run-icon">▶️</span> <span id="btn-scale-run-text">Play up/down loop</span>
+          </button>
+          <button class="btn btn-primary" id="btn-scale-mic" aria-pressed="false">
+            <span id="btn-scale-mic-text">Check my playing</span>
+          </button>
+        </div>
+        <!-- Less common settings, closed by default -->
+        <details class="song-more scale-options" id="scale-options">
+          <summary>⚙ Practice options</summary>
+          <div class="song-more-body">
+            <div class="scale-practice-controls">
+              <label for="scale-exercise-range">Exercise range</label>
+              <select id="scale-exercise-range">
+                <option value="position">In selected area</option>
+                <option value="two-octaves">Two octaves — shift as needed</option>
+              </select>
+            </div>
+            <div class="scale-practice-controls">
+              <label for="scale-position-filter" id="scale-position-label">Playing position</label>
+              <select id="scale-position-filter" aria-describedby="scale-position-help">
+                <option value="all" selected>Full neck (frets 0–12)</option>
+                <option value="open">Open position (frets 0–4)</option>
+                <option value="middle">Middle area (frets 5–8)</option>
+                <option value="upper">Upper area (frets 9–12)</option>
+              </select>
+              <span class="neck-caveat" id="scale-position-help">Middle/Upper allow a labeled one-fret reach when needed, within frets 0–12.</span>
+            </div>
+            <div class="scale-practice-controls">
+              <label for="scale-practice-mode">Listening practice</label>
+              <select id="scale-practice-mode">
+                <option value="free">Free play — scale notes</option>
+                <option value="ascending">Guided: ascending</option>
+                <option value="descending">Guided: descending</option>
+              </select>
+              <button class="btn btn-secondary" id="scale-practice-restart" disabled>Restart run</button>
+            </div>
+            <p class="neck-caveat">This checks heard pitches, not your finger placement. Guided mode checks the selected range in order, not rhythm. Reference playback pauses checking; use headphones and mute strings briefly afterward.</p>
+            <div class="scale-tab-text">
+              <p class="song-more-label" id="scale-tab-text-title">Whole exercise as tab</p>
+              <p class="neck-caveat" id="scale-tab-text-about"></p>
+              <pre id="scale-tab-text" tabindex="0" aria-labelledby="scale-tab-text-title" aria-describedby="scale-tab-text-about"></pre>
+              <div class="scale-practice-controls">
+                <button class="btn btn-secondary" id="scale-tab-copy" type="button">Copy tab</button>
+                <span id="scale-tab-copy-status" class="neck-caveat" role="status"></span>
+              </div>
+            </div>
+          </div>
+        </details>
+        <!-- Shown only while Check my playing is on (or starting / failed to start) -->
+        <div id="scale-practice-feedback" class="scale-practice-feedback" data-verdict="neutral" hidden>
+          <p>Selected scale: <strong id="scale-practice-selected">A Pentatonic Minor</strong></p>
+          <p>Heard: <strong id="scale-practice-heard">—</strong></p>
+          <p id="scale-practice-message" role="status">Start Check my playing, then pluck one string at a time.</p>
+          <p id="scale-practice-target" aria-live="polite">Free play: any note from the selected scale, in any order.</p>
+        </div>
+        <div id="scale-shift-guide" class="scale-shift-guide" hidden>
+          <p id="scale-pattern-status"></p>
+          <p id="scale-shift-cue" role="status"></p>
+          <details>
+            <summary>Ascending fingering pattern · reverse to descend</summary>
+            <ol id="scale-pattern-steps"></ol>
+          </details>
+        </div>
+        <div class="neck-stage">
+          <div class="neck-stage-top">
+            <span id="scale-neck-caption" class="neck-caption">A Pentatonic Minor</span>
+            <span id="scale-neck-tuning" class="neck-tuning">E · A · D · G · B · E</span>
+          </div>
+          <div id="scale-neck-3d" class="neck-3d" hidden></div>
+          <div id="scale-neck-2d" class="fretboard-container pane-neck-flat">
+            <div class="fretboard-board" id="scale-fretboard-board">
+              <div class="fret-numbers">
+                <div class="fret-num">0 (Open)</div>
+                <div class="fret-num">1</div>
+                <div class="fret-num">2</div>
+                <div class="fret-num marker">3 •</div>
+                <div class="fret-num">4</div>
+                <div class="fret-num marker">5 •</div>
+                <div class="fret-num">6</div>
+                <div class="fret-num marker">7 •</div>
+                <div class="fret-num">8</div>
+                <div class="fret-num marker">9 •</div>
+                <div class="fret-num">10</div>
+                <div class="fret-num">11</div>
+                <div class="fret-num marker">12 ••</div>
+              </div>
+              <div id="scale-fretboard-strings-rows"><!-- Rendered by JS --></div>
+            </div>
+          </div>
+          <div id="scale-neck-camera" class="neck-camera" hidden role="group" aria-label="Scale 3D camera">
+            <button id="scale-neck-zoom-in" aria-label="Zoom in">+</button>
+            <button id="scale-neck-zoom-out" aria-label="Zoom out">−</button>
+            <button id="scale-neck-reset" aria-label="Reset camera">⟲</button>
+          </div>
+          <p id="scale-neck-help" class="neck-help">Drag to rotate · Click a note to play · + / − to zoom · R to reset</p>
+        </div>
+        <!-- The exercise as tab: moves with Play; Check my playing colours the notes green (right) or red (wrong) -->
+        <section class="tab-lane-block scale-tab" aria-labelledby="scale-tab-heading">
+          <div class="tab-lane-head">
+            <div class="tab-lane-title">
+              <h3 id="scale-tab-heading">Tab · this exercise</h3>
+              <p id="scale-tab-next" class="tab-lane-next">Press Play to follow the tab.</p>
+            </div>
+          </div>
+          <div id="scale-tab-lane" class="tab-lane"></div>
+          <div class="tab-lane-foot">
+            <div class="tab-lane-legend" aria-hidden="true"><span><i class="now"></i>Now</span><span><i class="next"></i>Next</span><span><i class="right"></i>Right</span><span><i class="wrong"></i>Wrong</span></div>
+            <span>Tap a note in the tab to hear it.</span>
+          </div>
+        </section>
+        <div class="neck-footer">
+          <div class="neck-legend">
+            <span><i class="root-dot"></i>Root</span><span><i></i>Scale tone</span>
+            <span id="scale-blue-legend" hidden><i class="blue-dot"></i>Blue note (♭5)</span>
+            <span><i class="live-dot"></i>Playing / live</span>
+            <span><i class="target-dot"></i>Outline: next target</span>
+          </div>
+          <p id="scale-neck-summary" class="neck-summary" role="status">Choose a note to hear it, or play the selected scale run.</p>
+          <p class="neck-caveat">Frets are relative to the capo. Live highlights show matching scale positions, not measured finger placement.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       TAB: CHORD CHANGE DRILL
+       ========================================================================== -->
+  <div class="studio-tab-pane" id="pane-drill" role="tabpanel" aria-labelledby="tab-drill">
+    <div style="padding: var(--space-xl);">
+      <header class="page-head" style="max-width: 800px; margin-inline: auto;">
+        <h2 class="page-title">Chord changes</h2>
+        <p class="page-lead">Move between chords in time. Watch the change first, then start slowly.</p>
+      </header>
+      <div class="card" style="max-width: 800px; margin: 0 auto;">
+        <div id="drill-settings">
+        <div class="song-timing-controls">
+          <label for="drill-practice-mode">Exercise</label>
+          <select id="drill-practice-mode">
+            <option value="match">Chord match — advance after matching</option>
+            <option value="rhythm">Rhythm pattern — change on the bar</option>
+          </select>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-md); margin-bottom: var(--space-lg);">
+          <div>
+            <label style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:4px;">Key</label>
+            <select class="rhythm-select-pill" id="drill-key" aria-label="Drill key" style="width:100%;"></select>
+          </div>
+          <div>
+            <label style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:4px;">Scale</label>
+            <select class="rhythm-select-pill" id="drill-mode" aria-label="Drill scale" style="width:100%;">
+              <option value="major">Major</option>
+              <option value="minor">Minor</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:4px;">Progression</label>
+            <select class="rhythm-select-pill" id="drill-progression-type" aria-label="Chord progression" style="width:100%;"></select>
+          </div>
+          <div>
+            <label style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:4px;">BPM</label>
+            <input type="range" id="drill-bpm" aria-label="Chord-change tempo in beats per minute" min="50" max="160" value="80" style="width:100%;" oninput="document.getElementById('drill-bpm-val').textContent=this.value+' BPM'">
+            <div style="text-align:right; font-size:0.8rem; color:var(--accent-gold);" id="drill-bpm-val">80 BPM</div>
+          </div>
+          <div>
+            <label style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:4px;">Bars per chord</label>
+            <select class="rhythm-select-pill" id="drill-bars-per-chord" aria-label="Bars per chord" style="width:100%;">
+              <option value="1">1 Bar</option>
+              <option value="2" selected>2 Bars</option>
+              <option value="4">4 Bars</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:4px;">Total changes</label>
+            <input type="number" id="drill-total-chords" aria-label="Total chord changes" min="4" max="64" value="16" style="width:100%; padding:8px; background:rgba(0,0,0,0.3); border:1px solid var(--border-light); border-radius:8px; color:#fff;">
+          </div>
+          <div id="drill-rhythm-settings" class="song-timing-controls" hidden>
+            <label for="drill-pattern">Strumming pattern</label>
+            <select id="drill-pattern"></select>
+            <label for="drill-count-in">Count-in</label>
+            <select id="drill-count-in"><option value="0">None</option><option value="1" selected>1 bar</option><option value="2">2 bars</option></select>
+            <label><input id="drill-rhythm-clicks" type="checkbox"> Audible rhythm clicks</label>
+            <label><input id="drill-check-chords" type="checkbox"> Check chord matches with microphone</label>
+          </div>
+          </div>
+        </div>
+        <!-- Live preview of the realized progression + diatonic chords for the selected key -->
+        <div style="background:rgba(0,0,0,0.3); border:1px solid var(--border-light); border-radius:var(--radius-md); padding:var(--space-md); margin-bottom:var(--space-lg);">
+          <div style="font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; color:var(--accent-gold); font-weight:700; margin-bottom:6px;">Progression <span id="drill-preview-key" style="color:var(--text-muted);"></span></div>
+          <div id="drill-progression-preview" style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px;"></div>
+          <div style="font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); font-weight:700; margin-bottom:6px;">All 7 chords in this scale <span style="color:var(--text-muted); font-weight:400;">· tap one to hear it</span></div>
+          <div id="drill-diatonic-preview" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
+        </div>
+        <!-- "Watch the change": the 3D hands move between two chords (src/ui/changeViewer.ts) -->
+        <section id="change-viewer" class="change-viewer" aria-label="Watch the change"></section>
+        <div style="display:flex; gap:var(--space-sm); flex-wrap:wrap; margin-bottom:var(--space-lg);">
+          <button class="btn btn-primary" id="btn-start-drill"><span>▶️</span> Start Drill</button>
+          <button class="btn btn-secondary" id="btn-stop-drill" disabled><span>⏹️</span> Stop</button>
+          <button class="btn btn-secondary" id="btn-next-drill-chord" disabled><span>⏭️</span> Next Chord</button>
+        </div>
+        <p id="drill-rhythm-status" class="song-data-status" role="status">Choose a chord-matching or rhythm exercise.</p>
+        <div id="drill-pattern-preview" hidden>
+          <div id="drill-pattern-grid" class="strumming-grid" role="group" aria-label="Strumming pattern"></div>
+          <p id="drill-rhythm-position" class="song-data-status">Ready</p>
+          <p class="song-data-status">Next chord: <strong id="drill-next-chord">—</strong></p>
+          <p class="song-data-status">4/4 counts: 1 &amp; 2 &amp; 3 &amp; 4 &amp;. ↓ down, ↑ up, — no stroke. Directions are practice instructions, not measured movements. Optional microphone checks chord identity only—not strum direction or rhythm accuracy. Use headphones with audible clicks.</p>
+        </div>
+        <div style="text-align:center; font-size:3rem; font-weight:900; color:var(--accent-gold); min-height:120px; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.3); border-radius:var(--radius-lg); border:2px solid var(--border-light);" id="drill-current-chord">—</div>
+        <div class="drill-results" style="margin-top:var(--space-md); display:flex; justify-content:center; gap:var(--space-lg); color:var(--text-muted); font-size:0.9rem;">
+          <span>Chord matches: <strong id="drill-accuracy" style="color:var(--accent-emerald);">—%</strong></span>
+          <span>Avg Latency: <strong id="drill-latency" style="color:var(--accent-cyan);">— ms</strong></span>
+          <span>Streak: <strong id="drill-streak" style="color:var(--accent-gold);">0</strong></span>
+        </div>
+        <!-- 1-minute changes test (src/ui/learning/oneMinuteChanges.ts), mounted when opened -->
+        <details id="changes-test" class="changes-test">
+          <summary><span aria-hidden="true">⏱</span> 1-minute changes test</summary>
+          <p class="changes-test-note">How many clean changes between two chords can you play in one minute? Try it once a day and watch the number grow.</p>
+          <div id="changes-test-host"></div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <div class="studio-tab-pane" id="pane-theory" role="tabpanel" aria-labelledby="tab-theory">
+    <section id="theory-lessons" class="theory-lessons" aria-labelledby="lesson-heading"></section>
+  </div>
+
+  <div class="studio-tab-pane" id="pane-fifths" role="region" aria-labelledby="fifths-heading">
+    <section class="fifths-page" aria-labelledby="fifths-heading">
+      <header class="fifths-header">
+        <button id="fifths-back-theory" class="btn btn-secondary">Back to Theory lessons</button>
+        <h2 id="fifths-heading">Circle of fifths</h2>
+        <p>See how keys connect, hear their chord families, then take a key into your scale practice.</p>
+      </header>
+      <details id="fifths-practice-panel" class="fifths-practice-panel" data-state="idle" data-verdict="neutral">
+        <summary id="fifths-practice-heading">Practise the circle with your guitar</summary>
+        <div class="song-timing-controls">
+          <label for="fifths-practice-goal">Goal</label>
+          <select id="fifths-practice-goal">
+            <option value="chord">Tonic chords</option>
+            <option value="root">Root notes (any octave)</option>
+          </select>
+          <label for="fifths-practice-direction">Direction</label>
+          <select id="fifths-practice-direction">
+            <option value="clockwise">Clockwise · fifths</option>
+            <option value="counterclockwise">Counterclockwise · fourths</option>
+          </select>
+          <button id="fifths-practice-start" class="btn btn-primary">Start guitar practice</button>
+          <button id="fifths-practice-stop" class="btn btn-secondary" disabled>Stop practice</button>
+          <button id="fifths-practice-skip" class="btn btn-secondary" disabled>Skip target</button>
+        </div>
+        <p class="fifths-muted">Choose major or relative-minor keys below, then play 12 targets at your own pace. Chords must match major/minor quality; for root notes, pluck one string. Targets are sounding pitches, not capo shape names. Choosing another key/family ends the round.</p>
+        <div class="fifths-practice-readout">
+          <strong id="fifths-practice-target">Start from C major</strong>
+          <span>Heard: <strong id="fifths-practice-heard">—</strong></span>
+          <span id="fifths-practice-progress">0/12 visited · 0 matched · 0 skipped</span>
+        </div>
+        <p id="fifths-practice-message" role="status">Choose a goal and direction, then start a round. No microphone is requested until Start.</p>
+        <p class="fifths-muted">Microphone audio stays on this device. Held sounds do not count again; skips are not correct answers. Reference audio is disabled during the round. Stop releases a microphone this round started; pre-existing listening remains under Live studio's control. This checks pitch/chord identity, not finger placement or rhythm.</p>
+      </details>
+      <div class="fifths-layout">
+        <div>
+          <div class="fifths-mode" role="group" aria-label="Key family to explore">
+            <button id="fifths-major" class="btn btn-secondary" aria-pressed="true">Major keys</button>
+            <button id="fifths-minor" class="btn btn-secondary" aria-pressed="false">Relative minor keys</button>
+          </div>
+          <div id="fifths-wheel" class="fifths-wheel" role="group" aria-label="Circle key pairs. Arrow keys move around the circle; Home selects C/A minor.">
+            <svg class="fifths-ring" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+              <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width=".5"/>
+              <circle cx="50" cy="50" r="25" stroke="currentColor" stroke-width=".25"/>
+            </svg>
+            <svg id="fifths-round-meter" class="fifths-ring fifths-round-meter" viewBox="0 0 100 100" fill="none" aria-hidden="true" hidden>
+              <circle cx="50" cy="50" r="34" stroke="var(--border-subtle)" stroke-width="1"/>
+              <circle id="fifths-round-progress" cx="50" cy="50" r="34" stroke="var(--accent-gold)" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <div class="fifths-cursor-window" aria-hidden="true">
+              <div id="fifths-practice-cursor" class="fifths-practice-cursor" hidden><span></span></div>
+            </div>
+            <div class="fifths-center" aria-hidden="true">
+              <strong id="fifths-center-root">C</strong>
+              <span id="fifths-center-mode">major</span>
+              <small id="fifths-center-signature">No sharps or flats</small>
+            </div>
+          </div>
+          <div id="fifths-wheel-feedback" class="fifths-wheel-feedback" hidden>
+            <strong id="fifths-wheel-target"></strong>
+            <p id="fifths-wheel-message"></p>
+            <div id="fifths-wheel-actions" class="song-timing-controls" hidden>
+              <button id="fifths-wheel-stop" class="btn btn-secondary" disabled>Stop practice</button>
+              <button id="fifths-wheel-skip" class="btn btn-secondary" disabled>Skip target</button>
+            </div>
+          </div>
+          <p class="fifths-wheel-help">Large names are major keys; small names are their relative minors. Choose a key family above. Gold marks your selection; outlined neighbors are one step away.</p>
+          <p id="fifths-round-legend" class="fifths-muted" hidden>Moving dot: target key · ✓ matched · — skipped. The progress ring counts visited targets, not accuracy.</p>
+          <label class="fifths-spelling" for="fifths-spelling">Six-accidental spelling
+            <select id="fifths-spelling"><option value="sharp">F♯ major / D♯ minor</option><option value="flat">G♭ major / E♭ minor</option></select>
+          </label>
+          <p class="fifths-muted">Clockwise moves by a fifth in sounding pitch classes. At the sharp/flat crossover, enharmonic names can change while the pitches stay the same.</p>
+        </div>
+        <section class="card fifths-key-details" aria-labelledby="fifths-key-title">
+          <h3 id="fifths-key-title">C major</h3>
+          <dl class="fifths-facts">
+            <dt>Key signature</dt><dd id="fifths-signature"></dd>
+            <dt>Scale notes</dt><dd id="fifths-scale-notes"></dd>
+            <dt>Relative key</dt><dd id="fifths-relative"></dd>
+            <dt>Parallel key</dt><dd id="fifths-parallel"></dd>
+            <dt>Clockwise</dt><dd id="fifths-clockwise"></dd>
+            <dt>Counterclockwise</dt><dd id="fifths-counterclockwise"></dd>
+          </dl>
+          <div class="song-timing-controls">
+            <button id="fifths-hear-scale" class="btn btn-secondary" data-fifths-audio>Hear scale</button>
+            <button id="fifths-hear-interval" class="btn btn-secondary" data-fifths-audio>Hear a fifth</button>
+            <button id="fifths-stop" class="btn btn-secondary" disabled>Stop audio</button>
+            <button id="fifths-open-scales" class="btn btn-primary">Open C major in Scales</button>
+          </div>
+          <p id="fifths-audio-status" class="song-data-status" role="status">Choose a reference to hear it. Nothing plays automatically.</p>
+          <p class="fifths-muted">These sounds play at concert pitch (capo and tuning are not used). Stop listening first, so the mic does not hear them.</p>
+        </section>
+      </div>
+      <div class="fifths-layout fifths-harmony">
+        <section aria-labelledby="fifths-chords-heading">
+          <h3 id="fifths-chords-heading">Chords in this key</h3>
+          <p id="fifths-chord-description" class="fifths-muted"></p>
+          <table class="fifths-chord-table">
+            <thead><tr><th scope="col">Degree</th><th scope="col">Chord</th><th scope="col">Notes</th><th scope="col">Audio</th></tr></thead>
+            <tbody id="fifths-chords"></tbody>
+          </table>
+        </section>
+        <section aria-labelledby="fifths-cadences-heading">
+          <h3 id="fifths-cadences-heading">Hear a progression</h3>
+          <div id="fifths-progressions"></div>
+        </section>
+      </div>
+      <section class="fifths-lessons" aria-label="Circle of fifths learning topics">
+        <details>
+          <summary>Why a fifth? Why does the circle return to C?</summary>
+          <p>C to G spans seven semitones and five letter names: C, D, E, F, G. Repeating that pitch-class step visits all twelve positions before returning to C. Moving counterclockwise is a fifth down, equivalent in pitch class to a fourth up. The wheel is a map of keys, not guitar frets or strumming directions.</p>
+        </details>
+        <details>
+          <summary>Relative and parallel are different relationships</summary>
+          <p>C major and A natural minor share a key signature and note collection, but have different tonics. C major and C minor share the tonic C, but not the same scale notes. The key panel shows both relationships for your selection. Some theoretical parallel keys use double accidentals; an enharmonic spelling can be easier to read.</p>
+        </details>
+        <details>
+          <summary>Read a key signature—and understand minor-key exceptions</summary>
+          <p>Sharps are added in the order F, C, G, D, A, E, B; flats in the reverse order B, E, A, D, G, C, F. The signature belongs to a major key and its relative natural minor. Minor music can raise its seventh to form a major V chord: D minor keeps B♭ in its signature, while an A-major dominant uses C♯ as an accidental.</p>
+        </details>
+        <details>
+          <summary>Turn the circle into guitar practice</summary>
+          <p>Uppercase Roman numerals name major triads, lowercase names minor triads, and ° marks diminished. Hear the tonic, subdominant and dominant, then compare a cadence. These are generic harmony examples, not transcriptions of songs. Open the selected key in Scales to practise its notes; your existing range and position choices are preserved.</p>
+        </details>
+      </section>
+    </section>
+  </div>
+
+  <!-- ==========================================================================
+       TAB: HEADSTOCK TUNER
+       ========================================================================== -->
+  <div class="studio-tab-pane" id="pane-tuner" role="tabpanel" aria-labelledby="tab-tuner">
+    <div style="padding: var(--space-xl); max-width: 1000px; margin: 0 auto;">
+      <header class="page-head">
+        <h2 class="page-title">Tuner</h2>
+        <p class="page-lead">Tap Start tuner and pluck one open string at a time.</p>
+      </header>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Your strings</div>
+          <div style="display:flex; gap:8px; align-items:center; min-width:0; max-width:100%;">
+            <label for="tuner-preset-select" style="font-size:0.75rem; color:var(--text-muted);">Tuning:</label>
+            <select class="rhythm-select-pill" id="tuner-preset-select" style="min-width:0; max-width:100%; flex:1 1 180px; min-height:44px;"></select>
+          </div>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; margin-bottom:var(--space-lg);">
+          <button type="button" class="btn btn-primary" id="btn-tuner-mic" aria-pressed="false" style="min-height:44px;">
+            <span aria-hidden="true">🎙️</span><span id="btn-tuner-mic-text">Start tuner</span>
+          </button>
+          <span id="tuner-mic-hint" style="font-size:0.8rem; color:var(--text-muted);">Uses your microphone. Then pluck one open string at a time.</span>
+        </div>
+        <!-- Headstock picture with the six pegs: drawn by src/ui/tunerHeadstock.ts from the string cards below. -->
+        <div id="tuner-headstock"></div>
+        <details class="th-list" id="tuner-list">
+          <summary>Strings as a list</summary>
+          <div style="display:grid; grid-template-columns: repeat(6, 1fr); gap:8px;" id="tuner-pegs">
+            <!-- Populated by JS -->
+          </div>
+        </details>
+        <div style="text-align:center; background:rgba(0,0,0,0.4); border:2px solid var(--border-light); border-radius:var(--radius-xl); padding:var(--space-xl);" id="tuner-center-display">
+          <div style="font-size:4.5rem; font-weight:900; color:var(--accent-gold);" id="tuner-center-note">E</div>
+          <div style="font-size:1.1rem; color:var(--text-muted); margin:8px 0;" id="tuner-center-freq">Target: 82.4 Hz • Detected: -- Hz</div>
+          <div style="width:100%; max-width:320px; height:14px; background:rgba(255,255,255,0.08); border-radius:10px; position:relative; margin:0 auto 16px; border:1px solid var(--border-light); overflow:hidden;">
+            <div style="position:absolute; left:50%; top:0; bottom:0; width:4px; background:#10b981; transform:translateX(-50%); z-index:2;"></div>
+            <div id="tuner-gauge-needle" style="position:absolute; left:50%; top:0; bottom:0; width:8px; border-radius:4px; background:var(--accent-gold); transform:translateX(-50%); transition:left 0.1s ease-out; box-shadow:0 0 10px rgba(255,179,0,0.8); z-index:3;"></div>
+          </div>
+          <div class="tuner-status-pill" id="tuner-status-badge" style="font-size:1rem; font-weight:800; padding:8px 20px; border-radius:50px; background:rgba(255,255,255,0.05); border:1px solid var(--border-light); display:inline-flex; align-items:center; gap:8px;">Pluck a string</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       TAB: CHORD LIBRARY
+       ========================================================================== -->
+  <div class="studio-tab-pane" id="pane-chords" role="tabpanel" aria-labelledby="tab-chords">
+    <div style="padding: var(--space-xl); max-width: 1200px; margin: 0 auto;">
+      <div class="library-search" role="search">
+        <label for="library-search-input">Find a chord</label>
+        <input type="search" id="library-search-input" placeholder="For example Em7b5, F#m or Cadd9" autocomplete="off" spellcheck="false" aria-describedby="library-search-status">
+        <p id="library-search-status" role="status"></p>
+      </div>
+      <section id="library-neck" class="card neck-card" aria-label="Selected library voicing"></section>
+      <div class="card">
+        <div class="card-header"><div class="card-title"><span>📚</span> Chord library</div></div>
+        <div style="margin-bottom:var(--space-md);">
+          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px;">
+            <span style="font-size:0.75rem; color:var(--text-muted); align-self:center;">Root:</span>
+            <div id="lib-root-filters" role="group" aria-label="Chord root" style="display:flex; flex-wrap:wrap; gap:6px;"></div>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;">
+            <span style="font-size:0.75rem; color:var(--text-muted); align-self:center;">Quality:</span>
+            <div id="lib-quality-filters" role="group" aria-label="Chord quality" style="display:flex; flex-wrap:wrap; gap:6px;"></div>
+          </div>
+        </div>
+        <div class="library-grid" id="library-cards-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:var(--space-md);">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       TAB: CHORD PLAYER (Practice)
+       ========================================================================== -->
+  <div class="studio-tab-pane" id="pane-player" role="tabpanel" aria-labelledby="tab-player">
+    <div style="padding: var(--space-xl); max-width: 1200px; margin: 0 auto;">
+      <section id="chord-player" class="card neck-card chord-player" aria-labelledby="chord-player-heading"></section>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       TAB: CHORD GAME (Practice)
+       ========================================================================== -->
+  <div class="studio-tab-pane" id="pane-game" role="tabpanel" aria-labelledby="tab-game">
+    <div style="padding: var(--space-xl); max-width: 1200px; margin: 0 auto;">
+      <section id="chord-game" class="card chord-game" aria-labelledby="chord-game-heading"></section>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       TAB: METRONOME
+       ========================================================================== -->
+  <div class="studio-tab-pane" id="pane-metronome" role="tabpanel" aria-labelledby="tab-metronome">
+    <div style="padding: var(--space-xl); max-width: 900px; margin: 0 auto;">
+      <header class="page-head">
+        <h2 class="page-title">Metronome</h2>
+        <p class="page-lead">A steady click to keep time, and strumming patterns to practise with it.</p>
+      </header>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:5rem; font-weight:900; color:var(--accent-gold); line-height:1; margin:var(--space-md) 0;" id="metro-bpm-display">100</div>
+        <div style="font-size:1rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px; margin-bottom:var(--space-lg);" id="metro-tempo-name">Moderato</div>
+        <input type="range" id="metro-slider" class="metro-slider" min="40" max="240" value="100" style="width:100%; max-width:480px; margin:0 auto var(--space-lg); display:block;">
+        <div style="display:flex; justify-content:center; gap:var(--space-md); margin-bottom:var(--space-lg);">
+          <button class="btn btn-secondary" id="metro-bpm-minus" style="width:50px; height:50px; border-radius:50%; font-size:1.5rem;">−</button>
+          <button class="btn btn-primary" id="btn-metro-toggle" aria-label="Start or stop the metronome" aria-pressed="false" style="width:70px; height:70px; border-radius:50%; font-size:1.8rem;"><span id="metro-play-icon">▶️</span></button>
+          <button class="btn btn-secondary" id="metro-bpm-plus" style="width:50px; height:50px; border-radius:50%; font-size:1.5rem;">+</button>
+        </div>
+        <div style="display:flex; justify-content:center; gap:8px; margin-bottom:var(--space-lg);" id="metro-beats-container" aria-label="Beat indicators"></div>
+        <div style="display:flex; justify-content:center; gap:var(--space-sm); flex-wrap:wrap; margin-bottom:var(--space-lg);">
+          <button class="btn btn-secondary" id="metro-tap" style="padding:10px 20px;">Tap tempo</button>
+          <label style="display:flex; align-items:center; gap:8px; font-size:0.85rem; color:var(--text-muted);"><input type="checkbox" id="metro-accent"> Accent beat 1</label>
+        </div>
+        <div style="display:flex; justify-content:center; gap:6px; flex-wrap:wrap;">
+          <button class="btn btn-secondary" id="metro-sig-3" style="padding:6px 16px;">3/4</button>
+          <button class="btn btn-secondary active" id="metro-sig-4" style="padding:6px 16px;">4/4</button>
+          <button class="btn btn-secondary" id="metro-sig-6" style="padding:6px 16px;">6/8</button>
+        </div>
+      </div>
+      <div class="card" style="margin-top:var(--space-lg);">
+        <div class="card-title">Strumming patterns</div>
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-bottom:var(--space-md);">
+          <button class="btn btn-secondary" id="strum-island" style="padding:8px 16px;">Island (D-DU-UDU)</button>
+          <button class="btn btn-secondary" id="strum-country" style="padding:8px 16px;">Country (Bass-Down-Up)</button>
+          <button class="btn btn-secondary" id="strum-pop" style="padding:8px 16px;">Pop (Down-Down-Up)</button>
+          <button class="btn btn-secondary" id="strum-driving" style="padding:8px 16px;">Driving (DUDUDUDU)</button>
+          <button class="btn btn-secondary" id="strum-waltz" style="padding:8px 16px;">Waltz (Bass-Down-Up)</button>
+        </div>
+        <div id="strum-arrows-track" style="display:flex; justify-content:space-around; align-items:center; gap:8px; padding:var(--space-md); background:rgba(0,0,0,0.3); border-radius:var(--radius-md);"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       TAB: BACKING TRACKS (Rhythm)
+       ========================================================================== -->
+  <div class="studio-tab-pane" id="pane-backing" role="tabpanel" aria-labelledby="tab-backing">
+    <div id="backing-host"></div>
+  </div>
+
+  <!-- Song practice: your own song slower / in another key / looped, and split into parts on this device -->
+  <div class="studio-tab-pane" id="pane-songpractice" role="tabpanel" aria-labelledby="tab-songpractice">
+    <div id="song-practice-host"></div>
+  </div>
+
+  <!-- Practice plan: a ready plan for every day; its step bar opens our pages one by one (src/ui/learning/practicePlan.ts) -->
+  <div class="studio-tab-pane" id="pane-plan" role="tabpanel" aria-labelledby="tab-plan">
+    <div class="learning-page">
+      <header class="learning-page-head"><h2>Practice plan</h2><p>Every day a short plan with steps. Each step opens the right page.<span lang="hi">हर दिन चरणों वाला छोटा प्लान। हर चरण सही पेज खोलता है।</span></p></header>
+      <div id="practice-plan-host"></div>
+    </div>
+  </div>
+
+  <div class="studio-tab-pane" id="pane-lessons" role="tabpanel" aria-labelledby="tab-lessons">
+    <section class="learning-page" aria-labelledby="lessons-page-title">
+      <header class="learning-page-head"><h2 id="lessons-page-title">Lessons</h2><p>Watch video lessons added by your teacher.</p></header>
+      <div id="lesson-library-host"></div>
+    </section>
+  </div>
+
+  <!-- Quizzes: four games with levels and stars (src/ui/learning/appLearning.ts loads each game when it is opened) -->
+  <div class="studio-tab-pane" id="pane-quiz" role="tabpanel" aria-labelledby="tab-quiz">
+    <section class="learning-page" aria-labelledby="quiz-page-title">
+      <header class="learning-page-head"><h2 id="quiz-page-title">Quizzes</h2><p>Short games with levels, stars and your best scores.<span lang="hi">लेवल, स्टार और आपके सबसे अच्छे स्कोर वाले छोटे खेल।</span></p></header>
+      <div class="quiz-switch" role="group" aria-label="Choose a quiz">
+        <button type="button" id="quiz-game-fretboard" data-quiz-game="fretboard" aria-pressed="true"><span class="quiz-switch-icon" aria-hidden="true">🎸</span>Fretboard</button>
+        <button type="button" id="quiz-game-rhythm" data-quiz-game="rhythm" aria-pressed="false"><span class="quiz-switch-icon" aria-hidden="true">🥁</span>Rhythm</button>
+        <button type="button" id="quiz-game-ear" data-quiz-game="ear" aria-pressed="false"><span class="quiz-switch-icon" aria-hidden="true">👂</span>Ear</button>
+        <button type="button" id="quiz-game-scale" data-quiz-game="scale" aria-pressed="false"><span class="quiz-switch-icon" aria-hidden="true">🎼</span>Scales</button>
+      </div>
+      <div id="quiz-game-host" class="quiz-game-host"></div>
+    </section>
+  </div>
+
+  <!-- ==========================================================================
+       TAB: GUITAR LAB (More tools)
+       ========================================================================== -->
+  <div class="studio-tab-pane" id="pane-lab" role="tabpanel" aria-labelledby="tab-lab">
+    <div id="guitar-lab-host"></div>
+  </div>
+
+  <!-- ==========================================================================
+       TAB: TABLA & PERCUSSION
+       ========================================================================== -->
+  <div class="studio-tab-pane" id="pane-rhythm" role="tabpanel" aria-labelledby="tab-rhythm">
+    <section class="percussion-page" aria-labelledby="percussion-heading">
+      <header class="percussion-header">
+        <h2 id="percussion-heading" class="page-title">Drums &amp; tabla</h2>
+        <p>Recorded drums, tabla and hand percussion for your guitar practice: expressive grooves to play along with, or steady pulse patterns.</p>
+      </header>
+      <div id="groove-trainer-host"></div>
+      <h3 class="percussion-pattern-heading">Pulse patterns</h3>
+      <p class="percussion-note">One written stroke per pulse, including recorded tabla bols and hand-drum patterns.</p>
+      <div id="percussion-controls-slot"></div>
+      <h3 class="percussion-pattern-heading">Choose a pattern</h3>
+      <p class="percussion-note">Keep its original instruments or try another sound above. Instrument changes keep the pulse order and timing; they do not turn a pattern into an authentic performance of another tradition.</p>
+      <div id="rhythm-presets"></div>
+    </section>
+  </div>
+
+  <!-- ==========================================================================
+       PERSISTENT RHYTHM DOCK
+       ========================================================================== -->
+  <div id="rhythm-dock" class="percussion-controls" aria-label="Percussion playback controls" data-state="idle">
+    <div class="percussion-selectors">
+      <label>Pattern<select id="dock-rhythm-select"></select></label>
+      <label>Instrument<select id="percussion-instrument"></select></label>
+    </div>
+    <div class="percussion-transport">
+      <button class="btn btn-primary" id="btn-dock-rhythm-toggle" aria-pressed="false">Start rhythm</button>
+      <button class="btn btn-secondary" id="percussion-preview">Hear sound</button>
+      <span id="percussion-pulse"></span>
+    </div>
+    <div class="rhythm-beat-indicators" id="dock-beat-dots" aria-label="Pattern pulses"></div>
+    <div id="percussion-pads" class="percussion-pads" role="group" aria-label="Hear individual percussion sounds"></div>
+    <p id="percussion-source" class="percussion-note"></p>
+    <label class="percussion-feel"><input type="checkbox" id="percussion-humanize" checked aria-describedby="percussion-feel-help"> Human feel for hand percussion</label>
+    <p id="percussion-feel-help" class="percussion-note"></p>
+    <div class="percussion-levels">
+      <label class="percussion-master">Percussion volume <output id="percussion-volume-readout" for="percussion-volume">100%</output><input type="range" id="percussion-volume" min="0" max="1.5" step="0.05" value="1"></label>
+      <label>Pulse tempo <output id="dock-tempo-readout" for="dock-tempo-slider">80 BPM</output><input type="range" id="dock-tempo-slider" min="50" max="160" value="80"></label>
+      <label>Low drums <output id="percussion-bass-readout" for="dock-bass-vol">80%</output><input type="range" id="dock-bass-vol" min="0" max="1" step="0.05" value="0.8"></label>
+      <label>High drums &amp; shaker <output id="percussion-treble-readout" for="dock-treble-vol">75%</output><input type="range" id="dock-treble-vol" min="0" max="1" step="0.05" value="0.75"></label>
+    </div>
+    <p id="percussion-status" class="percussion-note" role="status">Choose a sound, then start a pattern.</p>
+    <p class="percussion-note">Volume controls only percussion; 0% mutes it and 100–150% adds a boost. Start with a comfortable device volume. Soft limiting controls percussion peaks, not the total level of every app playing on your device.</p>
+    <p class="percussion-note">Tabla recordings are MP3 files, with onset and level adjustments at playback. One written pulse per tempo beat; human feel never changes the cycle length. Changing kits reloads and restarts a playing pattern. Use headphones with the microphone. Stop, Escape, leaving this tool or hiding the page ends playback.</p>
+  </div>
+
+  <!-- ==========================================================================
+       MIDI MODAL
+       ========================================================================== -->
+  <div class="modal-backdrop" id="midi-modal" role="dialog" aria-modal="true" aria-labelledby="midi-modal-title">
+    <div class="modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:var(--space-sm);">
+        <h2 id="midi-modal-title" style="font-size:1.4rem; font-weight:800; color:var(--accent-purple);">🎹 Web MIDI Output</h2>
+        <button class="btn btn-secondary" onclick="document.getElementById('midi-modal').style.display='none'" style="padding:4px 12px;">✕ Close</button>
+      </div>
+      <div style="margin-bottom:var(--space-md);">
+        <label style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:4px;">Output Device</label>
+        <select class="rhythm-select-pill" id="midi-device-select" style="width:100%;"></select>
+      </div>
+      <div style="display:flex; gap:var(--space-md); flex-wrap:wrap; margin-bottom:var(--space-md);">
+        <label style="display:flex; align-items:center; gap:8px; font-size:0.85rem;"><input type="checkbox" id="midi-send-chords" checked> Send Chords</label>
+        <label style="display:flex; align-items:center; gap:8px; font-size:0.85rem;"><input type="checkbox" id="midi-send-notes" checked> Send Single Notes</label>
+        <label style="display:flex; align-items:center; gap:8px; font-size:0.85rem;">Channel: <select id="midi-channel-select" class="rhythm-select-pill" style="width:60px;"><option value="0">1</option><option value="1">2</option><option value="9">10 (Drums)</option><option value="2">3</option></select></label>
+      </div>
+      <div style="display:flex; gap:var(--space-md); flex-wrap:wrap;">
+        <button class="btn btn-primary" id="btn-midi-test"><span>🎵</span> Test C Major</button>
+        <button class="btn btn-secondary" id="btn-midi-panic"><span>🛑</span> Panic (All Notes Off)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUSTOM SONG CREATOR MODAL -->
+  <dialog id="song-timing-editor" class="song-timing-editor" aria-labelledby="song-editor-heading">
+    <h2 id="song-editor-heading">Edit timing</h2>
+    <p>Beats are quarter-note units. Tempo changes use zero-based beat positions. Source notes use strings 1–6 (1 is high E) and fret offsets 0–36 relative to the capo. The playable neck is frets 0–12; high source pitches are retained and may need Fit melody to position. Rests are silent. Built-in edits save as an imported copy.</p>
+    <label for="song-timing-title">Title</label><input id="song-timing-title">
+    <label for="song-timing-source">Source / arrangement reference (optional)</label><input id="song-timing-source">
+    <label for="song-timing-version">Version (optional)</label><input id="song-timing-version">
+    <label for="song-timing-json">Timing JSON</label>
+    <textarea id="song-timing-json" rows="16" spellcheck="false"></textarea>
+    <details><summary>Format example (original exercise)</summary><pre>{
+  "version": 1, "bpm": 80,
+  "tempos": [{"beat": 4, "bpm": 120}],
+  "events": [
+    {"type": "chord", "chord": "C", "beats": 2},
+    {"type": "rest", "beats": 1},
+    {"type": "note", "string": 1, "fret": 3, "beats": 2}
+  ]
+}</pre></details>
+    <p id="song-editor-status" role="status"></p>
+    <div class="song-timing-controls">
+      <button class="btn btn-primary" id="song-editor-save">Save timing</button>
+      <button class="btn btn-secondary" id="song-editor-export">Export song JSON</button>
+      <button class="btn btn-secondary" id="song-editor-close">Close</button>
+    </div>
+  </dialog>
+  <div class="modal-backdrop" id="custom-song-modal" role="dialog" aria-modal="true" aria-labelledby="custom-song-title">
+    <div class="modal-card" style="max-width:800px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:var(--space-md);">
+        <h2 id="custom-song-title" style="font-size:1.4rem; font-weight:800; color:var(--accent-gold);">📝 Import / Create Song</h2>
+        <button class="btn btn-secondary" onclick="document.getElementById('custom-song-modal').style.display='none'" style="padding:4px 12px;">✕ Close</button>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:var(--space-md); margin-bottom:var(--space-md);">
+        <div><label style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:4px;">Song Title *</label><input type="text" id="custom-song-title-input" class="rhythm-select-pill" style="width:100%; padding:10px;" placeholder="My Song"></div>
+        <div><label style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:4px;">Artist / Movie</label><input type="text" id="custom-song-artist-input" class="rhythm-select-pill" style="width:100%; padding:10px;" placeholder="Original / Band"></div>
+        <div><label style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:4px;">Key</label><select id="custom-song-key" class="rhythm-select-pill" style="width:100%;"><option>C Major</option><option>D Major</option><option>D Minor</option><option>E Minor</option><option>G Major</option><option>A Minor</option><option>F Major</option><option>B Minor</option></select></div>
+        <div><label style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:4px;">BPM</label><input type="number" id="custom-song-bpm" class="rhythm-select-pill" style="width:100%; padding:10px;" value="80" min="40" max="220"></div>
+        <div><label style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:4px;">Strum Pattern</label><select id="custom-song-strum" class="rhythm-select-pill" style="width:100%;"><option value="D - D U - U D -">D - D U - U D - (Folk)</option><option value="D - D - D U D U">D - D - D U D U (Bollywood)</option><option value="D D U U D U">D D U U D U (Campfire)</option><option value="D - D - D - D -">D - D - D - D - (Slow 4/4)</option></select></div>
+      </div>
+      <div class="song-timing-controls">
+        <label for="custom-song-source">Source (optional)</label><input id="custom-song-source" placeholder="Your chart / arrangement reference">
+        <label for="custom-song-version">Version (optional)</label><input id="custom-song-version" placeholder="Arrangement or recording version">
+      </div>
+      <div class="song-sheet-import" style="display:grid; grid-template-columns:minmax(0, 1fr); gap:6px; margin-bottom:var(--space-md);">
+        <label for="custom-song-sheet">🎼 Sheet music file (MusicXML: .musicxml or .mxl)</label>
+        <input type="file" id="custom-song-sheet" style="min-height:44px; width:100%;" accept=".musicxml,.mxl,.xml,application/vnd.recordare.musicxml+xml,application/vnd.recordare.musicxml">
+        <label for="custom-song-sheet-part" id="custom-song-sheet-part-label" hidden>Part to play</label>
+        <select id="custom-song-sheet-part" class="rhythm-select-pill" style="justify-self:start; max-width:100%;" hidden></select>
+        <p class="song-data-status" id="custom-song-sheet-status" role="status">Save the music from MuseScore (free), Sibelius, Finale or Flat.io as MusicXML. The app reads one melody line and plays it on the fretboard. A PDF or a photo cannot be read.</p>
+      </div>
+      <div style="margin-bottom:var(--space-md);">
+        <label for="custom-song-lyrics">Paste a chord chart, source tab text, or exported song/timing JSON</label>
+        <textarea id="custom-song-lyrics" rows="8" class="song-import-text" placeholder="[Exercise]&#10;[C]Two steps [G]and a pause&#10;C C G C"></textarea>
+        <p class="song-data-status">Bracketed chords, chord-only lines and chords above words are supported. Source text is preserved. ASCII tabs, bends, slides and other techniques are not converted to timed notes. Use Edit timing to author explicit notes/rests. Import only material you are authorized to use.</p>
+      </div>
+      <p id="custom-song-status" role="status"></p>
+      <div style="display:flex; justify-content:flex-end; gap:var(--space-sm);">
+        <button class="btn btn-secondary" onclick="document.getElementById('custom-song-modal').style.display='none'">Cancel</button>
+        <button class="btn btn-primary" id="btn-save-custom-song"><span>💾</span> Save to Library</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').then((reg) => {
+          reg.addEventListener('updatefound', () => {
+            const newWorker = reg.installing;
+            if (newWorker) {
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  const take = window.getListeningToolsState?.();
+                  if (take?.recording || take?.retainedTake) {
+                    // Do not discard a consented in-memory take for an automatic update.
+                    window.dispatchEvent(new Event('guitar-update-pending'));
+                    return;
+                  }
+                  // A new version has been installed; activate and refresh
+                  console.log('New version available, refreshing...');
+                  window.location.reload();
+                }
+              });
+            }
+          });
+        }).catch(err => console.log('SW:', err));
+      });
+    }
+  </script>
+  <script src="./all_chord_shapes.js"></script>
+  <script src="./song_catalog_data.js"></script>
+</body>
+</html>

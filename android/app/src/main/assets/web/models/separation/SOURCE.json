@@ -1,0 +1,21 @@
+{
+  "file": "htdemucs_6s-2a9a2c25.onnx",
+  "bytes": 59790579,
+  "sha256": "2a9a2c2574733dd37aeb3ac6cb85b4ffd9d774b9c2dae7d6c035200378f48b4c",
+  "model": "Demucs v4 htdemucs_6s (Hybrid Transformer Demucs, 6 parts: drums, bass, other, vocals, guitar, piano)",
+  "authors": "Alexandre Défossez, Simon Rouard and contributors, Meta AI Research",
+  "source": "https://github.com/facebookresearch/demucs (pip package demucs 4.0.1)",
+  "checkpoint": {
+    "file": "5c90dfd2-34c22ccb.th",
+    "url": "https://dl.fbaipublicfiles.com/demucs/hybrid_transformer/5c90dfd2-34c22ccb.th",
+    "sha256": "34c22ccb381c6f9fdbf324f04e1e2fe21aaaf293f5ded163a162697ff9a02ddd"
+  },
+  "licence": "MIT (LICENSE-demucs.txt, the Demucs repository licence; the repository gives no separate licence for its pretrained weights)",
+  "conversion": [
+    "The network part of HTDemucs.forward (between the spectrogram and the inverse spectrogram, so the graph has no complex numbers) was exported with torch.onnx.export (torch 2.5.1, opset 17, legacy exporter). Inputs: mix [1,2,343980] and the complex-as-channels spectrogram [1,4,2048,336]; outputs: the 6 parts' spectrograms [1,6,4,2048,336] and time branches [1,6,2,343980].",
+    "Weights are stored as float16 with a Cast back to float32 (onnx 1.23.2), so the download is half the size while the computation stays float32. Checked against PyTorch on a real song segment: max difference 0.00018 (spectrogram, rms 0.16) and 0.00004 (time branch, rms 0.23).",
+    "The spectrogram, inverse spectrogram, song normalisation and 25 % overlapping segments run in JavaScript (src/separation/demucs.ts), as in demucs.apply_model with shifts = 0.",
+    "Made by scripts/separation/export-model.py; a rebuild on 2026-10-15 gave the same file byte for byte."
+  ],
+  "notes": "Demucs' own documentation calls the piano part of htdemucs_6s weak. The split is done on the user's device; no audio is uploaded."
+}

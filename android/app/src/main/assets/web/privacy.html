@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy — Guitar Studio</title>
+  <meta name="theme-color" content="#171918">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/icon-192.png">
+  <link rel="stylesheet" href="/auth/auth.css">
+  <script type="module" src="/auth/common.js"></script>
+</head>
+<body>
+  <header class="brand">
+    <img class="brand-logo" src="/auth/leading-note-logo.png" alt="Leading Note" width="250" height="50">
+    <span class="brand-text"><strong>Guitar Studio</strong></span>
+  </header>
+  <main class="card prose" id="main" tabindex="-1">
+    <h1>Privacy note</h1>
+    <p>This note says, in simple words, what Guitar Studio stores about you when you have an account.</p>
+
+    <h2>What we store</h2>
+    <ul>
+      <li>Your <strong>name</strong> and <strong>email address</strong>.</li>
+      <li>Your <strong>password</strong>, but only as a secure “hash”. Nobody can read your password from it, not even the admin.</li>
+      <li>If you use <strong>“Continue with Google”</strong>: Google tells us your name, your email address and that Google has confirmed it, and an account number that Google gives to our site, so we know it is you next time. We never see your Google password, and we do not get your contacts, files or anything else from Google.</li>
+      <li>Your account state: waiting, active or blocked; whether your email is confirmed; an “access until” date. <span data-trial="A new account gets {days} free after the email is confirmed; the academy can give longer access.">The academy checks new accounts and sets how long you have access.</span></li>
+      <li>So that the free days are given only once per email address, we keep a one-way code made from your email address (not the address itself). This code stays even after your account is deleted.</li>
+      <li><strong>Login times</strong>: when you signed up and when you last logged in.</li>
+      <li>For each device where you are logged in: a login record (it lasts up to 30 days) and the browser name your device sends.</li>
+      <li>A log of admin actions (for example “approved”, “blocked”, “password link sent”).</li>
+      <li>Your <strong>practice progress</strong>, so it is the same on every device where you log in: results of practice rounds, your own songs, chord game scores, your Chord player progressions and rhythms, your backing track choices and own chords, drum settings, the guitar look (left or right hand, skin colour) and, if your device still has them, the old practice profiles from earlier versions (name, level and their numbers). An old profile PIN is never sent. Admins see only its size and when it was saved, not what is in it.</li>
+      <li><strong>Feedback</strong> you send from the app (“Send feedback”): the message, its type (idea, problem or other) and the app page you were on, with your name and email. The academy reads it on the admin page and gets one email a day with the new messages. It is deleted when you delete your account.</li>
+      <li><strong>Practice time</strong>: how many minutes a day you had the app open and in use, and on which app pages (for example Scales or Play along). Only these numbers are sent, never what you played or said. You see your own time in the account menu; the academy sees it on the admin page to know which tools help students. It is deleted when you delete your account.</li>
+      <li><strong>Practice plan</strong>: your weekly practice-plan scores (how much of the week's target you did, in %, and the minutes) and a practice plan your teacher set for you are stored with your account; the academy sees them on the admin page. Your first name, last-name initial and monthly practice-plan score are shown on the academy leaderboard. You can hide yourself in My account. They are deleted when you delete your account.</li>
+    </ul>
+
+    <h2>What we do not store</h2>
+    <ul>
+      <li><strong>Your practice audio never leaves your device.</strong> The microphone sound is used only inside your browser to name chords and notes and to tune. It is not recorded on our server and not uploaded.</li>
+      <li><strong>Song practice</strong>: a song file you open is played and split into parts inside your browser. The file and its parts stay on your device. They are never uploaded.</li>
+      <li>If you upload a PDF of sheet music, it is sent to our server only to turn it into notes, and it is deleted right after (it is never kept or shared).</li>
+      <li>Backing takes you record, audio files you choose, your microphone and MIDI settings, and your 2D/3D view choices stay in your browser on your device. They are never uploaded.</li>
+      <li>When you log out, the app removes your practice progress from that device (it stays in your account), so the next person on a shared computer does not see it.</li>
+      <li>The app does not save your IP address in its database. It uses it for a short time, in memory, to stop too many tries (for example logins and sign-ups).</li>
+    </ul>
+
+    <h2>Why</h2>
+    <p>We use this information only to let you log in, to keep your practice progress and practice time for you, to let the academy manage accounts and read feedback, and to send you emails about your account (confirm your email, password links, “your account is ready”, “your account is deleted”). We do not sell it and we do not use it for advertising.</p>
+
+    <h2>Where it is kept</h2>
+    <p>Your account data is kept on the academy’s server at Oracle Cloud in Mumbai, India. Emails are sent through Oracle’s email service. If you use “Continue with Google”, Google handles that sign-in. The server keeps short technical logs to find problems (for example which page was asked for, or that an email was sent to a shortened address); they never contain your password or what you played. A copy of the database is made every day (and before each update) and kept for about two weeks.</p>
+
+    <h2>Video lessons</h2>
+    <p>Video lessons are YouTube videos added by an admin. The YouTube player loads only after you choose a lesson. YouTube then receives your IP address and browser information and may use cookies or similar storage. Guitar Studio does not send your microphone audio or practice progress to YouTube.</p>
+
+    <h2>Cookies</h2>
+    <p>We use one cookie that keeps you logged in. It is needed for the app to work. During “Continue with Google” a second cookie lasts at most 10 minutes, so the sign-in can only finish in the browser where it started. There are no advertising or tracking cookies. The app also keeps your settings and its sounds in your browser’s own storage on your device, so it starts faster and works with a weak connection.</p>
+
+    <h2>Delete your account</h2>
+    <p>You can delete your account yourself: open <strong>My account → Delete my account</strong>, or go to <a href="/delete-account">Delete my account</a> (this also works when your access has ended). You need your email and password, or you confirm with Google. Deleting your account also deletes your saved practice progress, practice time and feedback, and logs you out everywhere. It is also gone from the database copies after about two weeks. The admin log keeps only a short note with a shortened email (for example “st***@example.com”).</p>
+    <p>You can also ask the academy to delete it. <span data-contact="Email: " hidden></span></p>
+
+    <p class="hint">Last updated: October 2026.</p>
+    <p class="links"><a href="/login">Log in</a><a href="/signup">Sign up</a></p>
+  </main>
+  <footer><a href="/privacy">Privacy</a><a data-contact-link hidden>Contact</a><span data-copyright>© 2026 Guitar Studio</span></footer>
+</body>
+</html>

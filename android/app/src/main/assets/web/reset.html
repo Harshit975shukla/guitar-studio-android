@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Choose a new password — Guitar Studio</title>
+  <meta name="theme-color" content="#171918">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/icon-192.png">
+  <link rel="stylesheet" href="/auth/auth.css">
+  <script type="module" src="/auth/reset.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the form</a>
+  <header class="brand">
+    <img class="brand-logo" src="/auth/leading-note-logo.png" alt="Leading Note" width="250" height="50">
+    <span class="brand-text"><strong>Guitar Studio</strong></span>
+  </header>
+  <main class="card" id="main" tabindex="-1">
+    <h1>Choose a new password</h1>
+    <form id="reset-form" novalidate>
+      <div class="field" data-when-ready hidden>
+        <label for="password">New password <span class="hint" id="password-hint">(at least 8 characters)</span></label>
+        <div class="password-field">
+          <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="128" required aria-describedby="password-hint" data-password>
+          <button type="button" class="eye" data-eye aria-label="Show password" aria-pressed="false"><svg class="eye-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><svg class="eye-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18 M10.6 5.1A9.6 9.6 0 0 1 12 5c6.4 0 10 7 10 7a17.6 17.6 0 0 1-3.2 4.1 M6.6 6.6C3.9 8.4 2 12 2 12s3.6 7 10 7a9.4 9.4 0 0 0 5.4-1.6 M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></button>
+        </div>
+      </div>
+      <div class="field" data-when-ready hidden>
+        <label for="confirm">New password again</label>
+        <div class="password-field">
+          <input id="confirm" name="confirm" type="password" autocomplete="new-password" minlength="8" maxlength="128" required data-password>
+          <button type="button" class="eye" data-eye aria-label="Show password" aria-pressed="false"><svg class="eye-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><svg class="eye-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18 M10.6 5.1A9.6 9.6 0 0 1 12 5c6.4 0 10 7 10 7a17.6 17.6 0 0 1-3.2 4.1 M6.6 6.6C3.9 8.4 2 12 2 12s3.6 7 10 7a9.4 9.4 0 0 0 5.4-1.6 M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></button>
+        </div>
+      </div>
+      <p class="message error" data-error role="alert"></p>
+      <p class="message ok" data-status role="status">Checking your link…</p>
+      <button type="submit" class="btn btn-primary" data-when-ready hidden>Save my new password</button>
+    </form>
+    <p class="links"><a href="/login">Log in</a><a href="/forgot">Ask for a new link</a></p>
+  </main>
+  <footer><a href="/privacy">Privacy</a><a data-contact-link hidden>Contact</a><span data-copyright>© 2026 Guitar Studio</span></footer>
+</body>
+</html>

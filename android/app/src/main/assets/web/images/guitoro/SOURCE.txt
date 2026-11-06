@@ -1,0 +1,18 @@
+Guitar artwork from guitoro.com (repo Harshit975shukla/guitar-studio), the owner's own site; reuse permitted by the owner Harshit Shukla on 2026-10-24.
+
+Files here are crops (neck + headstock) of guitoro's guitar/acoustic-rebuilt.webp, guitar/nylon-rebuilt.webp and
+guitar/electric.webp, made in the browser (canvas, webp quality 0.84). The electric crop has guitoro's headstock flip
+(about the neck axis, with its small shear) baked in, as guitoro draws it. The string/fret positions in
+src/ui/guitoroNeck.ts come from guitoro's guitar/acoustic.json, nylon.json and electric.json.
+
+lab/ (Guitar Lab 2D view, added 2026-10-24): acoustic-, nylon- and electric-{320,1600}.webp are guitoro's full guitar pictures
+(guitar/acoustic-rebuilt.webp, guitar/nylon-rebuilt.webp, guitar/electric.webp), cropped to guitoro's contentBox and resized
+(webp quality 80, 320 and 1600 px wide). The electric one has guitoro's headstock flip baked in, as guitoro draws it (same
+transform as electric-neck.webp). The clickable part shapes in src/ui/guitarLabGuitoro.ts use guitoro's acoustic/nylon/
+electric.json (nut, bridge, tuner points, board edges) and the pictures' own outline (src/ui/guitarLabGuitoroData.ts, traced from the alpha).
+
+<kind>-guitar-320.webp / -1600.webp (acoustic, nylon, electric; 2026-10-24): the whole guitar for the Guitar view,
+cropped to the guitar's outline + a small margin and resized with Pillow (LANCZOS, webp quality 80). Same sources;
+the electric one uses the same baked headstock flip as electric-neck.webp.
+
+tuner/headstock-acoustic.webp (2026-10-24, Tuner page): the headstock of guitoro's guitar/acoustic-rebuilt.webp, cropped (680 x 425 px, from x 410..1090, y 515..940 of the 4344 x 1448 source), with the start of the neck faded out on the right (Pillow, webp quality 84). Peg positions in src/ui/tunerHeadstock.ts follow the picture's six tuning keys.

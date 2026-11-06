@@ -1,0 +1,110 @@
+{
+  "source": "tonejs-instruments",
+  "referencePage": "https://github.com/nbrosowsky/tonejs-instruments",
+  "commit": "622c2f1c32c8cfce4158ddc3eb26e518ddef37e5",
+  "license": "CC-BY-3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+  "attribution": "Cello recordings from tonejs-instruments by Nicholaus P. Brosowsky (https://github.com/nbrosowsky/tonejs-instruments), CC BY 3.0. Trimmed and volume-matched there; copied here unchanged.",
+  "originalRecording": "Freesound pack 12408 \"real cello notes\" by flcellogrl (the library's cello.txt gives CC BY 3.0).",
+  "scope": "Only the cello note recordings listed here. No code from the repository.",
+  "files": [
+    {
+      "path": "cello/A2.mp3",
+      "midi": 45,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/cello/A2.mp3",
+      "bytes": 99566,
+      "sha256": "5edbdf136a4b2faba3185e7fb2b2053a801e81a0611faa4fa01519fb4ce36345"
+    },
+    {
+      "path": "cello/B2.mp3",
+      "midi": 47,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/cello/B2.mp3",
+      "bytes": 83916,
+      "sha256": "5b8bf3dad2d856efde566a04470587b83bd66e8eb8025556b135f58f21767cd7"
+    },
+    {
+      "path": "cello/Cs3.mp3",
+      "midi": 49,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/cello/Cs3.mp3",
+      "bytes": 77030,
+      "sha256": "455aef464028e2dd81b7563036142189d51a6f0f7b3741b6dab272bcab59a37b"
+    },
+    {
+      "path": "cello/Ds3.mp3",
+      "midi": 51,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/cello/Ds3.mp3",
+      "bytes": 65136,
+      "sha256": "8346c9e707e9328c82c5025d80381a335f38b968cf2058cf0e3e93898d2573d7"
+    },
+    {
+      "path": "cello/F3.mp3",
+      "midi": 53,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/cello/F3.mp3",
+      "bytes": 71396,
+      "sha256": "0341e83cf9c9bf36d31cf7f6640eeba541c2d1ad0ed6565b39d91ba7720d25a4"
+    },
+    {
+      "path": "cello/G3.mp3",
+      "midi": 55,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/cello/G3.mp3",
+      "bytes": 70770,
+      "sha256": "869683c073aa1264e5b2d2ec5f68818d20acea390d6926a728654a6d6a026169"
+    },
+    {
+      "path": "cello/A3.mp3",
+      "midi": 57,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/cello/A3.mp3",
+      "bytes": 73274,
+      "sha256": "9738de0733f9e321b2cd0212d4ef6f00da8b3c2a6d7cb787f51a65515fd8fd8f"
+    },
+    {
+      "path": "cello/B3.mp3",
+      "midi": 59,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/cello/B3.mp3",
+      "bytes": 83290,
+      "sha256": "3fc137e3f00b444e9fcdd662f4df4032050845b1803984ecae622e15c81900c0"
+    },
+    {
+      "path": "cello/Cs4.mp3",
+      "midi": 61,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/cello/Cs4.mp3",
+      "bytes": 66388,
+      "sha256": "5040644dfb1d867f314703ced1b33ee819f121864c06c4963fe029e73996d35d"
+    },
+    {
+      "path": "cello/Ds4.mp3",
+      "midi": 63,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/cello/Ds4.mp3",
+      "bytes": 71396,
+      "sha256": "979ee68789a9a9c58285df1fd5e175ece5e6152c1deec67fb0dac4c058447df1"
+    },
+    {
+      "path": "cello/F4.mp3",
+      "midi": 65,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/cello/F4.mp3",
+      "bytes": 71396,
+      "sha256": "6e34e2df73f83fe30a994f1aa4c00d9042522cddb57ef1cb0766edb2b9d800b8"
+    },
+    {
+      "path": "cello/G4.mp3",
+      "midi": 67,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/cello/G4.mp3",
+      "bytes": 62006,
+      "sha256": "9508f47315235b62bcf53498f2ec61555cdc121325b07e880b1484851f92e763"
+    },
+    {
+      "path": "cello/A4.mp3",
+      "midi": 69,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/cello/A4.mp3",
+      "bytes": 60754,
+      "sha256": "6540d5e465b28ca2529cf2d6f552e16463efd61dfe5213a60156ca7cf3194503"
+    },
+    {
+      "path": "cello/B4.mp3",
+      "midi": 71,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/cello/B4.mp3",
+      "bytes": 63884,
+      "sha256": "f6f83735e5b108b78f79b438c8cfd0af8146fd435925c9e4aa2138f354d6e59e"
+    }
+  ]
+}

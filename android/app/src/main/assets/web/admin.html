@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin — Guitar Studio</title>
+  <meta name="theme-color" content="#171918">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/icon-192.png">
+  <link rel="stylesheet" href="/auth/auth.css">
+  <script type="module" src="/auth/admin.js"></script>
+</head>
+<body class="wide">
+  <a class="skip-link" href="#main">Skip to the list</a>
+  <header class="brand">
+    <img class="brand-logo" src="/auth/leading-note-logo.png" alt="Leading Note" width="250" height="50">
+    <span class="brand-text"><strong>Guitar Studio</strong></span>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="card" aria-labelledby="admin-title">
+      <p class="eyebrow">Admin</p>
+      <h1 id="admin-title">Students and accounts</h1>
+      <nav class="top-links" aria-label="Admin links">
+        <a class="btn btn-small" href="/">Open Guitar Studio</a>
+        <a class="btn btn-small" href="/account">My account</a>
+        <a class="btn btn-small" href="/admin/plans">Practice plans</a>
+        <a class="btn btn-small" href="/admin/lessons">Video lessons</a>
+        <button type="button" class="btn btn-small" id="logout">Log out</button>
+      </nav>
+      <section class="practice" aria-labelledby="practice-title">
+        <h2 id="practice-title">Practice time</h2>
+        <p class="hint">Minutes the app was on screen and in use (touched in the last 2 minutes, or sound or the microphone on), counted since this was added. Students only.</p>
+        <div id="practice-overview" class="practice-overview"></div>
+      </section>
+      <form class="toolbar table-tools" id="search-form" role="search" aria-label="Filter the accounts">
+        <div class="field grow">
+          <label for="search">Search name or email</label>
+          <input id="search" name="q" type="search" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="field">
+          <label for="filter-status">Status</label>
+          <select id="filter-status" name="status"></select>
+        </div>
+        <div class="field">
+          <label for="filter-role">Role</label>
+          <select id="filter-role" name="role">
+            <option value="all">All roles</option>
+            <option value="student">Student</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+        <label class="check toggle" for="filter-recent"><input id="filter-recent" name="recent" type="checkbox"> Active in last 7 days</label>
+        <button type="button" class="btn btn-small" id="download-csv">Download CSV</button>
+      </form>
+      <p class="message error" data-error role="alert"></p>
+      <p class="message ok" data-status role="status"></p>
+      <p id="list-summary" class="hint" role="status"></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Accounts. This table scrolls sideways on small screens.">
+        <table class="users-table">
+          <caption class="visually-hidden">Students and accounts. Use the column buttons to sort.</caption>
+          <thead>
+            <tr>
+              <th scope="col" aria-sort="none"><button type="button" class="th-sort" data-sort="name">Name</button></th>
+              <th scope="col" aria-sort="none"><button type="button" class="th-sort" data-sort="email">Email</button></th>
+              <th scope="col" aria-sort="none"><button type="button" class="th-sort" data-sort="role">Role</button></th>
+              <th scope="col" aria-sort="none"><button type="button" class="th-sort" data-sort="status">Status</button></th>
+              <th scope="col" aria-sort="none"><button type="button" class="th-sort" data-sort="access">Access until</button></th>
+              <th scope="col" aria-sort="none"><button type="button" class="th-sort" data-sort="active">Last active</button></th>
+              <th scope="col" aria-sort="none"><button type="button" class="th-sort" data-sort="week">Practice this week</button></th>
+              <th scope="col" aria-sort="none"><button type="button" class="th-sort" data-sort="plan">Plan score</button></th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="users" aria-busy="false"></tbody>
+        </table>
+      </div>
+      <p class="hint">Last active = the newest of the last app use and the last login.</p>
+    </section>
+    <section class="card" id="feedback-card" aria-labelledby="feedback-title">
+      <h2 id="feedback-title" tabindex="-1">Feedback</h2>
+      <p class="lead">What students sent with “Send feedback” in the app: the newest 200 messages.</p>
+      <p class="hint" id="feedback-digest"></p>
+      <button type="button" class="btn btn-small" id="feedback-reload">Reload the feedback</button>
+      <p class="message error" data-error role="alert"></p>
+      <p class="message ok" data-status role="status"></p>
+      <ul class="feedback" id="feedback" aria-labelledby="feedback-title"></ul>
+    </section>
+    <section class="card" aria-labelledby="audit-title">
+      <h2 id="audit-title">Admin log</h2>
+      <p class="lead">The last 100 actions: sign-ups, approvals, blocks, password changes and more.</p>
+      <button type="button" class="btn btn-small" id="audit-reload">Reload the log</button>
+      <ol class="audit" id="audit"></ol>
+    </section>
+  </main>
+  <footer><a href="/privacy">Privacy</a><a data-contact-link hidden>Contact</a><span data-copyright>© 2026 Guitar Studio</span></footer>
+</body>
+</html>

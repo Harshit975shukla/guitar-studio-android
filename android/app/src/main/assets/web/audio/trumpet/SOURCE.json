@@ -1,0 +1,47 @@
+{
+  "source": "tonejs-instruments",
+  "referencePage": "https://github.com/nbrosowsky/tonejs-instruments",
+  "commit": "622c2f1c32c8cfce4158ddc3eb26e518ddef37e5",
+  "license": "CC-BY-3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+  "attribution": "Trumpets recordings from tonejs-instruments by Nicholaus P. Brosowsky (https://github.com/nbrosowsky/tonejs-instruments), CC BY 3.0. Trimmed and volume-matched there; copied here unchanged.",
+  "originalRecording": "Versilian Studios Chamber Orchestra 2 (VSCO 2) Community Edition, http://vis.versilstudios.net/vsco-community.html",
+  "scope": "Only the trumpets note recordings listed here. No code from the repository.",
+  "files": [
+    {
+      "path": "trumpet/Ds4.mp3",
+      "midi": 63,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/trumpet/Ds4.mp3",
+      "bytes": 165922,
+      "sha256": "56a9e82ac71fdede979ba730762e7729e9af35ac1ed627e5cc734bff22c9638e"
+    },
+    {
+      "path": "trumpet/F4.mp3",
+      "midi": 65,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/trumpet/F4.mp3",
+      "bytes": 134622,
+      "sha256": "9c6cd683952ce873491d0c01e377724ced4d909f23f64dfee7bd71c412238069"
+    },
+    {
+      "path": "trumpet/G4.mp3",
+      "midi": 67,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/trumpet/G4.mp3",
+      "bytes": 174060,
+      "sha256": "ce84c9858174c51a7d1844377a0dd4c3e1523825656851006f953a74f28479f2"
+    },
+    {
+      "path": "trumpet/As4.mp3",
+      "midi": 70,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/trumpet/As4.mp3",
+      "bytes": 154028,
+      "sha256": "eba51953a7588d2b7f11871aa2ab9984bd32ee8e21093878c498e496164ff498"
+    },
+    {
+      "path": "trumpet/D5.mp3",
+      "midi": 74,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/trumpet/D5.mp3",
+      "bytes": 136500,
+      "sha256": "1298bf78bb8613d9fcc6b87f414e28fb311689ab784267381f7af39f30ecb387"
+    }
+  ]
+}

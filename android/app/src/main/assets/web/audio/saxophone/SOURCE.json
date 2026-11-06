@@ -1,0 +1,103 @@
+{
+  "source": "tonejs-instruments",
+  "referencePage": "https://github.com/nbrosowsky/tonejs-instruments",
+  "commit": "622c2f1c32c8cfce4158ddc3eb26e518ddef37e5",
+  "license": "CC-BY-3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+  "attribution": "Saxophone recordings from tonejs-instruments by Nicholaus P. Brosowsky (https://github.com/nbrosowsky/tonejs-instruments), CC BY 3.0. Trimmed and volume-matched there; copied here unchanged.",
+  "originalRecording": "Karoryfer Samples, https://www.karoryfer.com/karoryfer-samples",
+  "scope": "Only the saxophone note recordings listed here. No code from the repository.",
+  "files": [
+    {
+      "path": "saxophone/Fs3.mp3",
+      "midi": 54,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/saxophone/Fs3.mp3",
+      "bytes": 128988,
+      "sha256": "0f932610d44ec1a660f60a4381898ebf4ab4d830abcaf1161bf118ac6708d50c"
+    },
+    {
+      "path": "saxophone/Gs3.mp3",
+      "midi": 56,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/saxophone/Gs3.mp3",
+      "bytes": 161540,
+      "sha256": "0d35670a741dde227191a9c392692924aadbda4317e817b6b10661dfc7a57120"
+    },
+    {
+      "path": "saxophone/As3.mp3",
+      "midi": 58,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/saxophone/As3.mp3",
+      "bytes": 131492,
+      "sha256": "5ceb14fa6814e308e151d637d623b9269f53e88c06a5dc50c1cdaf925b7fa578"
+    },
+    {
+      "path": "saxophone/C4.mp3",
+      "midi": 60,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/saxophone/C4.mp3",
+      "bytes": 150272,
+      "sha256": "151eb3f3142d10bdc188561870679b018fe6afddb157808bf5ccf75a5154d16a"
+    },
+    {
+      "path": "saxophone/D4.mp3",
+      "midi": 62,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/saxophone/D4.mp3",
+      "bytes": 164670,
+      "sha256": "54c6383885001a330b68f966490c2244a0b3c7184483781ed5daf25f240051ae"
+    },
+    {
+      "path": "saxophone/E4.mp3",
+      "midi": 64,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/saxophone/E4.mp3",
+      "bytes": 165922,
+      "sha256": "7b1fd8af99567be67bd4515533b3b296583c14e4c78e98600dd1bcbcf821c15f"
+    },
+    {
+      "path": "saxophone/Fs4.mp3",
+      "midi": 66,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/saxophone/Fs4.mp3",
+      "bytes": 145264,
+      "sha256": "15ea65b0d17862414140d4401f3ac39678fb6abfe0b18a8878a2391dd1ddaba4"
+    },
+    {
+      "path": "saxophone/Gs4.mp3",
+      "midi": 68,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/saxophone/Gs4.mp3",
+      "bytes": 169052,
+      "sha256": "fdd17a012b8db67cc1f9466fcc2fea91a2a19f89f18df87b6f7a7d928d7b0a96"
+    },
+    {
+      "path": "saxophone/As4.mp3",
+      "midi": 70,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/saxophone/As4.mp3",
+      "bytes": 128988,
+      "sha256": "aecf2bfe8289acaeb44492d074d5d221fd39c183e91d0ea92b3bfb983f19d97b"
+    },
+    {
+      "path": "saxophone/C5.mp3",
+      "midi": 72,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/saxophone/C5.mp3",
+      "bytes": 144638,
+      "sha256": "4ac9089d8a86c4f9e85f1cfc63376f846d60cd5c9d69e714277057ba2307f38c"
+    },
+    {
+      "path": "saxophone/D5.mp3",
+      "midi": 74,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/saxophone/D5.mp3",
+      "bytes": 162166,
+      "sha256": "94fe0add04ba49525af59f217065671f20e97fb47d3aa86b5992b2a4199c6cd1"
+    },
+    {
+      "path": "saxophone/E5.mp3",
+      "midi": 76,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/saxophone/E5.mp3",
+      "bytes": 139630,
+      "sha256": "e7ba62d10701ad2656fbe6dc18b7c7676b8882f14549bb375ecc89312ddb8cd7"
+    },
+    {
+      "path": "saxophone/Fs5.mp3",
+      "midi": 78,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/saxophone/Fs5.mp3",
+      "bytes": 146516,
+      "sha256": "30224fa4167bf521339eaf9ed7dfefda66e13990d98604c7c3d106b014a226e5"
+    }
+  ]
+}

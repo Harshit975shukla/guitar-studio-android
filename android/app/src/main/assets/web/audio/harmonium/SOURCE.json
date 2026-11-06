@@ -1,0 +1,47 @@
+{
+  "source": "tonejs-instruments",
+  "referencePage": "https://github.com/nbrosowsky/tonejs-instruments",
+  "commit": "622c2f1c32c8cfce4158ddc3eb26e518ddef37e5",
+  "license": "CC-BY-3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+  "attribution": "Harmonium recordings from tonejs-instruments by Nicholaus P. Brosowsky (https://github.com/nbrosowsky/tonejs-instruments), CC BY 3.0. Trimmed and volume-matched there; copied here unchanged.",
+  "originalRecording": "Donya Quick, \"Harmonium Samples - All Keys and Drones\", https://freesound.org/people/donyaquick/sounds/330410/ (CC0 1.0).",
+  "scope": "Only the harmonium note recordings listed here. No code from the repository.",
+  "files": [
+    {
+      "path": "harmonium/A3.mp3",
+      "midi": 57,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/A3.mp3",
+      "bytes": 217880,
+      "sha256": "f8133ec5918cea29d4deebaeea5ced156813596f9c29390a251b2f938b361064"
+    },
+    {
+      "path": "harmonium/C4.mp3",
+      "midi": 60,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/C4.mp3",
+      "bytes": 265456,
+      "sha256": "d8d058988467d58077733bcb0a383c92e1fdedf8951060552dc4f9369e7a1a3e"
+    },
+    {
+      "path": "harmonium/Ds4.mp3",
+      "midi": 63,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/Ds4.mp3",
+      "bytes": 249806,
+      "sha256": "f792ff1f61f0327ef956572273405ebbe04215448e063c7963fe908144f01d32"
+    },
+    {
+      "path": "harmonium/F4.mp3",
+      "midi": 65,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/F4.mp3",
+      "bytes": 275472,
+      "sha256": "3b59fe99dc41adbad2e456aafea46c2fc2f2cab0b947b8544675c3973032f4d1"
+    },
+    {
+      "path": "harmonium/G4.mp3",
+      "midi": 67,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/harmonium/G4.mp3",
+      "bytes": 236034,
+      "sha256": "5349ef930be5bb5ad69efa976c793a5b1dd4292046c679e3cb80963f950ef1b3"
+    }
+  ]
+}

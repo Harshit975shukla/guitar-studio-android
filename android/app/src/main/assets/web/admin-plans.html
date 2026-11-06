@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Practice plans — Admin — Guitar Studio</title>
+  <meta name="theme-color" content="#171918">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/icon-192.png">
+  <link rel="stylesheet" href="/auth/auth.css">
+  <link rel="stylesheet" href="/auth/admin-plans.css">
+  <script type="module" src="/auth/admin-plans.js"></script>
+</head>
+<body class="wide">
+  <a class="skip-link" href="#main">Skip to the students</a>
+  <header class="brand">
+    <img class="brand-logo" src="/auth/leading-note-logo.png" alt="Leading Note" width="250" height="50">
+    <span class="brand-text"><strong>Guitar Studio</strong></span>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="card" id="students-card" aria-labelledby="plans-title">
+      <p class="eyebrow">Admin</p>
+      <h1 id="plans-title">Practice plans</h1>
+      <nav class="top-links" aria-label="Admin links">
+        <a class="btn btn-small" href="/admin">Students and accounts</a>
+        <a class="btn btn-small" href="/admin/lessons">Video lessons</a>
+        <a class="btn btn-small" href="/">Open Guitar Studio</a>
+        <button type="button" class="btn btn-small" id="logout">Log out</button>
+      </nav>
+      <p class="lead">Every student's plan and this week's score (the % of the week's target, Monday to Sunday, <span id="tz">India time</span>). A plan you set is locked in the student's app: it shows “Plan set by your teacher”. Without one, students make their own plan.</p>
+      <form class="toolbar" id="search-form" role="search">
+        <div class="field">
+          <label for="search">Search name or email</label>
+          <input id="search" name="q" type="search" autocomplete="off" spellcheck="false">
+        </div>
+      </form>
+      <p class="message error" data-error role="alert"></p>
+      <p class="message ok" data-status role="status"></p>
+      <p class="hint" id="summary"></p>
+      <div class="table-wrap">
+        <table class="users-table plans-table">
+          <caption class="visually-hidden">Students and their practice plans</caption>
+          <thead>
+            <tr>
+              <th scope="col" class="pick"><label class="pick-label"><input type="checkbox" id="pick-all"><span class="visually-hidden">Select all shown students</span></label></th>
+              <th scope="col">Student</th>
+              <th scope="col">Plan</th>
+              <th scope="col">Set</th>
+              <th scope="col" class="num">This week</th>
+              <th scope="col"><span class="visually-hidden">Actions</span></th>
+            </tr>
+          </thead>
+          <tbody id="students"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" id="plan-card" aria-labelledby="form-title">
+      <h2 id="form-title" tabindex="-1">Create or edit a plan</h2>
+      <p class="lead">The plan uses the app's own steps for the level (or your own steps below). Leave a target empty to use the plan's own target.</p>
+      <form id="plan-form" novalidate>
+        <div class="plan-grid">
+          <div class="field"><label for="level">Level</label><select id="level" name="level" required></select></div>
+          <div class="field"><label for="week">Start at plan week</label><select id="week" name="week"></select></div>
+          <div class="field"><label for="days">Days a week</label><select id="days" name="days" required></select></div>
+          <div class="field"><label for="minutes">Minutes a day</label><select id="minutes" name="minutes" required></select></div>
+          <div class="field"><label for="goal">Goal</label><select id="goal" name="goal" required></select></div>
+        </div>
+        <div class="field">
+          <label for="note">Note for the student <span class="hint">(optional, at most 300 characters)</span></label>
+          <textarea id="note" name="note" maxlength="300" rows="2"></textarea>
+        </div>
+        <fieldset class="plan-fieldset">
+          <legend>Weekly targets <span class="hint">(optional)</span></legend>
+          <p class="hint">The weekly score = days 30 % + minutes 30 % + steps 30 % + tests 10 % of these targets (no test target: a third each). A step the mic checks counts 2 points, a self-check step 1 point.</p>
+          <div class="plan-grid">
+            <div class="field"><label for="t-days">Days</label><input id="t-days" name="t-days" type="number" min="1" max="7" inputmode="numeric"></div>
+            <div class="field"><label for="t-minutes">Minutes</label><input id="t-minutes" name="t-minutes" type="number" min="10" max="2000" inputmode="numeric"></div>
+            <div class="field"><label for="t-steps">Steps</label><input id="t-steps" name="t-steps" type="number" min="1" max="200" inputmode="numeric"></div>
+            <div class="field"><label for="t-tests">Tests</label><input id="t-tests" name="t-tests" type="number" min="0" max="14" inputmode="numeric"></div>
+          </div>
+        </fieldset>
+        <fieldset class="plan-fieldset">
+          <legend>Own steps <span class="hint">(optional: they replace the app's steps every day, except rest days and level tests)</span></legend>
+          <ol class="own-steps" id="own-steps"></ol>
+          <button type="button" class="btn btn-small" id="add-step">Add a step</button>
+        </fieldset>
+        <p class="hint" id="picked">No students selected.</p>
+        <p class="message error" data-error role="alert"></p>
+        <p class="message ok" data-status role="status"></p>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary" id="assign">Assign to the selected students</button>
+          <button type="button" class="btn btn-danger" id="remove">Remove the plan from the selected students</button>
+          <button type="button" class="btn" id="clear">Clear the form</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <footer><a href="/privacy">Privacy</a><a data-contact-link hidden>Contact</a><span data-copyright>© 2026 Guitar Studio</span></footer>
+</body>
+</html>

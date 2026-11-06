@@ -1,0 +1,323 @@
+{
+  "source": "Musicca",
+  "referencePage": "https://www.musicca.com/piano",
+  "permission": "Project owner stated permission from Musicca and explicitly authorized downloading these recordings on 2026-10-05. Copyright remains with Musicca; this is not a public licence.",
+  "scope": "Only the piano note recordings listed here, as used by the public player page. No Musicca application code or other material.",
+  "files": [
+    {
+      "path": "musicca-keys/20.mp3",
+      "midi": 40,
+      "source": "https://www.musicca.com/files/audio/tools/piano/20.mp3",
+      "bytes": 27456,
+      "sha256": "82e7063c7756bef96852025304107f9eee06a58334c650975000fe5bb81cfe7e"
+    },
+    {
+      "path": "musicca-keys/21.mp3",
+      "midi": 41,
+      "source": "https://www.musicca.com/files/audio/tools/piano/21.mp3",
+      "bytes": 27456,
+      "sha256": "58a7a5c29b04dbcb51ac98546218293516db3fd31349aef0fc091a577e6b5733"
+    },
+    {
+      "path": "musicca-keys/22.mp3",
+      "midi": 42,
+      "source": "https://www.musicca.com/files/audio/tools/piano/22.mp3",
+      "bytes": 27456,
+      "sha256": "2bf9f86a75685674d760f0c4ff9e41621b4f97ac3732568250ed6f0ad60284bf"
+    },
+    {
+      "path": "musicca-keys/23.mp3",
+      "midi": 43,
+      "source": "https://www.musicca.com/files/audio/tools/piano/23.mp3",
+      "bytes": 27456,
+      "sha256": "7cd098d58257bbc25340dc038e7ffee019c62b5f5b80184eeb6d4f8592294dd0"
+    },
+    {
+      "path": "musicca-keys/24.mp3",
+      "midi": 44,
+      "source": "https://www.musicca.com/files/audio/tools/piano/24.mp3",
+      "bytes": 27456,
+      "sha256": "d8f63a2681bcf133cb5710ee05793983cb9cc57ba3fc5fa48df0843d9a3d1029"
+    },
+    {
+      "path": "musicca-keys/25.mp3",
+      "midi": 45,
+      "source": "https://www.musicca.com/files/audio/tools/piano/25.mp3",
+      "bytes": 27456,
+      "sha256": "898e027bd92017188183cedf0d69e87e4ef9f3d2576ec961ef04cb8fdc9a9909"
+    },
+    {
+      "path": "musicca-keys/26.mp3",
+      "midi": 46,
+      "source": "https://www.musicca.com/files/audio/tools/piano/26.mp3",
+      "bytes": 27456,
+      "sha256": "e6fe4e3c3e716d5274968ed814d30829455ad542617054eb5465f31ef45c5f9c"
+    },
+    {
+      "path": "musicca-keys/27.mp3",
+      "midi": 47,
+      "source": "https://www.musicca.com/files/audio/tools/piano/27.mp3",
+      "bytes": 27456,
+      "sha256": "9320fcdb4ef13215468d9d682b7e795b3271b97bdd070066e2c7339bf4f740aa"
+    },
+    {
+      "path": "musicca-keys/28.mp3",
+      "midi": 48,
+      "source": "https://www.musicca.com/files/audio/tools/piano/28.mp3",
+      "bytes": 27456,
+      "sha256": "72cd1a6b7bdbfdece76ac88b3941e4569139c81f9db10cd42c456f7e2e465e2f"
+    },
+    {
+      "path": "musicca-keys/29.mp3",
+      "midi": 49,
+      "source": "https://www.musicca.com/files/audio/tools/piano/29.mp3",
+      "bytes": 27456,
+      "sha256": "617d6c7529784f58b9a636c853f00fe237858b76e57b0ababdb297add853a23e"
+    },
+    {
+      "path": "musicca-keys/30.mp3",
+      "midi": 50,
+      "source": "https://www.musicca.com/files/audio/tools/piano/30.mp3",
+      "bytes": 27456,
+      "sha256": "4530e8a05b7f8d95bb5ed08b1855c4388d123ad2a409ef355b0934790c219f22"
+    },
+    {
+      "path": "musicca-keys/31.mp3",
+      "midi": 51,
+      "source": "https://www.musicca.com/files/audio/tools/piano/31.mp3",
+      "bytes": 27456,
+      "sha256": "b0dfa0af27be486fbb1266e4ee8785f2e1cb203d7b7291bbbc1fa45dc1c184a9"
+    },
+    {
+      "path": "musicca-keys/32.mp3",
+      "midi": 52,
+      "source": "https://www.musicca.com/files/audio/tools/piano/32.mp3",
+      "bytes": 27456,
+      "sha256": "fd482cc6034aedf25b3b9b29d5e13e305f30fe51c3f660bec76b602d2243d969"
+    },
+    {
+      "path": "musicca-keys/33.mp3",
+      "midi": 53,
+      "source": "https://www.musicca.com/files/audio/tools/piano/33.mp3",
+      "bytes": 27456,
+      "sha256": "258df0c87e58b80e9b6f75d4ba02ef14d5dad9afe2ddb7a4e58d685b9e176eef"
+    },
+    {
+      "path": "musicca-keys/34.mp3",
+      "midi": 54,
+      "source": "https://www.musicca.com/files/audio/tools/piano/34.mp3",
+      "bytes": 27456,
+      "sha256": "46cecda77fd871e2d3b58a3dd8a67bce5c880bf83568808441e09c4163cb8841"
+    },
+    {
+      "path": "musicca-keys/35.mp3",
+      "midi": 55,
+      "source": "https://www.musicca.com/files/audio/tools/piano/35.mp3",
+      "bytes": 27456,
+      "sha256": "f227e43bfeafa49e5d032ec8509f27a0210e84eb3f16a1aa72d799637920c0e6"
+    },
+    {
+      "path": "musicca-keys/36.mp3",
+      "midi": 56,
+      "source": "https://www.musicca.com/files/audio/tools/piano/36.mp3",
+      "bytes": 27456,
+      "sha256": "93a33aba2987529b88b25a3178b268400d1c772c2b42a3e1882a4b941eedcba2"
+    },
+    {
+      "path": "musicca-keys/37.mp3",
+      "midi": 57,
+      "source": "https://www.musicca.com/files/audio/tools/piano/37.mp3",
+      "bytes": 27456,
+      "sha256": "56659c1681ccf3cade781ef746f840aed8728b0317a9b8c6733d753b5b2f2f33"
+    },
+    {
+      "path": "musicca-keys/38.mp3",
+      "midi": 58,
+      "source": "https://www.musicca.com/files/audio/tools/piano/38.mp3",
+      "bytes": 27456,
+      "sha256": "f26b35461ffe66f4803b69c0d536ded1328fdf99c4602ac59ac2cec437b6ffd4"
+    },
+    {
+      "path": "musicca-keys/39.mp3",
+      "midi": 59,
+      "source": "https://www.musicca.com/files/audio/tools/piano/39.mp3",
+      "bytes": 27456,
+      "sha256": "762e0dbf9c2088600c0c2379c64bcbef96a679c1148b6ff529356bcd329c644a"
+    },
+    {
+      "path": "musicca-keys/40.mp3",
+      "midi": 60,
+      "source": "https://www.musicca.com/files/audio/tools/piano/40.mp3",
+      "bytes": 27456,
+      "sha256": "35621adacaf2618dca2c630b5bad5813449c2a11a8a067143198f091ed6b15f1"
+    },
+    {
+      "path": "musicca-keys/41.mp3",
+      "midi": 61,
+      "source": "https://www.musicca.com/files/audio/tools/piano/41.mp3",
+      "bytes": 27456,
+      "sha256": "5cc56aa2ac045aebeb2fe7f0bbed800a36cead1577034c224524f0f2bb250de9"
+    },
+    {
+      "path": "musicca-keys/42.mp3",
+      "midi": 62,
+      "source": "https://www.musicca.com/files/audio/tools/piano/42.mp3",
+      "bytes": 27456,
+      "sha256": "100b4c8d2848033ce67fc40d19fef9654ba6ee167ed10ce82fcefb23e2ecd625"
+    },
+    {
+      "path": "musicca-keys/43.mp3",
+      "midi": 63,
+      "source": "https://www.musicca.com/files/audio/tools/piano/43.mp3",
+      "bytes": 27456,
+      "sha256": "ea0ffc8b6513a33b36e476312bec85dd8fd5d9f1389dc8dd11083bbea109f2c1"
+    },
+    {
+      "path": "musicca-keys/44.mp3",
+      "midi": 64,
+      "source": "https://www.musicca.com/files/audio/tools/piano/44.mp3",
+      "bytes": 27456,
+      "sha256": "2854bca0e9aa1248f78dfb3aac2b11ea05b539cc2bc1f5c7c646f8e57bd7b337"
+    },
+    {
+      "path": "musicca-keys/45.mp3",
+      "midi": 65,
+      "source": "https://www.musicca.com/files/audio/tools/piano/45.mp3",
+      "bytes": 27456,
+      "sha256": "b5532fe3ac47358036c9e85fefc1246b7cb32bfb3a3fc1cabbb48a9fc626aa51"
+    },
+    {
+      "path": "musicca-keys/46.mp3",
+      "midi": 66,
+      "source": "https://www.musicca.com/files/audio/tools/piano/46.mp3",
+      "bytes": 27456,
+      "sha256": "c4f6c02e1d699afd670d41652307b54c3deb7b2ed06d26e507810466a281d07b"
+    },
+    {
+      "path": "musicca-keys/47.mp3",
+      "midi": 67,
+      "source": "https://www.musicca.com/files/audio/tools/piano/47.mp3",
+      "bytes": 27456,
+      "sha256": "a571cebee29bb07a2e0d1eec545f9cdc903eae43c70c486da63fdc7cf1545df2"
+    },
+    {
+      "path": "musicca-keys/48.mp3",
+      "midi": 68,
+      "source": "https://www.musicca.com/files/audio/tools/piano/48.mp3",
+      "bytes": 27456,
+      "sha256": "12a65cd083190578e42f76de255401170084447c7bc33506985a4ca074d1cd5b"
+    },
+    {
+      "path": "musicca-keys/49.mp3",
+      "midi": 69,
+      "source": "https://www.musicca.com/files/audio/tools/piano/49.mp3",
+      "bytes": 27456,
+      "sha256": "fd5022595636b34d731cf2ee25e8b19f832ce45559ee40a05d8c8d59bee50a58"
+    },
+    {
+      "path": "musicca-keys/50.mp3",
+      "midi": 70,
+      "source": "https://www.musicca.com/files/audio/tools/piano/50.mp3",
+      "bytes": 27456,
+      "sha256": "a1b044abf6880f8e70be53334c88e50556bba618fa4f9490b466d952ca117be0"
+    },
+    {
+      "path": "musicca-keys/51.mp3",
+      "midi": 71,
+      "source": "https://www.musicca.com/files/audio/tools/piano/51.mp3",
+      "bytes": 30191,
+      "sha256": "1107eeba9f0b66b817d9b286dd481708d0045cae22771d01c138a6b3839c382d"
+    },
+    {
+      "path": "musicca-keys/52.mp3",
+      "midi": 72,
+      "source": "https://www.musicca.com/files/audio/tools/piano/52.mp3",
+      "bytes": 30664,
+      "sha256": "2d6768309c1d2f93c6cecfd89eafc93dde7a88e313ab45130318e02e856a94f0"
+    },
+    {
+      "path": "musicca-keys/53.mp3",
+      "midi": 73,
+      "source": "https://www.musicca.com/files/audio/tools/piano/53.mp3",
+      "bytes": 30611,
+      "sha256": "143a73c13e4d0972b933c7872543c6cb50c29a878cdbe06e48c0acd4f58d383a"
+    },
+    {
+      "path": "musicca-keys/54.mp3",
+      "midi": 74,
+      "source": "https://www.musicca.com/files/audio/tools/piano/54.mp3",
+      "bytes": 27456,
+      "sha256": "99570aa69b2096ca7598475c00398edaa8c3d7a5375da5c519dcc4dec16880f0"
+    },
+    {
+      "path": "musicca-keys/55.mp3",
+      "midi": 75,
+      "source": "https://www.musicca.com/files/audio/tools/piano/55.mp3",
+      "bytes": 27456,
+      "sha256": "125d4fd5b800e1d965eddab7cad0f883efde9c979f0805472818448607a137e9"
+    },
+    {
+      "path": "musicca-keys/56.mp3",
+      "midi": 76,
+      "source": "https://www.musicca.com/files/audio/tools/piano/56.mp3",
+      "bytes": 27456,
+      "sha256": "5689898ec18a93a33e4053c4cad29192b69e8b5d7d902b3b6fc0e264c8961fa8"
+    },
+    {
+      "path": "musicca-keys/57.mp3",
+      "midi": 77,
+      "source": "https://www.musicca.com/files/audio/tools/piano/57.mp3",
+      "bytes": 27456,
+      "sha256": "32a6c1222708c9461fa58b41a78e359e107a9a7256ab2da44ee29a39d07a8e52"
+    },
+    {
+      "path": "musicca-keys/58.mp3",
+      "midi": 78,
+      "source": "https://www.musicca.com/files/audio/tools/piano/58.mp3",
+      "bytes": 27456,
+      "sha256": "71d3df8d7d9668f5f5bf4e5e231f14726fdc1ba92e27c23cec7fecbae1fe0c50"
+    },
+    {
+      "path": "musicca-keys/59.mp3",
+      "midi": 79,
+      "source": "https://www.musicca.com/files/audio/tools/piano/59.mp3",
+      "bytes": 27456,
+      "sha256": "fa136d52683837483f52470f0c6e491d3f860e9c67cc02df4965af2480a9b562"
+    },
+    {
+      "path": "musicca-keys/60.mp3",
+      "midi": 80,
+      "source": "https://www.musicca.com/files/audio/tools/piano/60.mp3",
+      "bytes": 27456,
+      "sha256": "1c4f08a451db84ec7f70d58cf8b6fe8f1d6599e16127623436401d04587897de"
+    },
+    {
+      "path": "musicca-keys/61.mp3",
+      "midi": 81,
+      "source": "https://www.musicca.com/files/audio/tools/piano/61.mp3",
+      "bytes": 27456,
+      "sha256": "2e38c0dbf7f2d210dcdb5123918008487b351514784aebc2924f6bcfc65270c9"
+    },
+    {
+      "path": "musicca-keys/62.mp3",
+      "midi": 82,
+      "source": "https://www.musicca.com/files/audio/tools/piano/62.mp3",
+      "bytes": 28619,
+      "sha256": "bc878815cc470309080ad53cd4cfb503e2597439d19b1bb37bbaee42fb0ed0ad"
+    },
+    {
+      "path": "musicca-keys/63.mp3",
+      "midi": 83,
+      "source": "https://www.musicca.com/files/audio/tools/piano/63.mp3",
+      "bytes": 27456,
+      "sha256": "9a26b19cbc8ea3cdc962de1aabaae094bbdd060ea4b8f965798f2bb0d7125b92"
+    },
+    {
+      "path": "musicca-keys/64.mp3",
+      "midi": 84,
+      "source": "https://www.musicca.com/files/audio/tools/piano/64.mp3",
+      "bytes": 27456,
+      "sha256": "d8fd4fe94b9babda58ec494bdd1a5cd8e1f4f480c41004927ad4c6b8acf409a9"
+    }
+  ]
+}

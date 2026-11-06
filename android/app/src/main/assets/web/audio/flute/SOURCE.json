@@ -1,0 +1,61 @@
+{
+  "source": "tonejs-instruments",
+  "referencePage": "https://github.com/nbrosowsky/tonejs-instruments",
+  "commit": "622c2f1c32c8cfce4158ddc3eb26e518ddef37e5",
+  "license": "CC-BY-3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+  "attribution": "Flute recordings from tonejs-instruments by Nicholaus P. Brosowsky (https://github.com/nbrosowsky/tonejs-instruments), CC BY 3.0. Trimmed and volume-matched there; copied here unchanged.",
+  "originalRecording": "Versilian Studios Chamber Orchestra 2 (VSCO 2) Community Edition, http://vis.versilstudios.net/vsco-community.html",
+  "scope": "Only the flute note recordings listed here. No code from the repository.",
+  "files": [
+    {
+      "path": "flute/A4.mp3",
+      "midi": 69,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/flute/A4.mp3",
+      "bytes": 193466,
+      "sha256": "615376784bd2a716baa8c7b1c57a3d55048a62cf89b313ed005d85da06a1d918"
+    },
+    {
+      "path": "flute/C5.mp3",
+      "midi": 72,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/flute/C5.mp3",
+      "bytes": 183450,
+      "sha256": "1b6ec4d5bf2caeca80da4c53f6d9f09eb3a49e8de04588965c55ca8f00ff296d"
+    },
+    {
+      "path": "flute/E5.mp3",
+      "midi": 76,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/flute/E5.mp3",
+      "bytes": 195970,
+      "sha256": "2d024d4cd56412bcb8cc3ecbce0736b63c9ba1d77de2e9601ba4efeda559a157"
+    },
+    {
+      "path": "flute/A5.mp3",
+      "midi": 81,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/flute/A5.mp3",
+      "bytes": 177190,
+      "sha256": "0735eccfb744176f253d1f715f7a70cf045694cce1da99d934e52a3a3544f968"
+    },
+    {
+      "path": "flute/C6.mp3",
+      "midi": 84,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/flute/C6.mp3",
+      "bytes": 176564,
+      "sha256": "535d1fbfaddbdb7f91c415708470f0860669c08733823212e81e98909afc9a64"
+    },
+    {
+      "path": "flute/E6.mp3",
+      "midi": 88,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/flute/E6.mp3",
+      "bytes": 145264,
+      "sha256": "1074929c56bcd342cd0678390c02db730a924c5b42feae2921cb08f432768e53"
+    },
+    {
+      "path": "flute/A6.mp3",
+      "midi": 93,
+      "source": "https://raw.githubusercontent.com/nbrosowsky/tonejs-instruments/622c2f1c32c8cfce4158ddc3eb26e518ddef37e5/samples/flute/A6.mp3",
+      "bytes": 133370,
+      "sha256": "1d67a54c3a8e8d28e21194cec6cbcbf1af60ec226f568b11723057b08abfd2c8"
+    }
+  ]
+}

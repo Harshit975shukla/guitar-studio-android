@@ -1,0 +1,246 @@
+{
+  "source": "Musicca",
+  "referencePage": "https://www.musicca.com/violin",
+  "permission": "Project owner stated permission from Musicca and explicitly authorized downloading these recordings on 2026-10-05. Copyright remains with Musicca; this is not a public licence.",
+  "scope": "Only the violin note recordings listed here, as used by the public player page. No Musicca application code or other material.",
+  "files": [
+    {
+      "path": "musicca-violin/28.mp3",
+      "midi": 55,
+      "source": "https://www.musicca.com/files/audio/tools/violin/28.mp3",
+      "bytes": 65088,
+      "sha256": "2fdd3ea3c1ad3dfc537b6f473ef84f0d2feb95a3cd71f8afeaf52dbddba54428"
+    },
+    {
+      "path": "musicca-violin/29.mp3",
+      "midi": 56,
+      "source": "https://www.musicca.com/files/audio/tools/violin/29.mp3",
+      "bytes": 65088,
+      "sha256": "db445bd973f272c14204728587adcfca1569bd6aeef9712e61f9efe826dcfe4e"
+    },
+    {
+      "path": "musicca-violin/30.mp3",
+      "midi": 57,
+      "source": "https://www.musicca.com/files/audio/tools/violin/30.mp3",
+      "bytes": 65088,
+      "sha256": "ec91cf579f9e262387e1321a7ff2edccb98f0ecd37e2ba8f872e401b54c3c0c0"
+    },
+    {
+      "path": "musicca-violin/31.mp3",
+      "midi": 58,
+      "source": "https://www.musicca.com/files/audio/tools/violin/31.mp3",
+      "bytes": 65088,
+      "sha256": "5fb5c183f9139b3fe802978735a179f1760c15015a48e9b1ca48b00cc73a25ab"
+    },
+    {
+      "path": "musicca-violin/32.mp3",
+      "midi": 59,
+      "source": "https://www.musicca.com/files/audio/tools/violin/32.mp3",
+      "bytes": 65088,
+      "sha256": "ace1fd22a48622998e7f630745bc2e1c11a4871f8234b556486319c74d77733a"
+    },
+    {
+      "path": "musicca-violin/33.mp3",
+      "midi": 60,
+      "source": "https://www.musicca.com/files/audio/tools/violin/33.mp3",
+      "bytes": 65088,
+      "sha256": "2c758d70b073e68e44c1328f67ea0c9814c406e108360826954d44b0747df1b6"
+    },
+    {
+      "path": "musicca-violin/34.mp3",
+      "midi": 61,
+      "source": "https://www.musicca.com/files/audio/tools/violin/34.mp3",
+      "bytes": 65088,
+      "sha256": "8d1f2ebf1db24732b03b9c46476723aebdcd28ae6c7e31f828b86c9a23a4ca9f"
+    },
+    {
+      "path": "musicca-violin/35.mp3",
+      "midi": 62,
+      "source": "https://www.musicca.com/files/audio/tools/violin/35.mp3",
+      "bytes": 65088,
+      "sha256": "2a8f318ee88e1cb76feaf5908d8b053185b79ce14f21313fb28a3a1b9baeb4e8"
+    },
+    {
+      "path": "musicca-violin/36.mp3",
+      "midi": 63,
+      "source": "https://www.musicca.com/files/audio/tools/violin/36.mp3",
+      "bytes": 65088,
+      "sha256": "591cc1a23e0ad61a0b92e3145f6f239f4d76d217ece2374dfd442296dc607ad4"
+    },
+    {
+      "path": "musicca-violin/37.mp3",
+      "midi": 64,
+      "source": "https://www.musicca.com/files/audio/tools/violin/37.mp3",
+      "bytes": 65088,
+      "sha256": "4f024dce3f9164483b68c6d7f95fbab946f289c14908a8098478bc4743a5d7e0"
+    },
+    {
+      "path": "musicca-violin/38.mp3",
+      "midi": 65,
+      "source": "https://www.musicca.com/files/audio/tools/violin/38.mp3",
+      "bytes": 65088,
+      "sha256": "f84883f0a79782101c6b7ef184c63639513e4e2d482807e9a64b29fb22623b64"
+    },
+    {
+      "path": "musicca-violin/39.mp3",
+      "midi": 66,
+      "source": "https://www.musicca.com/files/audio/tools/violin/39.mp3",
+      "bytes": 65088,
+      "sha256": "1b656b9b2a596ed52c3e4580f3375ac24b28de09226482718e92b6c1933c4014"
+    },
+    {
+      "path": "musicca-violin/40.mp3",
+      "midi": 67,
+      "source": "https://www.musicca.com/files/audio/tools/violin/40.mp3",
+      "bytes": 65088,
+      "sha256": "482ade1c951840e58e21f61392f2e6efcb249fb19bce6df39d62cacdef62c8d2"
+    },
+    {
+      "path": "musicca-violin/41.mp3",
+      "midi": 68,
+      "source": "https://www.musicca.com/files/audio/tools/violin/41.mp3",
+      "bytes": 65088,
+      "sha256": "518f316374eebd1c9f632d6f438fe488052b846ef7881ab4b05451939e2df8ff"
+    },
+    {
+      "path": "musicca-violin/42.mp3",
+      "midi": 69,
+      "source": "https://www.musicca.com/files/audio/tools/violin/42.mp3",
+      "bytes": 65088,
+      "sha256": "926f14ccf7181d399d459e06f097ed4a4f5457712c112f81e150ee8c9a1e1a36"
+    },
+    {
+      "path": "musicca-violin/43.mp3",
+      "midi": 70,
+      "source": "https://www.musicca.com/files/audio/tools/violin/43.mp3",
+      "bytes": 65088,
+      "sha256": "3c78d922c098b7d8a57e63e2d5c462000e9339ae29edd57c54e0165d4ce90c67"
+    },
+    {
+      "path": "musicca-violin/44.mp3",
+      "midi": 71,
+      "source": "https://www.musicca.com/files/audio/tools/violin/44.mp3",
+      "bytes": 65088,
+      "sha256": "1bfa7bc9ebde9e5f2e49b7b9ed610f36a353332a692355e6557e65f2308d92ca"
+    },
+    {
+      "path": "musicca-violin/45.mp3",
+      "midi": 72,
+      "source": "https://www.musicca.com/files/audio/tools/violin/45.mp3",
+      "bytes": 65088,
+      "sha256": "89722d04f3c65885c1c61d7ff72b9ff329b9a29642962830bc78b6ff4df69de1"
+    },
+    {
+      "path": "musicca-violin/46.mp3",
+      "midi": 73,
+      "source": "https://www.musicca.com/files/audio/tools/violin/46.mp3",
+      "bytes": 65088,
+      "sha256": "231eab3954d2b647678678673ebde5fff5e2772c76ad6f9cb49832f46107c7e7"
+    },
+    {
+      "path": "musicca-violin/47.mp3",
+      "midi": 74,
+      "source": "https://www.musicca.com/files/audio/tools/violin/47.mp3",
+      "bytes": 65088,
+      "sha256": "9a30bb9406dbaa01977a32524a993816588e807be645623bcd9da06fcccec40a"
+    },
+    {
+      "path": "musicca-violin/48.mp3",
+      "midi": 75,
+      "source": "https://www.musicca.com/files/audio/tools/violin/48.mp3",
+      "bytes": 65088,
+      "sha256": "ba676887be380fe43ae88cf9bb2e342b312525d44dcc97cb2b77fd1b4d17e8cc"
+    },
+    {
+      "path": "musicca-violin/49.mp3",
+      "midi": 76,
+      "source": "https://www.musicca.com/files/audio/tools/violin/49.mp3",
+      "bytes": 65088,
+      "sha256": "d7d852813204cb3c599127a6a27b3dd3e8f40f9692e3c989bd65ff1ce6bc3fab"
+    },
+    {
+      "path": "musicca-violin/50.mp3",
+      "midi": 77,
+      "source": "https://www.musicca.com/files/audio/tools/violin/50.mp3",
+      "bytes": 65088,
+      "sha256": "54e7dcec8fdf0a6ca5412d58f0e26456135cc86d404be82987a78b303b71c5e1"
+    },
+    {
+      "path": "musicca-violin/51.mp3",
+      "midi": 78,
+      "source": "https://www.musicca.com/files/audio/tools/violin/51.mp3",
+      "bytes": 65088,
+      "sha256": "85c64771442746f2b94bb1e29eb9befdbc3e44df8fd9013ed7413bb0ca0f3c65"
+    },
+    {
+      "path": "musicca-violin/52.mp3",
+      "midi": 79,
+      "source": "https://www.musicca.com/files/audio/tools/violin/52.mp3",
+      "bytes": 65088,
+      "sha256": "db336fd5ff073e0844353acc0d40be51eac935cdacac72475b4f9a2f22e3d3b3"
+    },
+    {
+      "path": "musicca-violin/53.mp3",
+      "midi": 80,
+      "source": "https://www.musicca.com/files/audio/tools/violin/53.mp3",
+      "bytes": 65088,
+      "sha256": "6675f49d7c25e4325f881734cab9608ed4edfbf0663a09e3c18f38adbe718320"
+    },
+    {
+      "path": "musicca-violin/54.mp3",
+      "midi": 81,
+      "source": "https://www.musicca.com/files/audio/tools/violin/54.mp3",
+      "bytes": 65088,
+      "sha256": "a13111f06b523ff61b72d7adfde75c414f298d89def8fa8b53b3de4c9e44119f"
+    },
+    {
+      "path": "musicca-violin/55.mp3",
+      "midi": 82,
+      "source": "https://www.musicca.com/files/audio/tools/violin/55.mp3",
+      "bytes": 65088,
+      "sha256": "e3a58696da3c0e625c2228c76aa0d422efa59face8b4f492819dffab0afc9291"
+    },
+    {
+      "path": "musicca-violin/56.mp3",
+      "midi": 83,
+      "source": "https://www.musicca.com/files/audio/tools/violin/56.mp3",
+      "bytes": 65088,
+      "sha256": "974700a5af322d8c2e7c2cbcc10a766f16256de0aaa5ad62d9026c12aea05c55"
+    },
+    {
+      "path": "musicca-violin/57.mp3",
+      "midi": 84,
+      "source": "https://www.musicca.com/files/audio/tools/violin/57.mp3",
+      "bytes": 65088,
+      "sha256": "c918cfbd984da68bfbfc1005aee1428e8b0823b2b9917bb20e9bf69e507825a3"
+    },
+    {
+      "path": "musicca-violin/58.mp3",
+      "midi": 85,
+      "source": "https://www.musicca.com/files/audio/tools/violin/58.mp3",
+      "bytes": 65088,
+      "sha256": "e5964eca648404b8946384b8a703d28f3ee29e921696c2e8fcbd0770f98010e9"
+    },
+    {
+      "path": "musicca-violin/59.mp3",
+      "midi": 86,
+      "source": "https://www.musicca.com/files/audio/tools/violin/59.mp3",
+      "bytes": 65088,
+      "sha256": "c55e935d32bd8eda7a9b3af855c6e59f5cd849234cd076cd224abf40f32ccfe0"
+    },
+    {
+      "path": "musicca-violin/60.mp3",
+      "midi": 87,
+      "source": "https://www.musicca.com/files/audio/tools/violin/60.mp3",
+      "bytes": 65088,
+      "sha256": "a54704acf03b26e5fab9c650a79f4d832ee0f626956ddb266a4621b273cdffad"
+    },
+    {
+      "path": "musicca-violin/61.mp3",
+      "midi": 88,
+      "source": "https://www.musicca.com/files/audio/tools/violin/61.mp3",
+      "bytes": 65088,
+      "sha256": "0ddac7dfc0e98801da0fedb35a9ce35597ee4d8908067721a529e623d4e10898"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My account — Guitar Studio</title>
+  <meta name="theme-color" content="#171918">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/icon-192.png">
+  <link rel="stylesheet" href="/auth/auth.css">
+  <script type="module" src="/auth/account.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the page</a>
+  <header class="brand">
+    <img class="brand-logo" src="/auth/leading-note-logo.png" alt="Leading Note" width="250" height="50">
+    <span class="brand-text"><strong>Guitar Studio</strong></span>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="card" aria-labelledby="account-title">
+      <h1 id="account-title">My account</h1>
+      <p class="notice" id="must-change" hidden>Please choose a new password before you continue. Your admin gave you a temporary one.</p>
+      <dl class="facts">
+        <dt>Name</dt><dd id="me-name">…</dd>
+        <dt>Email</dt><dd id="me-email">…</dd>
+        <dt>Access until</dt><dd id="me-access">…</dd>
+        <dt>Log in with</dt><dd id="me-login">…</dd>
+      </dl>
+      <div class="actions">
+        <a class="btn btn-primary" href="/" id="open-app" hidden>Open Guitar Studio</a>
+        <a class="btn" href="/admin" id="open-admin" hidden>Admin page</a>
+      </div>
+    </section>
+    <section class="card" aria-labelledby="password-title">
+      <h2 id="password-title">Change password</h2>
+      <p class="lead" id="no-password" hidden>You log in with Google, so you have no password here. To add one, use <a href="/forgot">Forgot your password?</a></p>
+      <form id="password-form" novalidate>
+        <input type="email" name="username" autocomplete="username" id="username" class="visually-hidden" tabindex="-1" aria-hidden="true" readonly>
+        <div class="field">
+          <label for="current">Current password</label>
+          <div class="password-field">
+            <input id="current" name="current" type="password" autocomplete="current-password" required data-password>
+            <button type="button" class="eye" data-eye aria-label="Show password" aria-pressed="false"><svg class="eye-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><svg class="eye-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18 M10.6 5.1A9.6 9.6 0 0 1 12 5c6.4 0 10 7 10 7a17.6 17.6 0 0 1-3.2 4.1 M6.6 6.6C3.9 8.4 2 12 2 12s3.6 7 10 7a9.4 9.4 0 0 0 5.4-1.6 M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="password">New password <span class="hint" id="password-hint">(at least 8 characters)</span></label>
+          <div class="password-field">
+            <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="128" required aria-describedby="password-hint" data-password>
+            <button type="button" class="eye" data-eye aria-label="Show password" aria-pressed="false"><svg class="eye-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><svg class="eye-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18 M10.6 5.1A9.6 9.6 0 0 1 12 5c6.4 0 10 7 10 7a17.6 17.6 0 0 1-3.2 4.1 M6.6 6.6C3.9 8.4 2 12 2 12s3.6 7 10 7a9.4 9.4 0 0 0 5.4-1.6 M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="confirm">New password again</label>
+          <div class="password-field">
+            <input id="confirm" name="confirm" type="password" autocomplete="new-password" minlength="8" maxlength="128" required data-password>
+            <button type="button" class="eye" data-eye aria-label="Show password" aria-pressed="false"><svg class="eye-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><svg class="eye-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18 M10.6 5.1A9.6 9.6 0 0 1 12 5c6.4 0 10 7 10 7a17.6 17.6 0 0 1-3.2 4.1 M6.6 6.6C3.9 8.4 2 12 2 12s3.6 7 10 7a9.4 9.4 0 0 0 5.4-1.6 M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></button>
+          </div>
+        </div>
+        <p class="message error" data-error role="alert"></p>
+        <p class="message ok" data-status role="status"></p>
+        <button type="submit" class="btn btn-primary">Save new password</button>
+      </form>
+    </section>
+    <section class="card" aria-labelledby="leaderboard-title" id="leaderboard-card" hidden>
+      <h2 id="leaderboard-title">Leaderboard</h2>
+      <p class="lead">The academy's monthly leaderboard (Practice plan page) shows your first name, the first letter of your last name and your practice-plan points. Students are shown unless they hide themselves.</p>
+      <label class="check"><input type="checkbox" id="hide-leaderboard"> <span>Hide me from the leaderboard</span></label>
+      <p class="message error" data-error role="alert"></p>
+      <p class="message ok" data-status role="status"></p>
+    </section>
+    <section class="card" aria-labelledby="logout-title" id="logout-card">
+      <h2 id="logout-title">Log out</h2>
+      <p class="lead">“Log out on all devices” also logs out phones and computers where you forgot to log out.</p>
+      <div class="actions">
+        <button type="button" class="btn" id="logout">Log out</button>
+        <button type="button" class="btn btn-danger" id="logout-all">Log out on all devices</button>
+      </div>
+      <p class="message error" data-error role="alert"></p>
+      <p class="message ok" data-status role="status"></p>
+    </section>
+    <section class="card" aria-labelledby="delete-title">
+      <h2 id="delete-title">Delete my account</h2>
+      <p class="lead">Deletes your account and your saved practice progress. It cannot be undone.</p>
+      <div class="actions">
+        <a class="btn btn-danger" href="/delete-account" id="delete-account">Delete my account…</a>
+      </div>
+    </section>
+  </main>
+  <footer><a href="/privacy">Privacy</a><a data-contact-link hidden>Contact</a><span data-copyright>© 2026 Guitar Studio</span></footer>
+</body>
+</html>

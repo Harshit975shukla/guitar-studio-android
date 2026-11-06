@@ -1,0 +1,1730 @@
+{
+  "sources": [
+    {
+      "name": "Musicca",
+      "reference": "https://www.musicca.com/drums",
+      "permission": "Project owner explicitly confirmed permission for percussion reuse on 2026-09-28. Copyright remains with Musicca; this is not a public license."
+    },
+    {
+      "name": "Versilian Community Sample Library",
+      "reference": "https://github.com/sgossner/VCSL",
+      "commit": "c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e",
+      "license": "CC0-1.0",
+      "licenseFile": "VCSL-CC0.txt"
+    },
+    {
+      "name": "mmiron - tabla bols",
+      "reference": "https://freesound.org/people/mmiron/packs/8162/",
+      "license": "CC0-1.0",
+      "licenseFile": "VCSL-CC0.txt"
+    },
+    {
+      "name": "ajaysm - tin stroke",
+      "reference": "https://freesound.org/people/ajaysm/sounds/171911/",
+      "license": "CC-BY-4.0",
+      "licenseFile": "CC-BY-4.0.txt",
+      "creditFile": "TABLA-ATTRIBUTION.txt"
+    }
+  ],
+  "notes": "Recorded drums, hand percussion and genuine tabla bols. Freesound files are public high-quality MP3 previews; tabla variants are not claimed to be systematic velocity layers. VCSL hand drums include recorded dynamics and muted conga/bongo strokes. Existing Musicca and Studio-kit recordings are unchanged. Calibrated voices align their onset and balance levels at playback. No source application code or Soundsnap audio is included.",
+  "files": [
+    {
+      "path": "musicca/standard/bass.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/standard/bass.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 7774,
+      "sha256": "4f4f6fe77d43f1d710c85cc417682d949dc39b82c1329863d87d8a155960f1d9"
+    },
+    {
+      "path": "musicca/standard/snare-drum.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/standard/snare-drum.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 8454,
+      "sha256": "393cc805020669f2dd4bbe52847d539c46bbf1879c90178cf52284ccfa549be9"
+    },
+    {
+      "path": "musicca/standard/snare-stick.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/standard/snare-stick.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 8350,
+      "sha256": "993effc89bc32052426fa89873c60456cd709cca3ca2d984e935902fd4842694"
+    },
+    {
+      "path": "musicca/standard/hihat.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/standard/hihat.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 10124,
+      "sha256": "46d9452930fa513489c8c1cc61aa7da4e622a601835957efa876d5dd7344a3ed"
+    },
+    {
+      "path": "musicca/standard/hihat-open.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/standard/hihat-open.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 14197,
+      "sha256": "e6de81ed35f65270aab36337ed7b88e8e2cf5aa7f4e44e543321aa637b80cc0a"
+    },
+    {
+      "path": "musicca/standard/hihat-foot.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/standard/hihat-foot.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 9914,
+      "sha256": "4de42d73b470cc5fc8dda959787b341056a2c4f8f3d02f1136eac44ee2cf39ef"
+    },
+    {
+      "path": "musicca/standard/tom1.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/standard/tom1.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 9756,
+      "sha256": "249a71f8d7f71a750d1f9af4ed6d91c2bff633acf88e89e2f4ae83e0ee94f828"
+    },
+    {
+      "path": "musicca/standard/tom2.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/standard/tom2.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 9496,
+      "sha256": "8fa381e74f7555465d592554a09e9d6913114c696c5c320c94223124e63fbcfc"
+    },
+    {
+      "path": "musicca/standard/floor-tom.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/standard/floor-tom.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 10382,
+      "sha256": "ca411b189e7bbbe867e2ae588eaf3c0ce74d17fe516e2beeff3d29284ceaff9b"
+    },
+    {
+      "path": "musicca/standard/ride.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/standard/ride.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 19314,
+      "sha256": "27f84f036f99a746dcabe3be22b26bffa6fddb0c4df6c34d610ef5e5bd0623b9"
+    },
+    {
+      "path": "musicca/standard/crash.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/standard/crash.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 30092,
+      "sha256": "b37e272768b5f172ba2b817a9e2d60fcc55118e5cef4a3c11b715fa7b12c903d"
+    },
+    {
+      "path": "musicca/powerful/bass.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/powerful/bass.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 14632,
+      "sha256": "9fbe8e5f831cd963bf7902cfd021bbffcbde54d67f23251bd56565f9eb08ad35"
+    },
+    {
+      "path": "musicca/powerful/snare-drum.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/powerful/snare-drum.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 24891,
+      "sha256": "a026f8f26826b678e72d9e98660f7a53fd7b9f8501d530439baba0ab8037368b"
+    },
+    {
+      "path": "musicca/powerful/snare-stick.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/powerful/snare-stick.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 23531,
+      "sha256": "97bca3bb87356dc4ed5edc937f7e3eb58f37d77ff172f7e27e15c59d0ebe223b"
+    },
+    {
+      "path": "musicca/powerful/hihat.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/powerful/hihat.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 15311,
+      "sha256": "34e63f57ea9375be3272a94892bcf363919d8ae88da0f85f69ece3ac3c6f7cf6"
+    },
+    {
+      "path": "musicca/powerful/hihat-open.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/powerful/hihat-open.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 13990,
+      "sha256": "0a408db773d111bf2167a2f2586b1e7f79acf5a30aeb2f5623565be7da0eaf08"
+    },
+    {
+      "path": "musicca/powerful/hihat-foot.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/powerful/hihat-foot.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 8191,
+      "sha256": "85b5f747608f0b73c1e2c1ade7ae6f85ba07ea6cb6817a249e3827800711892b"
+    },
+    {
+      "path": "musicca/powerful/tom1.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/powerful/tom1.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 22230,
+      "sha256": "0345209e11b34d8b0bb6a393883687d64767772bfacfbdf52a884fafe341c6a2"
+    },
+    {
+      "path": "musicca/powerful/tom2.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/powerful/tom2.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 32685,
+      "sha256": "4e21abe8a44e5e4985644cc023f1757fe8b939a1a66eeaca177e7836cb2bc278"
+    },
+    {
+      "path": "musicca/powerful/floor-tom.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/powerful/floor-tom.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 30002,
+      "sha256": "4d0613db1a734973e71915f7cf2ddf0ea683677086afd5bf63f037a17e25f0c9"
+    },
+    {
+      "path": "musicca/powerful/ride.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/powerful/ride.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 36423,
+      "sha256": "a6a216c1661b703b73d1d9f1d652297a6ec69df6bcd2b74233202812a73505b7"
+    },
+    {
+      "path": "musicca/powerful/crash.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/powerful/crash.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 59066,
+      "sha256": "0e717df32cc3fb27994b9c20dbca35dc9211b7f65da401519216425da25c56bc"
+    },
+    {
+      "path": "musicca/monumental/bass.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/monumental/bass.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 19697,
+      "sha256": "6253e4a2dbe6ef4f2475a61233441051913750c7c0a85ffa8753099665b8897a"
+    },
+    {
+      "path": "musicca/monumental/snare-drum.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/monumental/snare-drum.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 18682,
+      "sha256": "8b6e11c8fcc46fae23ee61e0918b6fd9822cfe534ef1aef7834e36dba110f8c1"
+    },
+    {
+      "path": "musicca/monumental/snare-stick.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/monumental/snare-stick.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 22177,
+      "sha256": "24f947933defd03de9ae411d1ce2a8f9d4178519fa85a8f964ac5c3467c524ff"
+    },
+    {
+      "path": "musicca/monumental/hihat.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/monumental/hihat.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 13049,
+      "sha256": "381a9cbb8eb14dc2b420911e5298f6ca377ad501fb68eb3bc5a27695077d99e3"
+    },
+    {
+      "path": "musicca/monumental/hihat-open.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/monumental/hihat-open.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 13254,
+      "sha256": "a2658136fd59b51784189a08dbf7cf0a2581e7ef7acda2a9b7d0e70ce5412b08"
+    },
+    {
+      "path": "musicca/monumental/hihat-foot.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/monumental/hihat-foot.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 8193,
+      "sha256": "89c6977f9a8f57c464a066eedac68567e0e29217ed12b01740716c849b41cc55"
+    },
+    {
+      "path": "musicca/monumental/tom1.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/monumental/tom1.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 21134,
+      "sha256": "03b199045e9e59044bb89cfff6530bef4d6c1689aada635a14ce938453b284b1"
+    },
+    {
+      "path": "musicca/monumental/tom2.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/monumental/tom2.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 22985,
+      "sha256": "588214d5b7268a3aefbb14f97a783f758cdeb5c6e22ffa1474273cd33881efa1"
+    },
+    {
+      "path": "musicca/monumental/floor-tom.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/monumental/floor-tom.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 23429,
+      "sha256": "cdece552be5704d493bf77063b9f9711b01a4c64bf9aaf159c375f26b8f71626"
+    },
+    {
+      "path": "musicca/monumental/ride.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/monumental/ride.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 46762,
+      "sha256": "76de4a206065483aea1a1895f387785c51926c838beb7737fc3a259d8191300b"
+    },
+    {
+      "path": "musicca/monumental/crash.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/monumental/crash.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 42119,
+      "sha256": "b35efe5dbb177cc37207449cfa44f05286eb6f201fa7d38c299384b1585f91a1"
+    },
+    {
+      "path": "musicca/smooth/bass.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/smooth/bass.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 7170,
+      "sha256": "d642cf894b79432c707cf6fa83b0f56478973c3ef37c9cb10e1566af9102d920"
+    },
+    {
+      "path": "musicca/smooth/snare-drum.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/smooth/snare-drum.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 6156,
+      "sha256": "3e6695c050f1f1d8d6f28385a726ab7e72cb3a5ff39385a1a857f67367703985"
+    },
+    {
+      "path": "musicca/smooth/snare-stick.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/smooth/snare-stick.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 8350,
+      "sha256": "993effc89bc32052426fa89873c60456cd709cca3ca2d984e935902fd4842694"
+    },
+    {
+      "path": "musicca/smooth/hihat.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/smooth/hihat.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 5532,
+      "sha256": "4da43fc5a0d252bfe046719ae6485a13516b40276682af37d1366514b84edc77"
+    },
+    {
+      "path": "musicca/smooth/hihat-open.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/smooth/hihat-open.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 9127,
+      "sha256": "7a3372c89ceeb71801079a9c4dafeb0588a52230d919b55eb9133ba5cb691159"
+    },
+    {
+      "path": "musicca/smooth/hihat-foot.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/smooth/hihat-foot.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 8191,
+      "sha256": "85b5f747608f0b73c1e2c1ade7ae6f85ba07ea6cb6817a249e3827800711892b"
+    },
+    {
+      "path": "musicca/smooth/tom1.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/smooth/tom1.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 8817,
+      "sha256": "3d35fb421925c0c8a88ae4bdfadbf1557ee863dafec691c153a8c71811a049c1"
+    },
+    {
+      "path": "musicca/smooth/tom2.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/smooth/tom2.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 9130,
+      "sha256": "a239e843ca0e2351900fb47497b396015648e6ad451fa9aabe3de80120416111"
+    },
+    {
+      "path": "musicca/smooth/floor-tom.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/smooth/floor-tom.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 10330,
+      "sha256": "0f09bedea19bcf2f12d4f557087994e9e13081b7c40c30d2c4b2f0e9f6226fd1"
+    },
+    {
+      "path": "musicca/smooth/ride.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/smooth/ride.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 19202,
+      "sha256": "0f1e9f24de68afabd9e5811c6171cf7fdc8d433e9113b038ebc0c484f6c23d93"
+    },
+    {
+      "path": "musicca/smooth/crash.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/smooth/crash.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 53075,
+      "sha256": "646f22a6b7d7932a21f2c16f2f2bfd7a5e3c618b8035c675ee9ae5babeb3cad6"
+    },
+    {
+      "path": "musicca/minimalistic/bass.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/minimalistic/bass.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 5636,
+      "sha256": "ed2ed69e17ea2c181b1d8bf33fc2b3d314b4a60f95ba4cf8562f0d9ce69ce046"
+    },
+    {
+      "path": "musicca/minimalistic/snare-drum.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/minimalistic/snare-drum.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 4801,
+      "sha256": "2de28a6d7e92c13d2a924b80473d600ae814b2cac2dec7fc50f8ef92a9f2fd92"
+    },
+    {
+      "path": "musicca/minimalistic/snare-stick.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/minimalistic/snare-stick.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 4487,
+      "sha256": "f3601ddb534b4f3f2de39834f8d6f25c714dfdf19c5c2c9d5f0ae498d8b46a39"
+    },
+    {
+      "path": "musicca/minimalistic/hihat.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/minimalistic/hihat.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 3131,
+      "sha256": "afd2e6ca092142c3f430b76d1b9e3a3239f383bf6c53657480cac18b40fddcd6"
+    },
+    {
+      "path": "musicca/minimalistic/hihat-open.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/minimalistic/hihat-open.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 7616,
+      "sha256": "0401aacd18b4a11fff28d90b63403b61cb4110e2e34fc2547ff0d886df4b5387"
+    },
+    {
+      "path": "musicca/minimalistic/hihat-foot.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/minimalistic/hihat-foot.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 6573,
+      "sha256": "c89ce39b0bb2816bbd57fcae1fab65ea4ac98cfa5a86596384bf720ddd14a202"
+    },
+    {
+      "path": "musicca/minimalistic/tom1.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/minimalistic/tom1.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 12213,
+      "sha256": "6c5eb93904a97a111f399629ede571ba95f9ca5edf37da07752815d5ea917698"
+    },
+    {
+      "path": "musicca/minimalistic/tom2.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/minimalistic/tom2.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 10855,
+      "sha256": "792bd2644dbd639b069cb3d80913833f203ec948ba7fde50d46112da0e1fd94b"
+    },
+    {
+      "path": "musicca/minimalistic/floor-tom.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/minimalistic/floor-tom.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 10018,
+      "sha256": "e0a49bfcb75d95df9bf379294f275bed78992aa9a996f9528ce6ab17ba7fcda9"
+    },
+    {
+      "path": "musicca/minimalistic/ride.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/minimalistic/ride.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 32673,
+      "sha256": "67df5c0fed2e1f4d07dd47e80ced9742fc52294e586c46f70e3531b57c987105"
+    },
+    {
+      "path": "musicca/minimalistic/crash.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/minimalistic/crash.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 22278,
+      "sha256": "1f586facebfb85d322930b7a8bd7a520ffd1c1e5d500182cae7651cc890365a1"
+    },
+    {
+      "path": "musicca/energetic/bass.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/energetic/bass.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 3885,
+      "sha256": "43714b35a91b2a076ecc6e9cee753ddbfea734ab53b2b0eddedd987271d7de0a"
+    },
+    {
+      "path": "musicca/energetic/snare-drum.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/energetic/snare-drum.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 3442,
+      "sha256": "bc20a3f2171b4591291434fbe9d5ab05f67c63a9db0d040b86794a9199197b6a"
+    },
+    {
+      "path": "musicca/energetic/snare-stick.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/energetic/snare-stick.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 6154,
+      "sha256": "d2bc9c39167dc79fa58e51ba58fd6546469860c9fd93ea93b012ca529a023296"
+    },
+    {
+      "path": "musicca/energetic/hihat.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/energetic/hihat.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 6285,
+      "sha256": "017e85387e5b57c51878570c95033b1f5d50367d2082fd18d4a96d55c4cac8fe"
+    },
+    {
+      "path": "musicca/energetic/hihat-open.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/energetic/hihat-open.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 12005,
+      "sha256": "6b5a2b9d57271d1fca5acb9fbc3aceadb8b2563cbadddcffc957695d30262026"
+    },
+    {
+      "path": "musicca/energetic/hihat-foot.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/energetic/hihat-foot.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 7410,
+      "sha256": "1631c75f30838c8447529032d915378f94406ec946c56396d5efc3015edb6d6b"
+    },
+    {
+      "path": "musicca/energetic/tom1.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/energetic/tom1.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 7173,
+      "sha256": "5eb44a83f995e218cfb0710baa8a38c15ef94116c40c09c7184e3e38d7665440"
+    },
+    {
+      "path": "musicca/energetic/tom2.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/energetic/tom2.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 6990,
+      "sha256": "8d75def6df4c18ef72b6593006018fe8c26548fe2f9e77109c328c90acb986bc"
+    },
+    {
+      "path": "musicca/energetic/floor-tom.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/energetic/floor-tom.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 7931,
+      "sha256": "33a7fe63f54ee8d95d2681e4e5a3cdff659dafecf1a658a8a16896006c17cb33"
+    },
+    {
+      "path": "musicca/energetic/ride.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/energetic/ride.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 17896,
+      "sha256": "e667f41e221b2a34fcf1d70b0adc972c0ee674228e96b82fb39e7269c1900c02"
+    },
+    {
+      "path": "musicca/energetic/crash.mp3",
+      "url": "https://www.musicca.com/files/audio/tools/drums/energetic/crash.mp3",
+      "velocity": 1,
+      "source": "Musicca",
+      "bytes": 35588,
+      "sha256": "e71385a850085a65b1a1e2e602e9ad3709c36601d0e739fa79a054e8d68e6cae"
+    },
+    {
+      "path": "vcsl/conga-low-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Tumba_HitN_v1_rr1_Sum.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 124652,
+      "sha256": "f02d803de1a48ecc3714bcd8b929683b2608f5756a451c9ae2f83a0f86c9b6a9"
+    },
+    {
+      "path": "vcsl/conga-low-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Tumba_HitN_v3_rr1_Sum.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 129160,
+      "sha256": "ac94b311b5e0f5cfbb27bda691cde3ef5bb8afb1b7c7bf5b7c736e6a1714f411"
+    },
+    {
+      "path": "vcsl/conga-low-3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Tumba_HitN_v1_rr2_Sum.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 123428,
+      "sha256": "324e0f92de8766d584a56355d2b679718927e195a059199883fec8756bc81e9a"
+    },
+    {
+      "path": "vcsl/conga-low-4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Tumba_HitN_v3_rr2_Sum.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 120668,
+      "sha256": "30d5a78e91a6b18eb4ebd317db3006673abc82e6f9f86d813dee0f7d48a61af2"
+    },
+    {
+      "path": "vcsl/conga-low-5.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Tumba_HitN_v2_rr1_Sum.wav",
+      "velocity": 0.65,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 149288,
+      "sha256": "c61f662c8af0dc95fcfca81d8a319b71bafd6e4c59a168dceec799fbb7963a47"
+    },
+    {
+      "path": "vcsl/conga-low-6.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Tumba_HitN_v2_rr2_Sum.wav",
+      "velocity": 0.65,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 126616,
+      "sha256": "9092f501109e11c07a62503d1e69c53efb6fb9060376d491c57cf3c037199519"
+    },
+    {
+      "path": "vcsl/conga-low-7.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Tumba_HitN_v4_rr1_Sum.wav",
+      "velocity": 1,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 161200,
+      "sha256": "5504101dba1a22e133efb77147084e96565a7ff64535f94f2f3d8934f2b2895b"
+    },
+    {
+      "path": "vcsl/conga-low-8.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Tumba_HitN_v4_rr2_Sum.wav",
+      "velocity": 1,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 200148,
+      "sha256": "0f47c8791caf3a056c046ea58fee8c6845dbb0e5a7af26a466f1558072325b55"
+    },
+    {
+      "path": "vcsl/conga-open-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Conga_HitN_v1_rr1_Sum.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 185024,
+      "sha256": "74bb1f4feb3ae739e229f47f54b66def0cd12adc0033e998091e6456a15eadd0"
+    },
+    {
+      "path": "vcsl/conga-open-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Conga_HitN_v3_rr1_Sum.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 231124,
+      "sha256": "664365ac735d819c69cabbbae8a78d225fa73059e698ad8ca292c46cc03c6961"
+    },
+    {
+      "path": "vcsl/conga-open-3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Conga_HitN_v1_rr2_Sum.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 116928,
+      "sha256": "08c13ec3aecfeca05762d696e67ec592f018898ed3969270c31fda6d249391f6"
+    },
+    {
+      "path": "vcsl/conga-open-4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Conga_HitN_v3_rr2_Sum.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 178648,
+      "sha256": "d968cd98a8cf8238f244515a302b77adec88dae365bc9de9146ae8938225d142"
+    },
+    {
+      "path": "vcsl/conga-open-5.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Conga_HitN_v2_rr1_Sum.wav",
+      "velocity": 0.65,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 140012,
+      "sha256": "13d322c0e7a830cdbcbdc5a6e05566dfe3f5a073b7b82a3262d3f6fc10f96764"
+    },
+    {
+      "path": "vcsl/conga-open-6.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Conga_HitN_v2_rr2_Sum.wav",
+      "velocity": 0.65,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 131952,
+      "sha256": "4f52f6619fd12d1d0e1e942e67cdf77fcad06fef6de44eba8bab6df99ade4acd"
+    },
+    {
+      "path": "vcsl/conga-high-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Quinto_HitN_v1_rr1_Sum.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 117192,
+      "sha256": "7ee442ad7d604433afebbb648e6dde63b7ca969973b2a215cfa26f104d597ed8"
+    },
+    {
+      "path": "vcsl/conga-high-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Quinto_HitN_v3_rr1_Sum.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 207412,
+      "sha256": "07fe0922f97a57969a3cbb706126de2d09d23f42f6390a9a9adac027d7741c7e"
+    },
+    {
+      "path": "vcsl/conga-high-3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Quinto_HitN_v1_rr2_Sum.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 163996,
+      "sha256": "e2db1d64cef5f96d5fc484e926273c90aeef4dc39836dc80570f1932bd613fcd"
+    },
+    {
+      "path": "vcsl/conga-high-4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Quinto_HitN_v3_rr2_Sum.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 157200,
+      "sha256": "84b8d93a05c13ad7c04e6bd28f467ae3667e15ccaaf8aacd93928ec66504fb4d"
+    },
+    {
+      "path": "vcsl/conga-high-5.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Quinto_HitN_v2_rr1_Sum.wav",
+      "velocity": 0.65,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 141228,
+      "sha256": "ccbc9514d58b0a18af1aff2cabd29be7516ecb5790c9bcb707be67a374829e4b"
+    },
+    {
+      "path": "vcsl/conga-high-6.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Quinto_HitN_v2_rr2_Sum.wav",
+      "velocity": 0.65,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 155968,
+      "sha256": "24130dab5ff65095dcd6ac41c8c2e7d3b5abb675067cb08e973bbc72302a50dc"
+    },
+    {
+      "path": "vcsl/conga-muted-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Conga_HitFM_v1_rr1_Sum.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 119016,
+      "sha256": "5b18eeab0a84fededac9f5749b4d6502ad1725df37538d1b572f2068c6ec5f53"
+    },
+    {
+      "path": "vcsl/conga-muted-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Conga_HitFM_v2_rr1_Sum.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 159004,
+      "sha256": "1a24a11a7dae6fdc05405a706768a5b6d96ad534c95bee5d451aa49eedd84855"
+    },
+    {
+      "path": "vcsl/conga-muted-3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Conga_HitFM_v1_rr2_Sum.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 146608,
+      "sha256": "813e9e4dad92d6908c663fed63a321af2d5efd01cf953696afb4b6871c43c65c"
+    },
+    {
+      "path": "vcsl/conga-muted-4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Conga_HitFM_v2_rr2_Sum.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 143076,
+      "sha256": "f1d21c33c0cf8a5f22c18376c4bae481345b12177a243fc5571591ef7d29b51b"
+    },
+    {
+      "path": "vcsl/bongo-low-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoL_Hit1_v1_rr1_Mid.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 186436,
+      "sha256": "746f5c4d37cf956c083f0c98b74dd7b6f7daeda6405d7b1534bbc56f1b741e4a"
+    },
+    {
+      "path": "vcsl/bongo-low-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoL_Hit1_v3_rr1_Mid.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 209224,
+      "sha256": "07986a1bc54b31dafd9c7dc250e42a613977b320b33b2e4652d21332064de4eb"
+    },
+    {
+      "path": "vcsl/bongo-low-3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoL_Hit1_v1_rr2_Mid.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 172984,
+      "sha256": "30c83a15eb158a8114ada571c196027691cf205d9fd55423d4405a65b94dc231"
+    },
+    {
+      "path": "vcsl/bongo-low-4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoL_Hit1_v3_rr2_Mid.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 205936,
+      "sha256": "da93f8eba020d57ec57c27505f4132c346900aee6a5f76e9754d01c93658a226"
+    },
+    {
+      "path": "vcsl/bongo-low-5.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoL_Hit1_v2_rr1_Mid.wav",
+      "velocity": 0.65,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 168720,
+      "sha256": "0ee22ac30a27a1e91fbba58e0c4b36b28ea6c508dad5f11b10bdb9db07f2b443"
+    },
+    {
+      "path": "vcsl/bongo-low-6.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoL_Hit1_v2_rr2_Mid.wav",
+      "velocity": 0.65,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 209296,
+      "sha256": "0933627d939145e57ff95e93ce3618b0c35f8de6ed6f0f4bfad42f8dd66f8fa5"
+    },
+    {
+      "path": "vcsl/bongo-high-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoH_Hit1_v1_rr1_Mid.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 146696,
+      "sha256": "7ebcd2149e8a75189446afba67c96b58f42757bf7aa355364f2e11cee705f33f"
+    },
+    {
+      "path": "vcsl/bongo-high-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoH_Hit1_v3_rr1_Mid.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 205208,
+      "sha256": "e93ed5c0fbafc3f122ced7c56c3f08021d8616e96c81c42aa62c5f368111d001"
+    },
+    {
+      "path": "vcsl/bongo-high-3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoH_Hit1_v1_rr2_Mid.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 199484,
+      "sha256": "4905c0cee5db34c8edfc49aa51d93f4a7d2a823190eaa12d2500515639a42cf3"
+    },
+    {
+      "path": "vcsl/bongo-high-4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoH_Hit1_v3_rr2_Mid.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 186744,
+      "sha256": "e0c143a2d32aca5430ffe2254c699b772ecfeaf6eef9d4c414365b538f693916"
+    },
+    {
+      "path": "vcsl/bongo-high-5.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoH_Hit1_v2_rr1_Mid.wav",
+      "velocity": 0.65,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 209356,
+      "sha256": "dd9b6239a151702966a995937f74ac022c9bb950c967277fbd16beaced0c9e1a"
+    },
+    {
+      "path": "vcsl/bongo-high-6.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoH_Hit1_v2_rr2_Mid.wav",
+      "velocity": 0.65,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 177716,
+      "sha256": "03d4653d70e2180643872da4ebb94845f4da81b8d8f9ba2c7df3a611bd9d65ac"
+    },
+    {
+      "path": "vcsl/bongo-muted-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoH_HitMuted1_v1_rr1_Mid.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 175448,
+      "sha256": "64d46278b649476cbefcdf4ceec2618fcc500723348bfecb3620c8950e5d3753"
+    },
+    {
+      "path": "vcsl/bongo-muted-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoH_HitMuted1_v3_rr1_Mid.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 214912,
+      "sha256": "8ec81b9724006b8181f7ef8d604a2e0fecd507c1baa22953f9ee25025662532b"
+    },
+    {
+      "path": "vcsl/bongo-muted-3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoH_HitMuted1_v1_rr2_Mid.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 173324,
+      "sha256": "fab8be03ed74577aafc7273641d215e0006862be20b3693d9247e6c2e677c06b"
+    },
+    {
+      "path": "vcsl/bongo-muted-4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoH_HitMuted1_v3_rr2_Mid.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 178468,
+      "sha256": "2303c63b20c201fc080c65ad5183eed4f47f06b4664d28e3f968cdd7ca49dca1"
+    },
+    {
+      "path": "vcsl/bongo-muted-5.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoH_HitMuted1_v2_rr1_Mid.wav",
+      "velocity": 0.65,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 188064,
+      "sha256": "a247267b703a17d7f70190178b3b15ba030a9097b4b6a05a8e476e5733673b6b"
+    },
+    {
+      "path": "vcsl/bongo-muted-6.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Bongos/BongoH_HitMuted1_v2_rr2_Mid.wav",
+      "velocity": 0.65,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 182468,
+      "sha256": "c593cd3c010bdecb6c3b346d3335b9653d6aba04724e8427e9b6e328d2ba0b34"
+    },
+    {
+      "path": "vcsl/cajon-hit1-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cajon/Cajon_hit1_mp_rr1.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 238690,
+      "sha256": "4103c4a847a8cc8860b9449ef26619b56825e972f1bfa0427bdd3f5e36ca81aa"
+    },
+    {
+      "path": "vcsl/cajon-hit1-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cajon/Cajon_hit1_f_rr1.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 222546,
+      "sha256": "18241c7c9f73dc9edfe6402371fefba5584ed5f9bc6fe827d3bba945841301d6"
+    },
+    {
+      "path": "vcsl/cajon-hit1-3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cajon/Cajon_hit1_mp_rr2.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 184350,
+      "sha256": "f28fcadf95557619fe9f8a1b8ad1af511fbccba67608960c7b2a78040f03f01e"
+    },
+    {
+      "path": "vcsl/cajon-hit1-4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cajon/Cajon_hit1_f_rr2.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 242438,
+      "sha256": "62ddc0aca63f93c6dd30d4dca7bb7debfc65ce6f576e5d5c201423bb81fb03d2"
+    },
+    {
+      "path": "vcsl/cajon-hit1-5.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cajon/Cajon_hit1_fff_rr1.wav",
+      "velocity": 1,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 225658,
+      "sha256": "d8e232031e14e0f15ac3d1d92ca5e7c18ebe9a1120c0055a661da6d89729cc31"
+    },
+    {
+      "path": "vcsl/cajon-hit1-6.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cajon/Cajon_hit1_fff_rr2.wav",
+      "velocity": 1,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 230786,
+      "sha256": "9d1fbab75425b34800a78ba87cff2cf56e1d5cb54c8d79070c064d4a4adce087"
+    },
+    {
+      "path": "vcsl/cajon-hit2-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cajon/Cajon_hit2_mp_rr1.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 304858,
+      "sha256": "aa8836ba7ff3f79a4e6ce82b8a42e0c17321fd44300403a05a47012a5173bfc9"
+    },
+    {
+      "path": "vcsl/cajon-hit2-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cajon/Cajon_hit2_f_rr1.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 210966,
+      "sha256": "ad85e345189439370fb54676813affba0e46f5d9f502aa63e995a2ea7a831960"
+    },
+    {
+      "path": "vcsl/cajon-hit2-3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cajon/Cajon_hit2_mp_rr2.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 231330,
+      "sha256": "802697b43b68b32c37e717367871164c22508d0baa7310582abbd44ed168756c"
+    },
+    {
+      "path": "vcsl/cajon-hit2-4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cajon/Cajon_hit2_f_rr2.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 218502,
+      "sha256": "263ecb8dd1789dd67ad00e1383d04b052c3177af6d6e98fc32c34c896e55a868"
+    },
+    {
+      "path": "vcsl/cajon-hit2-5.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cajon/Cajon_hit2_pp_rr1.wav",
+      "velocity": 0.22,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 231674,
+      "sha256": "07d7567ca9d48b5017655fdccda35e85e833f6c70987ceb73f9ed80bd4a84d07"
+    },
+    {
+      "path": "vcsl/cajon-hit2-6.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cajon/Cajon_hit2_pp_rr2.wav",
+      "velocity": 0.22,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 223474,
+      "sha256": "0b9dc27d44e880c0cadcaa969aec7970349bc17c90a067043c41122e982ca649"
+    },
+    {
+      "path": "vcsl/shaker-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Shaker%2C%20Small/Mid_ShakerDouble_Down_rr1.wav",
+      "velocity": 0.7,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 46844,
+      "sha256": "0df7c271e1dba4de7304f7df81886390dd9ae698bfdd6df570026af4f2223574"
+    },
+    {
+      "path": "vcsl/shaker-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Shaker%2C%20Small/Mid_ShakerDouble_Down_rr2.wav",
+      "velocity": 0.7,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 46652,
+      "sha256": "1bf11b6a055ace8b6fbe2c158f7bea449c91e4d72f97b9464b4856184aaf186d"
+    },
+    {
+      "path": "vcsl/tambourine-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Tambourine%201/Tamb1_Hit_v1_rr1_Mid.wav",
+      "velocity": 0.4,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 338496,
+      "sha256": "6fd5af9ec2d94c3b66fa871aecbc2e2844eea155a668fd0f15f07d59ae67dd40"
+    },
+    {
+      "path": "vcsl/tambourine-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Tambourine%201/Tamb1_Hit_v2_rr1_Mid.wav",
+      "velocity": 0.9,
+      "source": "VCSL",
+      "calibrate": true,
+      "bytes": 293256,
+      "sha256": "885ebf1d70f8e888f576682e4e4112b92b69649162f392c83b3379c91a09cf41"
+    },
+    {
+      "path": "vcsl/studio-snare-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Snare%20Drum%2C%20Modern%201/Snare2_HitSN_v3_rr1_Mid.wav",
+      "velocity": 0.3,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 1.2 s with a 60 ms fade when trimmed",
+      "bytes": 105884,
+      "sha256": "8ba156e98114a65aa45ac6d4e6e4c621a3e5552713e29749d7c803774cf71b17"
+    },
+    {
+      "path": "vcsl/studio-snare-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Snare%20Drum%2C%20Modern%201/Snare2_HitSN_v5_rr1_Mid.wav",
+      "velocity": 0.55,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 1.2 s with a 60 ms fade when trimmed",
+      "bytes": 105884,
+      "sha256": "ef729e1c7fead6a4ca0bce343a5ce58dc87bd5831d927bb8fa1f8a10700eb81b"
+    },
+    {
+      "path": "vcsl/studio-snare-3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Snare%20Drum%2C%20Modern%201/Snare2_HitSN_v5_rr2_Mid.wav",
+      "velocity": 0.55,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 1.2 s with a 60 ms fade when trimmed",
+      "bytes": 105884,
+      "sha256": "cd38ec46c52bc6d3b8e688814f82fcc12fafc8239d16546e405f97d0b06646c5"
+    },
+    {
+      "path": "vcsl/studio-snare-4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Snare%20Drum%2C%20Modern%201/Snare2_HitSN_v7_rr1_Mid.wav",
+      "velocity": 0.78,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 1.2 s with a 60 ms fade when trimmed",
+      "bytes": 105884,
+      "sha256": "2708f9b819b5a910529643e0e6b0347f3e0cd08a1481c0a59850864b5359c226"
+    },
+    {
+      "path": "vcsl/studio-snare-5.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Snare%20Drum%2C%20Modern%201/Snare2_HitSN_v9_rr1_Mid.wav",
+      "velocity": 1,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 1.2 s with a 60 ms fade when trimmed",
+      "bytes": 105884,
+      "sha256": "af5c89f0361da856c85af82535bd548461fd8b5019cd7817b5634b1d1b71f29c"
+    },
+    {
+      "path": "vcsl/studio-snare-6.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Snare%20Drum%2C%20Modern%201/Snare2_HitSN_v9_rr2_Mid.wav",
+      "velocity": 1,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 1.2 s with a 60 ms fade when trimmed",
+      "bytes": 105884,
+      "sha256": "430fa7c35359b78ce68cf07058252b16e1074e8b9d55ce814b9b16da95642b9d"
+    },
+    {
+      "path": "vcsl/studio-cross-stick-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Snare%20Drum%2C%20Modern%202/Snare3M_Xstick_v2_rr1_Mid.wav",
+      "velocity": 0.8,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.8 s with a 60 ms fade when trimmed",
+      "bytes": 70604,
+      "sha256": "19028a334aefef3799b74e8a7b38bdedc63273ab4bf71991fff54e4a1067a67e"
+    },
+    {
+      "path": "vcsl/studio-cross-stick-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Snare%20Drum%2C%20Modern%202/Snare3M_Xstick_v2_rr2_Mid.wav",
+      "velocity": 0.8,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.8 s with a 60 ms fade when trimmed",
+      "bytes": 70604,
+      "sha256": "13670ec05370080879bbe80482242e12b755ce6169463a66634f9b0ce45d7402"
+    },
+    {
+      "path": "vcsl/studio-hihat-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Hi-Hat%20Cymbal/HiHat_HitC_v1_rr1_Mid.wav",
+      "velocity": 0.3,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.9 s with a 60 ms fade when trimmed",
+      "bytes": 79424,
+      "sha256": "a17456786a0bf9d3012db79a9d2c624802874f9d88e90d091899c3b92e022e06"
+    },
+    {
+      "path": "vcsl/studio-hihat-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Hi-Hat%20Cymbal/HiHat_HitC_v2_rr1_Mid.wav",
+      "velocity": 0.55,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.9 s with a 60 ms fade when trimmed",
+      "bytes": 79424,
+      "sha256": "8d1893a8f2ef2434d571d3d68ffb39b7af0156e07bc96678493394ce1357b70e"
+    },
+    {
+      "path": "vcsl/studio-hihat-3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Hi-Hat%20Cymbal/HiHat_HitC_v2_rr2_Mid.wav",
+      "velocity": 0.55,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.9 s with a 60 ms fade when trimmed",
+      "bytes": 79424,
+      "sha256": "09699ada7c87283b095720028793476bd1a050d800f5b201ca27f03de0e8dfff"
+    },
+    {
+      "path": "vcsl/studio-hihat-4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Hi-Hat%20Cymbal/HiHat_HitC_v3_rr1_Mid.wav",
+      "velocity": 0.78,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.9 s with a 60 ms fade when trimmed",
+      "bytes": 79424,
+      "sha256": "41eb5b0f426fd09b95a4a7d69f0f1811a29d3286b9064d9b71faa85acab1d3e0"
+    },
+    {
+      "path": "vcsl/studio-hihat-5.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Hi-Hat%20Cymbal/HiHat_HitC_v3_rr2_Mid.wav",
+      "velocity": 0.78,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.9 s with a 60 ms fade when trimmed",
+      "bytes": 79424,
+      "sha256": "e23f89d745c00fc3b6aa887c94f0a50aa62f586c7bef742f41a06b409b21e928"
+    },
+    {
+      "path": "vcsl/studio-hihat-6.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Hi-Hat%20Cymbal/HiHat_HitC_v4_rr1_Mid.wav",
+      "velocity": 1,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.9 s with a 60 ms fade when trimmed",
+      "bytes": 79424,
+      "sha256": "1d0e916e572e8caa5ab6a053012924a7ce9502f959b9f8a8a7d20dddc42b6b2e"
+    },
+    {
+      "path": "vcsl/studio-hihat-open-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Hi-Hat%20Cymbal/HiHat_HitLoose_rr1_Mid.wav",
+      "velocity": 0.55,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 2.4 s with a 60 ms fade when trimmed",
+      "bytes": 211724,
+      "sha256": "33d1f1cdb1ec980267889deaa626b0ba917a1027fe84f9bf14f2bcae76b707cb"
+    },
+    {
+      "path": "vcsl/studio-hihat-open-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Hi-Hat%20Cymbal/HiHat_HitO_rr1_Mid.wav",
+      "velocity": 1,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 2.4 s with a 60 ms fade when trimmed",
+      "bytes": 211724,
+      "sha256": "7a43707e2f1d85240667202b8739f0bf252d57814f10668e27e96547690ac08e"
+    },
+    {
+      "path": "vcsl/studio-hihat-foot-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Hi-Hat%20Cymbal/HiHat_Close_rr1_Mid.wav",
+      "velocity": 0.8,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.7 s with a 60 ms fade when trimmed",
+      "bytes": 61784,
+      "sha256": "4890d217502f4e27335a002db5c936044800f1db2d86a906aa6d5354186d56bf"
+    },
+    {
+      "path": "vcsl/studio-hihat-foot-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Hi-Hat%20Cymbal/HiHat_Close_rr2_Mid.wav",
+      "velocity": 0.8,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.7 s with a 60 ms fade when trimmed",
+      "bytes": 61784,
+      "sha256": "2c44415f642a3607a94cb07f37d1cf027d4535c7faf78a194ea666869c0925f7"
+    },
+    {
+      "path": "vcsl/studio-tom-high-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Tom%201/Stick/TomH_HitS_v2_rr1_Mid.wav",
+      "velocity": 0.5,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 1.4 s with a 60 ms fade when trimmed",
+      "bytes": 123524,
+      "sha256": "ba3770452e756809d9926b06148b48e46c34e55f943b1a66db023e19cc076716"
+    },
+    {
+      "path": "vcsl/studio-tom-high-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Tom%201/Stick/TomH_HitS_v4_rr1_Mid.wav",
+      "velocity": 0.95,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 1.4 s with a 60 ms fade when trimmed",
+      "bytes": 123524,
+      "sha256": "02514905b0b3da47f770115fa8a9a7eebed742de9022828ce818860838a888d1"
+    },
+    {
+      "path": "vcsl/studio-tom-low-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Tom%202/Stick/TomL_HitS_v2_rr1_Mid.wav",
+      "velocity": 0.5,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 1.6 s with a 60 ms fade when trimmed",
+      "bytes": 141164,
+      "sha256": "c37d9c50c5136abb8e3b4e459b5881a0bb07bba6b0ee53bfe03571b654e1ba5d"
+    },
+    {
+      "path": "vcsl/studio-tom-low-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Tom%202/Stick/TomL_HitS_v4_rr1_Mid.wav",
+      "velocity": 0.95,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 1.6 s with a 60 ms fade when trimmed",
+      "bytes": 141164,
+      "sha256": "39029e819ce6eaf67d622bc7ad75da632e352de2cceb9a98002915cc1e0c8161"
+    },
+    {
+      "path": "vcsl/clap-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Claps/Clap_rr1.wav",
+      "velocity": 0.85,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.8 s with a 60 ms fade when trimmed",
+      "bytes": 71008,
+      "sha256": "7f565ff43b55061ef3fd4379f6a711bc4148a2b6a115dbc638977f28bee87585"
+    },
+    {
+      "path": "vcsl/clap-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Claps/Clap_rr2.wav",
+      "velocity": 0.85,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.8 s with a 60 ms fade when trimmed",
+      "bytes": 68496,
+      "sha256": "b3ed54480c5e576ef124b7fda3108d8ec267782c366952ccf56d142e37270a7d"
+    },
+    {
+      "path": "vcsl/clap-3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Claps/Clap_rr3.wav",
+      "velocity": 0.85,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.8 s with a 60 ms fade when trimmed",
+      "bytes": 66132,
+      "sha256": "a9eb50c1967de5581f6292d01ee257197d0a782c01ac80afe9bb5487699d53dd"
+    },
+    {
+      "path": "vcsl/clap-4.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Claps/Clap_rr4.wav",
+      "velocity": 0.85,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.8 s with a 60 ms fade when trimmed",
+      "bytes": 73864,
+      "sha256": "9211fb033162e97527f24692df74ae2e8721a7fb9313a93f04fa5c742cb08aaa"
+    },
+    {
+      "path": "vcsl/cowbell-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cowbells/Cowbell1_Normal_v2_rr1_Mid.wav",
+      "velocity": 0.55,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 1 s with a 60 ms fade when trimmed",
+      "bytes": 87476,
+      "sha256": "1cb5b3620250fb1a51486d1e8960a60ef288f60e2930954d71eb9bc96ff56a3d"
+    },
+    {
+      "path": "vcsl/cowbell-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cowbells/Cowbell1_Normal_v3_rr1_Mid.wav",
+      "velocity": 0.95,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 1 s with a 60 ms fade when trimmed",
+      "bytes": 82942,
+      "sha256": "75635f8ba7faf9b559b5c3fd9384d329ebc23029429f77a00a4efe424379c083"
+    },
+    {
+      "path": "vcsl/claves-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Claves/Claves1_Hit_v2_rr1_Mid.wav",
+      "velocity": 0.55,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.7 s with a 60 ms fade when trimmed",
+      "bytes": 61784,
+      "sha256": "8d614c8f6b4f68218dda36ae14eafc99723abc09647410623217398b752aad4c"
+    },
+    {
+      "path": "vcsl/claves-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Claves/Claves1_Hit_v3_rr1_Mid.wav",
+      "velocity": 0.95,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.7 s with a 60 ms fade when trimmed",
+      "bytes": 61784,
+      "sha256": "5339347499e224410740d38977d0a8a40f0c236d9e98c0c45134b6d95c137b72"
+    },
+    {
+      "path": "vcsl/woodblock-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Woodblock/wood_click_pp_rr1.wav",
+      "velocity": 0.35,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.6 s with a 60 ms fade when trimmed",
+      "bytes": 35762,
+      "sha256": "447da290c9c670489e631f93329f8005893968f5e7739dfa4add1ef78b82e6af"
+    },
+    {
+      "path": "vcsl/woodblock-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Woodblock/wood_click_mp.wav",
+      "velocity": 0.7,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.6 s with a 60 ms fade when trimmed",
+      "bytes": 44920,
+      "sha256": "eb7b8edea202d36685cf3ee8efb3fda5da8a69a303cad4be7abfb744be7b33a8"
+    },
+    {
+      "path": "vcsl/woodblock-3.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Woodblock/wood_click_ff.wav",
+      "velocity": 1,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 0.6 s with a 60 ms fade when trimmed",
+      "bytes": 52964,
+      "sha256": "17114dec5825464f346cce19c68fb982e5242f1fb1fbc432609b3fc1dbcdee5e"
+    },
+    {
+      "path": "vcsl/agogo-high-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Agogo%20Bells/Agogo_High_v2_rr1_Mid.wav",
+      "velocity": 0.6,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 1 s with a 60 ms fade when trimmed",
+      "bytes": 88244,
+      "sha256": "e857444ee870488f6cde062b0ca9e78a3ff3d91fa83d4a2bf9f725b43ec5628d"
+    },
+    {
+      "path": "vcsl/agogo-high-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Agogo%20Bells/Agogo_High_v3_rr1_Mid.wav",
+      "velocity": 0.95,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 1 s with a 60 ms fade when trimmed",
+      "bytes": 88244,
+      "sha256": "da77e8bfa9046c81cbb7be0c3d8c6cc6df8ecddeccc49196a6becb74c27a6454"
+    },
+    {
+      "path": "vcsl/agogo-low-1.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Agogo%20Bells/Agogo_Low_v1_rr1_Mid.wav",
+      "velocity": 0.5,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 1.2 s with a 60 ms fade when trimmed",
+      "bytes": 105884,
+      "sha256": "160248da4ada06785f2808510541ccdfa24e6fc44f5a9a8fb19392b18859046c"
+    },
+    {
+      "path": "vcsl/agogo-low-2.wav",
+      "url": "https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Agogo%20Bells/Agogo_Low_v2_rr1_Mid.wav",
+      "velocity": 0.95,
+      "source": "VCSL",
+      "processing": "Mono 16-bit PCM, at most 1.2 s with a 60 ms fade when trimmed",
+      "bytes": 105884,
+      "sha256": "18970e8add465c9a87798e5cb9d785d32719f705df2f8c058da37afccfc75ffd"
+    },
+    {
+      "path": "freesound/tabla-ghe-130406.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130406_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "ghe.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130406/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 15028,
+      "sha256": "93b7f4ef6cbd30140c90d39795e4a1f402e12e05b089211fc2a60b32af0a1695"
+    },
+    {
+      "path": "freesound/tabla-ghe-130405.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130405_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "ghe_2.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130405/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 61100,
+      "sha256": "803b2e177727c08fda973a3a19ae50d368df879c1b2411ee4a9db66d2464e4ff"
+    },
+    {
+      "path": "freesound/tabla-ghe-130404.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130404_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "ghe_3.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130404/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 55829,
+      "sha256": "28ee647b38a1d40a14728a3fe06d4e99a162310a3789e8609d93a60ea241f945"
+    },
+    {
+      "path": "freesound/tabla-ghe-130411.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130411_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "ghe_4.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130411/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 19306,
+      "sha256": "008185b0b09922e02ef06ff048371bd2ce5e23676d80cbe95528bed6fe6c0c27"
+    },
+    {
+      "path": "freesound/tabla-ke-130413.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130413_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "ke.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130413/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 2609,
+      "sha256": "52d621d6c60a268d82265f791651ce37f4fd83c13aa57f32815cf9db51515b37"
+    },
+    {
+      "path": "freesound/tabla-ke-130424.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130424_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "ke_2.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130424/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 2505,
+      "sha256": "da064c9da37acef51093ab118ac7138da3d4ee1e04f74ecb3f17ba2a63b99193"
+    },
+    {
+      "path": "freesound/tabla-ke-130423.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130423_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "ke_3.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130423/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 3340,
+      "sha256": "840292b7d39aef81821ce13f577842af0e48ed1cd8746cc3a005de4f52b14b0e"
+    },
+    {
+      "path": "freesound/tabla-na-130421.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130421_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "na.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130421/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 18159,
+      "sha256": "9d8f77266924c08379383051af04d2b89471466a3327cbd3c1a902a98fafa4ef"
+    },
+    {
+      "path": "freesound/tabla-na-130422.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130422_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "na-open.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130422/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 35690,
+      "sha256": "6f3a6100df8c8f786ee092670ae8eface0d4d32aa677c4a619adaadacccadb0e"
+    },
+    {
+      "path": "freesound/tabla-na-130428.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130428_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "na_sharp.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130428/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 7514,
+      "sha256": "979f9fa7bcacdb7fd0ba165123219364d4663a07ad8e0293c1e797913b3e8e4a"
+    },
+    {
+      "path": "freesound/tabla-tin-171911.mp3",
+      "url": "https://cdn.freesound.org/previews/171/171911_2385996-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "tin stroke",
+        "creator": "ajaysm",
+        "page": "https://freesound.org/people/ajaysm/sounds/171911/",
+        "license": "CC-BY-4.0"
+      },
+      "bytes": 10333,
+      "sha256": "a12517ca11a2b9a361a0c9fdcca1ab5a421573f3147ab451ba763dbf6b2784c7"
+    },
+    {
+      "path": "freesound/tabla-tun-130416.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130416_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "tun.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130416/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 53171,
+      "sha256": "2fa0f024070aac46b7459ed60661e62afc17229c861912ebb8d6c79e8f7e61fc"
+    },
+    {
+      "path": "freesound/tabla-tun-130419.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130419_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "tun_2.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130419/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 60425,
+      "sha256": "11dcbc763e609544b4eb1ff6062ebfe36d6dfccf9e7f435d2e34926b994c64fb"
+    },
+    {
+      "path": "freesound/tabla-tun-130420.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130420_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "tun_3.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130420/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 47381,
+      "sha256": "d380889ff50be0e484f9ff7be37acfa100e89cd42d41d446956d6b4bce34bd7b"
+    },
+    {
+      "path": "freesound/tabla-tas-130426.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130426_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "tas.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130426/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 27134,
+      "sha256": "8682a15e89f33b46e7392f3d939f1806c9c3cb3b68c7e2b59253613b618e472a"
+    },
+    {
+      "path": "freesound/tabla-tas-130425.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130425_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "tas_2.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130425/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 34542,
+      "sha256": "8e4ce6a930b4adf4a845e2cbdfd0ce4cfd87478264568d7da198b30c01428464"
+    },
+    {
+      "path": "freesound/tabla-tas-130430.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130430_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "tas_3.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130430/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 29847,
+      "sha256": "98c66429a568078acf6f72ac4538cfb0bf8fc721136f8802658460982f2b39a1"
+    },
+    {
+      "path": "freesound/tabla-te-130429.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130429_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "te.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130429/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 6367,
+      "sha256": "e8ae90f13a48fb7049482a7e240e81767f98eab464c579e1459a412c9a936637"
+    },
+    {
+      "path": "freesound/tabla-te-130418.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130418_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "te_2.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130418/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 9758,
+      "sha256": "f1cc42351ceab78092f6c38692c0f0e3d2f9a4491a52a63f900ef4ebfaf70bfd"
+    },
+    {
+      "path": "freesound/tabla-te-130415.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130415_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "te_middlefinger.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130415/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 8453,
+      "sha256": "649092a1f26b87b5ee4a1383e45afba9ee241306399a97dc13c6c59dad86c2c9"
+    },
+    {
+      "path": "freesound/tabla-re-130427.mp3",
+      "url": "https://cdn.freesound.org/previews/130/130427_1565498-hq.mp3",
+      "velocity": 1,
+      "source": "Freesound",
+      "calibrate": true,
+      "attribution": {
+        "title": "re.wav",
+        "creator": "mmiron",
+        "page": "https://freesound.org/people/mmiron/sounds/130427/",
+        "license": "CC0-1.0"
+      },
+      "bytes": 8245,
+      "sha256": "40198667b49dc97fa27db826754dfc7a8b116109111de6623a6eafcb8c3de6a9"
+    }
+  ]
+}

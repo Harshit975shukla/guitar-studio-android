@@ -1,0 +1,21 @@
+/* Admin page "Practice plans" (admin-plans.html). Uses auth.css; only what that page needs in addition. */
+.plans-table { min-width: 860px; }
+.plans-table .pick { width: 52px; padding: 0 4px; }
+.pick-label { display: grid; place-items: center; min-width: 44px; min-height: 44px; cursor: pointer; }
+.pick-label input { width: 20px; height: 20px; margin: 0; accent-color: var(--accent-gold); }
+.plans-table .muted { color: var(--text-muted); font-size: 13px; }
+.plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.plan-fieldset { margin: 0; padding: 12px 14px 14px; border: 1px solid var(--border-light); border-radius: 12px; display: grid; gap: 10px; min-width: 0; }
+.plan-fieldset legend { padding: 0 6px; font-size: 14px; font-weight: 600; }
+.plan-fieldset .hint { margin: 0; }
+input[type="number"], textarea {
+  width: 100%; min-height: 44px; padding: 9px 12px; border-radius: 10px; border: 1px solid var(--border-subtle);
+  background: var(--field-bg); color: var(--text-main); font: inherit; font-size: 16px;
+}
+textarea { resize: vertical; }
+.own-steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; counter-reset: own; }
+.own-step { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: flex-end; padding: 10px; border: 1px solid var(--border-light); border-radius: 10px; background: #1d201e; }
+.own-step .field { flex: 0 1 150px; }
+.own-step .field.grow { flex: 1 1 240px; }
+.own-step label { font-size: 13px; }
+#plan-form .actions { margin-top: 4px; }
