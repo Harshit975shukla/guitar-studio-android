@@ -1,0 +1,62 @@
+name: Build iOS App
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-ios:
+    name: Build iOS IPA (Flutter)
+    runs-on: macos-14
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Print Environment Info
+        run: |
+          flutter --version
+          xcodebuild -version
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Build iOS App (Release, Unsigned)
+        run: |
+          flutter build ios --release --no-codesign
+
+      - name: Package IPA (Payload Archive)
+        run: |
+          mkdir -p build/ios/ipa/Payload
+          cp -R build/ios/iphoneos/Runner.app build/ios/ipa/Payload/
+          cd build/ios/ipa
+          zip -qr GuitarStudio-iOS.ipa Payload
+          ls -lh GuitarStudio-iOS.ipa
+          cd ../../..
+
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: GuitarStudio-iOS-IPA
+          path: build/ios/ipa/GuitarStudio-iOS.ipa
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Release on Tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/ios/ipa/GuitarStudio-iOS.ipa
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -65,19 +65,20 @@ class _GuitarStudioHomeState extends State<GuitarStudioHome> {
     // 1. Request microphone permission on startup for guitar audio detection
     await Permission.microphone.request();
 
-    // 2. Query local embedded server URL from Android native layer
+    // 2. Query local embedded server URL from native layer, fallback to production Web App
+    String targetUrl = 'https://guitar.leadingnotemusicacademy.com';
     try {
-      final String url = await _platform.invokeMethod('getServerUrl');
-      debugPrint('GuitarStudio: Local server URL is $url');
-      setState(() => _localUrl = url);
-      _setupWebView(url);
+      final String? url = await _platform.invokeMethod<String>('getServerUrl');
+      if (url != null && url.isNotEmpty) {
+        targetUrl = url;
+      }
     } catch (e) {
-      debugPrint('GuitarStudio: Failed to get server URL: $e');
-      setState(() {
-        _isLoading = false;
-        _errorMessage = 'Failed to start local server: $e';
-      });
+      debugPrint('GuitarStudio: Local server not available ($e), loading remote web app: $targetUrl');
     }
+
+    debugPrint('GuitarStudio: Local/Remote URL is $targetUrl');
+    setState(() => _localUrl = targetUrl);
+    _setupWebView(targetUrl);
   }
 
   void _setupWebView(String url) {
